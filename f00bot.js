@@ -12,6 +12,15 @@ var f00bert = function(profile) {
 	Bot.call(this, profile);
 	this.set_log_level(this.LOG_ALL);
 	this.set_trigger("!");
+
+	this.imageDomains = [
+		"d.pr",
+		"imgur.com"
+	];
+
+	this.imageRegExp = "(" + this.imageDomains.join("|") + ")";
+	this.imageRegExp = this.imageRegExp.replace(/\./g, "\\.");
+	this.imageRegExp = this.imageRegExp.replace(/\\/g, "\\");
 };
 
 
@@ -56,7 +65,8 @@ f00bert.prototype.grab_url = function(context, text){
 f00bert.prototype.tldr = function(context, text, mode){
 	var links = [], limit = 10, last, link;
 	var stamp = Math.floor(new Date().getTime()/1000);
-	var imgRegExp = (/(d\.pr\/[a-z]+\/[\w]+)|(\.(gif|jp(e)?g|png|webp)$)/);
+
+	var imgRegExp = new RegExp(this.imageRegExp + "|(\\.(gif|jp(e)?g|png|webp)$)");
 
 	for (var i = 0; i < this.db.collection.urls.length; i++) {
 		link = this.db.collection.urls[i];
