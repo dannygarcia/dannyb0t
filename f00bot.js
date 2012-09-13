@@ -108,7 +108,7 @@ f00bert.prototype.lulz = function (context, text) {
 
 
 var profile = [{
-	host: "chat.ff0000.com",
+	host: "downtown.tx.us.synirc.net",
 	port: 6667,
 	nick: "f00bert",
 	user: "f00bot",
