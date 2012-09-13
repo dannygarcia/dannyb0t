@@ -25,6 +25,8 @@ f00bert.prototype.init = function() {
 	this.register_listener( urls, this.grab_url );
 
 	this.register_command('tldr', this.tldr);
+	this.register_command('srsly', this.srsly);
+	this.register_command('lulz', this.lulz);
 
 };
 
@@ -51,21 +53,32 @@ f00bert.prototype.grab_url = function(context, text){
 
 };
 
-f00bert.prototype.tldr = function(context, text){
-	var links = [], limit = 10, last;
+f00bert.prototype.tldr = function(context, text, mode){
+	var links = [], limit = 10, last, link;
 	var stamp = Math.floor(new Date().getTime()/1000);
+	var imgRegExp = (/(d\.pr\/[a-z]+\/[\w]+)|(\.(gif|jp(e)?g|png|webp)$)/);
 
 	for (var i = 0; i < this.db.collection.urls.length; i++) {
-		if (stamp > this.db.collection.urls[i].death) {
+		link = this.db.collection.urls[i];
+
+		if (stamp > link.death) {
 			this.db.collection.urls.remove(i);
 			this.db.collection.dupes.remove(i);
 		} else {
-			console.log('item still fresh', stamp, this.db.collection.urls[i]);
+			console.log('item still fresh', stamp, link);
 		}
 		try	{
-			if (this.db.collection.urls[i].url && this.db.collection.urls[i].url !== last) {
-				links.push(this.db.collection.urls[i].user + ' linked to: ' + this.db.collection.urls[i].url + ' \n');
-				last = this.db.collection.urls[i].url;
+			if (link.url && link.url !== last) {
+				if (mode === "srsly" && (imgRegExp).test(link.url)) {
+					continue;
+				}
+
+				if (mode === "lulz" && !(imgRegExp).test(link.url)) {
+					continue;
+				}
+
+				links.push(link.user + ' linked to: ' + link.url + ' \n');
+				last = link.url;
 			} else {
 				break;
 			}
@@ -84,6 +97,13 @@ f00bert.prototype.tldr = function(context, text){
 	//context.channel.echo(reply);
 };
 
+f00bert.prototype.srsly = function (context, text) {
+	return this.tldr(context, text, "srsly");
+};
+
+f00bert.prototype.lulz = function (context, text) {
+	return this.tldr(context, text, "lulz");
+};
 
 
 
