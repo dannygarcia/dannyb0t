@@ -108,12 +108,12 @@ f00bert.prototype.lulz = function (context, text) {
 
 
 var profile = [{
-	host: "downtown.tx.us.synirc.net",
+	host: "chat.ff0000.com",
 	port: 6667,
-	nick: "f00bert",
+	nick: "f00bot",
 	user: "f00bot",
 	real: "f00bot",
-	channels: ["#testchan"]
+	channels: ["#ff0000"]
 }];
 
 

@@ -1,25 +1,43 @@
 {
 	"urls": [
 		{
-			"user": "danny",
-			"url": "http://24.media.tumblr.com/tumblr_m9yc7jvGWh1qg39ewo1_500.gif",
-			"death": 1347560346
+			"user": "scott",
+			"url": "http://imgur.com/a/NAeNN",
+			"death": 1347569232
+		},
+		{
+			"user": "doctyper",
+			"url": "http://d.pr/i/hjqQ",
+			"death": 1347569269
 		},
 		{
 			"user": "landon",
-			"url": "http://hellohappy.org/beautiful-web-type/",
-			"death": 1347560354
+			"url": "http://manual.macromates.com/en/scope_selectors",
+			"death": 1347569401
+		},
+		{
+			"user": "doctyper",
+			"url": "https://github.com/robcowie/SublimeTODO",
+			"death": 1347569402
 		},
 		{
 			"user": "danny",
-			"url": "http://simurai.com/post/31460815120/flick-scroll",
-			"death": 1347561275
+			"url": "http://25.media.tumblr.com/tumblr_m9xwkg23zX1qg39ewo1_500.gif",
+			"death": 1347569549
+		},
+		{
+			"user": "doctyper",
+			"url": "@scott https://github.com/landongn/f00bot",
+			"death": 1347569565
 		}
 	],
 	"dupes": [
-		"http://24.media.tumblr.com/tumblr_m9yc7jvGWh1qg39ewo1_500.gif",
-		"http://hellohappy.org/beautiful-web-type/",
-		"http://simurai.com/post/31460815120/flick-scroll"
+		"http://imgur.com/a/NAeNN",
+		"http://d.pr/i/hjqQ",
+		"http://manual.macromates.com/en/scope_selectors",
+		"https://github.com/robcowie/SublimeTODO",
+		"http://25.media.tumblr.com/tumblr_m9xwkg23zX1qg39ewo1_500.gif",
+		"@scott https://github.com/landongn/f00bot"
 	],
 	"messages": {},
 	"gifs": {}
