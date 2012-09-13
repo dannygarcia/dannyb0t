@@ -34,9 +34,9 @@ f00bert.prototype.init = function() {
 	this.register_listener( urls, this.grab_url );
 
 	this.register_command('help', this.help, {help: "List of available commands."});
-	this.register_command('tldr', this.tldr);
-	this.register_command('srsly', this.srsly);
-	this.register_command('lulz', this.lulz);
+	this.register_command('tldr', this.tldr, {help: "Lists out all of the links posted in IRC over the last 2 hours."});
+	this.register_command('srsly', this.srsly, {help: "Lists out the links that are not images over the last 2 hours"});
+	this.register_command('lulz', this.lulz, {help: "Lists out images only over the last 2 hours"});
 
 };
 
