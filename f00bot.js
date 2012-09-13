@@ -66,7 +66,7 @@ f00bert.prototype.tldr = function(context, text, mode){
 	var links = [], limit = 10, last, link;
 	var stamp = Math.floor(new Date().getTime()/1000);
 
-	var imgRegExp = new RegExp(this.imageRegExp + "|(\\.(gif|jp(e)?g|png|webp)$)");
+	var imgRegExp = new RegExp(this.imageRegExp + "|(\\.(gif|jp(e)?g|png|webp))");
 
 	for (var i = 0; i < this.db.collection.urls.length; i++) {
 		link = this.db.collection.urls[i];
