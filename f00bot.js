@@ -33,6 +33,7 @@ f00bert.prototype.init = function() {
 	var urls = /\b((?:[a-z][\w-]+:(?:\/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’]))/gi;
 	this.register_listener( urls, this.grab_url );
 
+	this.register_command('help', this.help, {help: "List of available commands."});
 	this.register_command('tldr', this.tldr);
 	this.register_command('srsly', this.srsly);
 	this.register_command('lulz', this.lulz);
@@ -61,6 +62,20 @@ f00bert.prototype.grab_url = function(context, text){
 	}
 
 };
+
+f00bert.prototype.help = function (context, text) {
+	var reply = '',
+		cmds = Bot.prototype.get_commands.call(this) || {};
+
+	for (var i in cmds) {
+		if (typeof cmds[i] === "string") {
+			reply += "!" + cmds[i] + " : " + Bot.prototype.get_command_help.call(this, cmds[i]) + '\n';
+		}
+	}
+
+	context.client.get_user(context.sender.name).send(reply);
+};
+
 
 f00bert.prototype.tldr = function(context, text, mode){
 	var links = [], limit = 10, last, link;
@@ -120,10 +135,10 @@ f00bert.prototype.lulz = function (context, text) {
 var profile = [{
 	host: "chat.ff0000.com",
 	port: 6667,
-	nick: "f00bot",
-	user: "f00bot",
-	real: "f00bot",
-	channels: ["#ff0000"]
+	nick: "testbot",
+	user: "testbot",
+	real: "testbot",
+	channels: ["#testbot"]
 }];
 
 
