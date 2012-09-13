@@ -93,7 +93,7 @@ f00bert.prototype.tldr = function(context, text, mode){
 		reply += links[i];
 	}
 
-	context.client.get_user(context.sender.name).send("PRIVMSG "  + reply);
+	context.client.get_user(context.sender.name).send(reply);
 	//context.channel.echo(reply);
 };
 
