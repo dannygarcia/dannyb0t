@@ -26,19 +26,148 @@ var f00bert = function(profile) {
 
 util.inherits(f00bert, Bot);
 
+
 f00bert.prototype.init = function() {
 
 	Bot.prototype.init.call(this);
 
 	var urls = /\b((?:[a-z][\w-]+:(?:\/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:'".,<>?«»“”‘’]))/gi;
 	this.register_listener( urls, this.grab_url );
-
+	this.register_listener( /(\+1)/g, this.upvote);
+	this.register_listener( /(\-1)/g, this.downvote);
 	this.register_command('help', this.help, {help: "List of available commands."});
 	this.register_command('tldr', this.tldr, {help: "Lists out all of the links posted in IRC over the last 2 hours."});
 	this.register_command('srsly', this.srsly, {help: "Lists out the links that are not images over the last 2 hours"});
 	this.register_command('lulz', this.lulz, {help: "Lists out images only over the last 2 hours"});
+	this.register_command('msg', this.msg, {help: "save a message for later for a user.  syntax: !msg [nick] [msg]"});
+	this.register_command('poll', this.addPoll, {help: "create a new poll. !poll [question]"});
+	this.register_command('msgs', this.messages, {help: "see any messages people have left for you"});
+};
+
+f00bert.prototype.activePoll = null;
+
+
+f00bert.prototype.messages = function(context, text){
+
+	if (this.db.collection.messages[context.sender.name] && this.db.collection.messages[context.sender.name].count > 0) {
+
+		var reply = '';
+		var mailbox = this.db.collection.messages[context.sender.name];
+
+		for (var sender in mailbox){
+			var messages = mailbox[sender];
+			for (var i = 0; i < messages.length; i++) {
+				reply += sender + ': ' + messages[i] + '\n';
+			}
+		}
+
+		context.client.get_user(context.sender.name).send(reply);
+		this.clearmessages(context, text);
+	} else {
+		context.client.get_user(context.sender.name).send("Nobody likes you because you have no messages.");
+	}
 
 };
+
+f00bert.prototype.upvote = function(context, text){
+	if (this.activePoll) {
+		this.db.collection.polls[this.activePoll].upvotes +=1;
+		this.db.activity();
+	}
+};
+
+f00bert.prototype.downvote = function(context, text){
+	if (this.activePoll) {
+		this.db.collection.polls[this.activePoll].downvotes +=1;
+		this.db.activity();
+	}
+};
+
+f00bert.prototype.addPoll = function(context, text){
+
+	var question = text;
+
+	var user = context.sender.name;
+
+	if (!this.db.collection.polls) {
+		this.db.collection.polls = {};
+	}
+
+	if (this.db.collection.polls[question]) {
+		context.client.get_user(context.sender.name).send('you already have a poll that asks this same question');
+	}
+
+	this.db.collection.polls[question] = {
+		upvotes: 0,
+		downvotes: 0
+	};
+
+	this.activePoll = question;
+	var that = this;
+	context.channel.echo('New Poll: '  + question + '.  +1 or -1 to vote for the next 60 seconds.');
+	setTimeout(function(){
+		that.clearPoll(context, question);
+	}, 60000);
+
+	this.db.activity();
+};
+
+f00bert.prototype.clearPoll = function(context, question){
+	var tally = this.db.collection.polls[question];
+
+	if (tally.upvotes > tally.downvotes) {
+		context.channel.echo('Poll results: ' + tally.upvotes + ' to ' + tally.downvotes + '.  Upvotes win.');
+	} else if (tally.upvotes === tally.downvotes) {
+		context.channel.echo('Poll results: ' + tally.upvotes + ' to ' + tally.downvotes + '.  Its a tie.');
+	} else {
+		context.channel.echo('Poll results: ' + tally.upvotes + ' to ' + tally.downvotes + '.  Downvotes win.');
+	}
+
+	this.activePoll = null;
+	this.db.activity();
+
+};
+
+f00bert.prototype.clearmessages = function(context, text){
+	if (this.db.collection.messages[context.sender.name]) {
+		this.db.collection.messages[context.sender.name] = {count: 0};
+	}
+
+	this.db.activity();
+};
+
+
+f00bert.prototype.msg = function(context, text){
+
+	if (!this.db.collection.messages) {
+		this.db.collection.messages = {};
+	}
+
+
+	var split = text.split(' ');
+
+	console.log(split);
+
+	if (!this.db.collection.messages[split[0]]) {
+		this.db.collection.messages[split[0]] = {count: 0};
+	}
+
+	if (!this.db.collection.messages[split[0]][context.sender.name]) {
+		this.db.collection.messages[split[0]][context.sender.name] = [];
+	}
+
+	var msg = '';
+	for (var i = 0; i < split.length; i++) {
+		if (i > 0) {
+			msg += split[i] += ' ';
+		}
+	}
+
+	this.db.collection.messages[split[0]][context.sender.name].push(msg);
+	this.db.collection.messages[split[0]].count +=1;
+	this.db.activity();
+};
+
 
 f00bert.prototype.gifmanager = function(context, text){
 
