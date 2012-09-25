@@ -42,10 +42,16 @@ f00bert.prototype.init = function() {
 	this.register_command('msg', this.msg, {help: "save a message for later for a user.  syntax: !msg [nick] [msg]"});
 	this.register_command('poll', this.addPoll, {help: "create a new poll. !poll [question]"});
 	this.register_command('msgs', this.messages, {help: "see any messages people have left for you"});
+	this.register_command('xkcd', this.xkcd, {help: "random xkcd link"});
 };
 
 f00bert.prototype.activePoll = null;
 
+f00bert.prototype.xkcd = function(context, text){
+	var url = "http://xkcd.com/";
+	var id = Math.floor((Math.random()*1000)+1);
+	context.channel.echo(url + id+'/');
+}
 
 f00bert.prototype.messages = function(context, text){
 
