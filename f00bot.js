@@ -48,10 +48,34 @@ f00bert.prototype.init = function() {
 f00bert.prototype.activePoll = null;
 
 f00bert.prototype.xkcd = function(context, text){
-	var url = "http://xkcd.com/";
-	var id = Math.floor((Math.random()*1000)+1);
-	context.channel.echo(url + id+'/');
-}
+	var exec = require("child_process").exec;
+
+	var xkcd = "http://dynamic.xkcd.com/comic/random/";
+	var string = "Image URL (for hotlinking/embedding):";
+
+	var cmd = [
+		// First, wget a random comic (quietly)
+		// Then pipe output to grep
+		"wget -q %s -O-".replace("%s", xkcd),
+
+		// Grep markup for hotlink image url
+		// Then pipe output to sed
+		"grep '%s'".replace("%s", string),
+
+		// Sed and replace initial text, we just want the image url
+		"sed -n 's/%s //p'".replace("%s", string.replace(/\//g, "\\/"))
+	].join(" | ");
+
+	exec(cmd, function (error, stdout, stderr) {
+		if (!error && stdout) {
+			context.channel.echo(stdout.toString());
+		} else {
+			console.log(error);
+			console.log(stdout);
+			console.log(stderr);
+		}
+	});
+};
 
 f00bert.prototype.messages = function(context, text){
 
