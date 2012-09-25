@@ -48,10 +48,11 @@ f00bert.prototype.init = function() {
 f00bert.prototype.activePoll = null;
 
 f00bert.prototype.xkcd = function(context, text){
+	var ent = require("./lib/ent");
 	var exec = require("child_process").exec;
 
 	var xkcd = "http://dynamic.xkcd.com/comic/random/";
-	var string = "Image URL (for hotlinking/embedding):";
+	var string = "<img src=\"http://imgs.xkcd.com/[^\"]*\" title=\"[^\"]*\"";
 
 	var cmd = [
 		// First, wget a random comic (quietly)
@@ -60,15 +61,16 @@ f00bert.prototype.xkcd = function(context, text){
 
 		// Grep markup for hotlink image url
 		// Then pipe output to sed
-		"grep '%s'".replace("%s", string),
-
-		// Sed and replace initial text, we just want the image url
-		"sed -n 's/%s //p'".replace("%s", string.replace(/\//g, "\\/"))
+		"grep -oe '%s'".replace("%s", string)
 	].join(" | ");
 
 	exec(cmd, function (error, stdout, stderr) {
 		if (!error && stdout) {
-			context.channel.echo(stdout.toString());
+			var matches = stdout.toString().split("\""),
+				img = matches[1],
+				alt = matches[3];
+
+			context.channel.echo([img, ent.decode(alt)].join("\n"));
 		} else {
 			console.log(error);
 			console.log(stdout);
