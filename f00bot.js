@@ -18,6 +18,28 @@ var f00bert = function(profile) {
 		"imgur.com"
 	];
 
+	this.on('join', function(context, user){
+
+		if (this.db.collection.messages[user.name] && this.db.collection.messages[user.name].count > 0) {
+
+			var reply = '';
+			var mailbox = this.db.collection.messages[user.name];
+
+			for (var sender in mailbox){
+				var messages = mailbox[sender];
+				for (var i = 0; i < messages.length; i++) {
+					reply += sender + ': ' + messages[i] + '\n';
+				}
+			}
+
+			context.client.get_user(user.name).send(reply);
+			if (this.db.collection.messages[user.name]) {
+				this.db.collection.messages[user.name] = {count: 0};
+				this.db.activity();
+			}
+		}
+	});
+
 	this.imageRegExp = "(" + this.imageDomains.join("|") + ")";
 	this.imageRegExp = this.imageRegExp.replace(/\./g, "\\.");
 	this.imageRegExp = this.imageRegExp.replace(/\\/g, "\\");
@@ -43,6 +65,14 @@ f00bert.prototype.init = function() {
 	this.register_command('poll', this.addPoll, {help: "create a new poll. !poll [question]"});
 	this.register_command('msgs', this.messages, {help: "see any messages people have left for you"});
 	this.register_command('xkcd', this.xkcd, {help: "random xkcd link"});
+	this.register_command('join', this.onJoin);
+};
+
+
+
+
+f00bert.prototype.onJoin = function(context, text){
+	console.log('JOIN EVENT \n\n ', context, text, '\n\n');
 };
 
 f00bert.prototype.activePoll = null;
@@ -73,8 +103,7 @@ f00bert.prototype.xkcd = function(context, text){
 			context.channel.echo([img, ent.decode(alt)].join("\n"));
 		} else {
 			console.log(error);
-			console.log(stdout);
-			console.log(stderr);
+
 		}
 	});
 };
@@ -178,7 +207,7 @@ f00bert.prototype.msg = function(context, text){
 
 	var split = text.split(' ');
 
-	console.log(split);
+
 
 	if (!this.db.collection.messages[split[0]]) {
 		this.db.collection.messages[split[0]] = {count: 0};
@@ -299,7 +328,7 @@ var profile = [{
 	nick: "f00bot",
 	user: "f00bot",
 	real: "f00bot",
-	channels: ["#ff0000"]
+	channels: ["#partybus"]
 }];
 
 
