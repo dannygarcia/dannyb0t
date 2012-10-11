@@ -1,0 +1,23 @@
+{
+  "name": "f00bot",
+  "version": "0.0.0",
+  "description": "A thing",
+  "main": "f00bot.js",
+  "dependencies": {
+    "ent": "~0.0.x",
+    "jsdom": "~0.2.x"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/landongn/f00bot.git"
+  },
+  "keywords": [
+    "f00bot"
+  ],
+  "author": "Landon Noss",
+  "license": "MIT"
+}

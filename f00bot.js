@@ -78,34 +78,25 @@ f00bert.prototype.onJoin = function(context, text){
 f00bert.prototype.activePoll = null;
 
 f00bert.prototype.xkcd = function(context, text){
-	var ent = require("./lib/ent");
-	var exec = require("child_process").exec;
-
+	var ent = require("ent");
+	var jsdom = require("jsdom");
 	var xkcd = "http://dynamic.xkcd.com/comic/random/";
-	var string = "<img src=\"http://imgs.xkcd.com/[^\"]*\" title=\"[^\"]*\"";
 
-	var cmd = [
-		// First, wget a random comic (quietly)
-		// Then pipe output to grep
-		"wget -q %s -O-".replace("%s", xkcd),
+	jsdom.env(
+		xkcd,
+		["http://code.jquery.com/jquery.js"],
+		function (errors, window) {
+			if (errors || !window) {
+				return console.error(errors);
+			}
 
-		// Grep markup for hotlink image url
-		// Then pipe output to sed
-		"grep -oe '%s'".replace("%s", string)
-	].join(" | ");
+			var img = window.$("#comic img"),
+				src = img.attr("src"),
+				alt = img.attr("title");
 
-	exec(cmd, function (error, stdout, stderr) {
-		if (!error && stdout) {
-			var matches = stdout.toString().split("\""),
-				img = matches[1],
-				alt = matches[3];
-
-			context.channel.echo([img, ent.decode(alt)].join("\n"));
-		} else {
-			console.log(error);
-
+			context.channel.echo([src, ent.decode(alt)].join("\n"));
 		}
-	});
+	);
 };
 
 f00bert.prototype.messages = function(context, text){
@@ -235,6 +226,9 @@ f00bert.prototype.gifmanager = function(context, text){
 };
 
 f00bert.prototype.grab_url = function(context, text){
+
+	this.checkForTweet.call(this, context, text);
+
 	//#####################
 	// save this link to the json db
 	//#####################
@@ -250,7 +244,31 @@ f00bert.prototype.grab_url = function(context, text){
 		this.db.collection.dupes.push(text);
 		this.db.activity();
 	}
+};
 
+f00bert.prototype.checkForTweet = function (context, text) {
+	var regExp = /twitter.com\/(\w+)\/status\/[\d]+/;
+	var match = text.match(regExp);
+
+	if (match && match.length) {
+		var jsdom = require("jsdom");
+		var ent = require("ent");
+
+		var user = match[1];
+
+		jsdom.env(
+			text,
+			["http://code.jquery.com/jquery.js"],
+			function (errors, window) {
+				if (errors || !window) {
+					return console.error(errors);
+				}
+
+				var text = window.$(".js-tweet-text.tweet-text").text();
+				context.channel.echo("@" + user + ": " + ent.decode(text.trim()));
+			}
+		);
+	}
 };
 
 f00bert.prototype.help = function (context, text) {
@@ -325,10 +343,10 @@ f00bert.prototype.lulz = function (context, text) {
 var profile = [{
 	host: "chat.ff0000.com",
 	port: 6667,
-	nick: "f00bot",
-	user: "f00bot",
-	real: "f00bot",
-	channels: ["#partybus"]
+	nick: "testbot",
+	user: "testbot",
+	real: "testbot",
+	channels: ["#testbot"]
 }];
 
 
