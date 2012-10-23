@@ -247,7 +247,7 @@ f00bert.prototype.grab_url = function(context, text){
 };
 
 f00bert.prototype.checkForTweet = function (context, text) {
-	var regExp = /twitter.com\/(\w+)\/status\/[\d]+/;
+	var regExp = /twitter.com\/(\w+)\/status(?:es)?\/[\d]+/;
 	var match = text.match(regExp);
 
 	if (match && match.length) {
