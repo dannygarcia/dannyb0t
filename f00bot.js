@@ -2,6 +2,7 @@ var file = require('fs');
 var path = require('path');
 var util = require("util");
 var http = require("http");
+var _ = require('underscore');
 
 var JSONdb = require("./lib/db");
 var Bot = require("./lib/irc");
@@ -57,6 +58,10 @@ f00bert.prototype.init = function() {
 	this.register_listener( urls, this.grab_url );
 	this.register_listener( /(\+1)/g, this.upvote);
 	this.register_listener( /(\-1)/g, this.downvote);
+
+	this.register_listener( /([a-zA-Z0-9])\+\+/g, this.addPoints);
+	this.register_listener( /([a-zA-Z0-9])\-\-/g, this.removePoints);
+
 	this.register_command('help', this.help, {help: "List of available commands."});
 	this.register_command('tldr', this.tldr, {help: "Lists out all of the links posted in IRC over the last 2 hours."});
 	this.register_command('srsly', this.srsly, {help: "Lists out the links that are not images over the last 2 hours"});
@@ -66,8 +71,63 @@ f00bert.prototype.init = function() {
 	this.register_command('msgs', this.messages, {help: "see any messages people have left for you"});
 	this.register_command('xkcd', this.xkcd, {help: "random xkcd link"});
 	this.register_command('join', this.onJoin);
+	this.register_command('score', this.score, {help: "high scores. [name]++ or [name]-- to add or remove points."});
 };
 
+f00bert.prototype.addPoints = function (context, text) {
+	var user = text.split('++')[0];
+	console.info(user);
+	if (this.db.collection.userstats[user]) {
+		this.db.collection.userstats[user].points += 1;
+		context.channel.echo(user + ' now has ' +this.db.collection.userstats[user].points + ' points.');
+		this.db.activity();
+	} else {
+		this.db.collection.userstats[user] = {points:1};
+		context.channel.echo(user + ' now has ' + this.db.collection.userstats[user].points + ' points.');
+		this.db.activity();
+	}
+
+};
+
+f00bert.prototype.removePoints = function (context, text) {
+	var user = text.split('--')[0];
+	var points;
+
+	if (this.db.collection.userstats[user]) {
+		this.db.collection.userstats[user].points -= 1;
+		context.channel.echo(user + ' now has ' + this.db.collection.userstats[user].points + ' points.');
+		this.db.activity();
+	} else {
+		this.db.collection.userstats[user] = {points:0};
+		context.channel.echo(user + ' now has ' +  this.db.collection.userstats[user].points + ' points.');
+		this.db.activity();
+	}
+
+
+};
+
+f00bert.prototype.score = function(context, text){
+	//pull the users stats and dump them to chan
+
+	var users = this.db.collection.userstats;
+
+	var sorted = [];
+
+	for(var user in users) {
+		sorted.push([user, users[user].points]);
+	}
+
+	console.log(sorted);
+	sorted.sort(function (a, b) { return b[1] - a[1]; } );
+	console.log(sorted);
+	statsmsg = '';
+
+	for (var i = 0; i < sorted.length; i++) {
+		statsmsg += sorted[i][0] + ': ' + sorted[i][1] + '\n';
+	}
+
+	context.channel.echo(statsmsg);
+};
 
 
 
@@ -345,7 +405,7 @@ var profile = [{
 	port: 6667,
 	nick: "f00bot",
 	user: "f00bot",
-	real: "testbot",
+	real: "f00bot",
 	channels: ["#FF0000"]
 }];
 
