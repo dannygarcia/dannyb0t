@@ -59,8 +59,10 @@ f00bert.prototype.init = function() {
 	this.register_listener( /(\+1)/g, this.upvote);
 	this.register_listener( /(\-1)/g, this.downvote);
 
-	this.register_listener( /([a-zA-Z0-9])\+\+/g, this.addPoints);
-	this.register_listener( /([a-zA-Z0-9])\-\-/g, this.removePoints);
+	this.register_listener(/^\#([a-zA-Z0-9]){2,20}/g, this.trycmd);
+
+	this.register_listener( /([a-zA-Z0-9])\+\+/, this.addPoints);
+	this.register_listener( /([a-zA-Z0-9])\-\-/, this.removePoints);
 
 	this.register_command('help', this.help, {help: "List of available commands."});
 	this.register_command('tldr', this.tldr, {help: "Lists out all of the links posted in IRC over the last 2 hours."});
@@ -71,12 +73,61 @@ f00bert.prototype.init = function() {
 	this.register_command('msgs', this.messages, {help: "see any messages people have left for you"});
 	this.register_command('xkcd', this.xkcd, {help: "random xkcd link"});
 	this.register_command('join', this.onJoin);
+
+	this.register_command('set', this.set, {help: "add a canned response. syntax: !set #[name] [String]"});
+
+
 	this.register_command('score', this.score, {help: "high scores. [name]++ or [name]-- to add or remove points."});
+
+
+};
+
+
+f00bert.prototype.set = function (context, text) {
+	console.log(text);
+	var cmd = text.split(/\s/g);
+	console.log(cmd);
+
+	var trigger = cmd[0];
+	var tl = trigger.length;
+
+	var rest = text.substring(tl+1, text.length);
+	console.log(rest);
+	console.log(trigger);
+
+	if (!this.db.collection.cues) {
+		this.db.collection.cues = {};
+	}
+
+	if (!this.db.collection.cues[trigger]) {
+		this.db.collection.cues[trigger] = rest;
+	}
+
+	console.log(this.db.collection.cues);
+
+};
+
+
+f00bert.prototype.trycmd = function (context, text) {
+	var cmd = text.split(/\s/g);
+	console.log(cmd);
+
+	var trigger = cmd[0];
+
+	if (trigger[0] === '/') {
+		return;
+	}
+
+	if (!this.db.collection.cues[trigger]) {
+		return;
+	} else {
+		context.channel.echo(this.db.collection.cues[trigger]);
+	}
 };
 
 f00bert.prototype.addPoints = function (context, text) {
-	var user = text.split('++')[0];
-	console.info(user);
+	var cmd = text.split(' ')[0];
+	var user = cmd.split('++')[0];
 	if (this.db.collection.userstats[user]) {
 		this.db.collection.userstats[user].points += 1;
 		context.channel.echo(user + ' now has ' +this.db.collection.userstats[user].points + ' points.');
@@ -90,8 +141,8 @@ f00bert.prototype.addPoints = function (context, text) {
 };
 
 f00bert.prototype.removePoints = function (context, text) {
-	var user = text.split('--')[0];
-	var points;
+	var cmd = text.split(' ')[0];
+	var user = cmd.split('--')[0];
 
 	if (this.db.collection.userstats[user]) {
 		this.db.collection.userstats[user].points -= 1;
@@ -114,7 +165,10 @@ f00bert.prototype.score = function(context, text){
 	var sorted = [];
 
 	for(var user in users) {
-		sorted.push([user, users[user].points]);
+		if (users[user].points >= 1) {
+			sorted.push([user, users[user].points]);
+		}
+
 	}
 
 	console.log(sorted);
@@ -122,7 +176,7 @@ f00bert.prototype.score = function(context, text){
 	console.log(sorted);
 	statsmsg = '';
 
-	for (var i = 0; i < sorted.length; i++) {
+	for (var i = 0; i < 5; i++) {
 		statsmsg += sorted[i][0] + ': ' + sorted[i][1] + '\n';
 	}
 
