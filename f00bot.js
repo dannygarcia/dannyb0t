@@ -85,10 +85,11 @@ f00bert.prototype.init = function() {
 
 f00bert.prototype.sendCues = function (context, text) {
 	var cues = [],
-	cuekeys = _.keys(this.db.collection.cues);
+	cuekeys = Object.keys(this.db.collection.cues).sort();
 
-	for (var c in this.db.collection.cues) {
-		cues.push(c + ': ' + this.db.collection.cues[c]);
+	for (var i = 0, j = cuekeys.length; i < j; i++) {
+		var key = cuekeys[i];
+		cues.push(key + ": " + this.db.collection.cues[key]);
 	}
 
 	context.client.get_user(context.sender.name).send(cues.join('\n'));
