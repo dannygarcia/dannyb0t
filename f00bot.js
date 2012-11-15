@@ -76,12 +76,23 @@ f00bert.prototype.init = function() {
 
 	this.register_command('set', this.set, {help: "add a canned response. syntax: !set #[name] [String]"});
 
-
+	this.register_command('cues', this.sendCues, {help: "displays all known cues"});
 	this.register_command('score', this.score, {help: "high scores. [name]++ or [name]-- to add or remove points."});
 
 
 };
 
+
+f00bert.prototype.sendCues = function (context, text) {
+	var cues = [],
+	cuekeys = _.keys(this.db.collection.cues);
+
+	for (var c in this.db.collection.cues) {
+		cues.push(c + ': ' + this.db.collection.cues[c]);
+	}
+
+	context.client.get_user(context.sender.name).send(cues.join('\n'));
+};
 
 f00bert.prototype.set = function (context, text) {
 	console.log(text);
