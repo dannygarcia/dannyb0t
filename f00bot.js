@@ -123,16 +123,18 @@ f00bert.prototype.trycmd = function (context, text) {
 	var cmd = text.split(/\s/g);
 	console.log(cmd);
 
-	var trigger = cmd[0];
-
-	if (trigger[0] === '/') {
+	if (cmd[0] && cmd[0].charAt(0) === '/') {
 		return;
 	}
 
-	if (!this.db.collection.cues[trigger]) {
-		return;
-	} else {
-		context.channel.echo(this.db.collection.cues[trigger]);
+	var i = 0;
+
+	while (cmd[i]) {
+		if (this.db.collection.cues[cmd[i]]) {
+			context.channel.echo(this.db.collection.cues[cmd[i]]);
+		}
+
+		i++;
 	}
 };
 
