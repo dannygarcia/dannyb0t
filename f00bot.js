@@ -59,7 +59,7 @@ f00bert.prototype.init = function() {
 	this.register_listener( /(\+1)/g, this.upvote);
 	this.register_listener( /(\-1)/g, this.downvote);
 
-	this.register_listener(/^\#([a-zA-Z0-9]){2,20}/g, this.trycmd);
+	this.register_listener(/\#([a-zA-Z0-9]){2,20}/g, this.trycmd);
 
 	this.register_listener( /([a-zA-Z0-9])\+\+/, this.addPoints);
 	this.register_listener( /([a-zA-Z0-9])\-\-/, this.removePoints);
@@ -72,9 +72,11 @@ f00bert.prototype.init = function() {
 	this.register_command('poll', this.addPoll, {help: "create a new poll. !poll [question]"});
 	this.register_command('msgs', this.messages, {help: "see any messages people have left for you"});
 	this.register_command('xkcd', this.xkcd, {help: "random xkcd link"});
+	this.register_command('gis', this.gis, {help: "Find random Google Images."});
 	this.register_command('join', this.onJoin);
 
 	this.register_command('set', this.set, {help: "add a canned response. syntax: !set #[name] [String]"});
+	this.register_command('unset', this.unset, {help: "remove a canned response. syntax: !unset #[name]"});
 
 	this.register_command('cues', this.sendCues, {help: "displays all known cues"});
 	this.register_command('score', this.score, {help: "high scores. [name]++ or [name]-- to add or remove points."});
@@ -84,15 +86,24 @@ f00bert.prototype.init = function() {
 
 
 f00bert.prototype.sendCues = function (context, text) {
-	var cues = [],
-	cuekeys = Object.keys(this.db.collection.cues).sort();
+	var cues = [], limit = 20, currLimit = limit, curr = [],
+	cuekeys = Object.keys(this.db.collection.cues || {}).sort();
 
 	for (var i = 0, j = cuekeys.length; i < j; i++) {
 		var key = cuekeys[i];
-		cues.push(key);
+
+		if (i === currLimit) {
+			cues.push(curr.join(" "));
+			curr = [];
+
+			currLimit += limit;
+		}
+
+		curr.push(key);
 	}
 
-	context.client.get_user(context.sender.name).send(cues.join(' '));
+	cues.push(curr.join(" "));
+	context.client.get_user(context.sender.name).send(cues.join('\n'));
 };
 
 f00bert.prototype.set = function (context, text) {
@@ -111,20 +122,50 @@ f00bert.prototype.set = function (context, text) {
 		this.db.collection.cues = {};
 	}
 
-	if (!this.db.collection.cues[trigger]) {
+	var taken;
+
+	for (var key in this.db.collection.cues) {
+		if (rest === this.db.collection.cues[key]) {
+			taken = key;
+			break;
+		}
+	}
+
+	if (!taken && !this.db.collection.cues[trigger]) {
 		this.db.collection.cues[trigger] = rest;
+	} else {
+		if (taken && trigger !== taken) {
+			context.channel.echo("Sorry, " + taken + " stole your gif and also your thunder.");
+		} else {
+			context.channel.echo("Sorry, " + trigger + " is already taken.");
+		}
 	}
 
 	console.log(this.db.collection.cues);
-
 };
+
+f00bert.prototype.unset = function (context, text) {
+	var cmd = text.split(/\s/g);
+
+	var trigger = cmd[0];
+	var tl = trigger.length;
+
+	var rest = text.substring(tl+1, text.length);
+
+	if (!this.db.collection.cues || !this.db.collection.cues[trigger]) {
+		context.channel.echo(trigger + " is not a thing.");
+		return;
+	}
+
+	console.log("Unset", trigger, this.db.collection.cues[trigger]);
+	delete this.db.collection.cues[trigger];
+}
 
 
 f00bert.prototype.trycmd = function (context, text) {
 	var cmd = text.split(/\s/g);
-	console.log(cmd);
 
-	if (cmd[0] && cmd[0].charAt(0) === '/') {
+	if (!this.db.collection.cues || (cmd[0] && cmd[0].charAt(0) === '/')) {
 		return;
 	}
 
@@ -223,6 +264,40 @@ f00bert.prototype.xkcd = function(context, text){
 				alt = img.attr("title");
 
 			context.channel.echo([src, ent.decode(alt)].join("\n"));
+		}
+	);
+};
+
+f00bert.prototype.gis = function(context, text){
+	var ent = require("ent");
+	var jsdom = require("jsdom");
+	var gis = "http://www.google.com/search?q=foo&hl=en&safe=active&tbm=isch&q=" + text;
+
+	console.log(text, gis);
+
+	jsdom.env(
+		gis,
+		["http://code.jquery.com/jquery.js"],
+		function (errors, window) {
+			if (errors || !window) {
+				return console.error(errors);
+			}
+
+			var $ = window.$;
+			var images = $("img");
+			var gifs = images.filter(function (img) {
+				return (/\.gif/.test(img.src));
+			});
+
+			console.log(gifs.length);
+			images = gifs.length ? gifs : images;
+
+			var idx = Math.floor(Math.random() * images.length);
+			var parent = images.eq(idx).closest("a");
+			var src = parent.attr("href").split("imgurl=")[1].split("&")[0];
+
+			console.log(src);
+			context.channel.echo(src);
 		}
 	);
 };
