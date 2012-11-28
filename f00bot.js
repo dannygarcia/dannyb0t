@@ -75,6 +75,7 @@ f00bert.prototype.init = function() {
 	this.register_command('join', this.onJoin);
 
 	this.register_command('set', this.set, {help: "add a canned response. syntax: !set #[name] [String]"});
+	this.register_command('unset', this.unset, {help: "remove a canned response. syntax: !unset #[name]"});
 
 	this.register_command('cues', this.sendCues, {help: "displays all known cues"});
 	this.register_command('score', this.score, {help: "high scores. [name]++ or [name]-- to add or remove points."});
@@ -140,8 +141,24 @@ f00bert.prototype.set = function (context, text) {
 	}
 
 	console.log(this.db.collection.cues);
-
 };
+
+f00bert.prototype.unset = function (context, text) {
+	var cmd = text.split(/\s/g);
+
+	var trigger = cmd[0];
+	var tl = trigger.length;
+
+	var rest = text.substring(tl+1, text.length);
+
+	if (!this.db.collection.cues || !this.db.collection.cues[trigger]) {
+		context.channel.echo(trigger + " is not a thing.");
+		return;
+	}
+
+	console.log("Unset", trigger, this.db.collection.cues[trigger]);
+	delete this.db.collection.cues[trigger];
+}
 
 
 f00bert.prototype.trycmd = function (context, text) {
