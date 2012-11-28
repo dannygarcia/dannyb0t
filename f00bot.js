@@ -84,14 +84,23 @@ f00bert.prototype.init = function() {
 
 
 f00bert.prototype.sendCues = function (context, text) {
-	var cues = [],
-	cuekeys = Object.keys(this.db.collection.cues).sort();
+	var cues = [], limit = 20, currLimit = limit, curr = [],
+	cuekeys = Object.keys(this.db.collection.cues || {}).sort();
 
 	for (var i = 0, j = cuekeys.length; i < j; i++) {
 		var key = cuekeys[i];
-		cues.push(key + ": " + this.db.collection.cues[key]);
+
+		if (i === currLimit) {
+			cues.push(curr.join(" "));
+			curr = [];
+
+			currLimit += limit;
+		}
+
+		curr.push(key);
 	}
 
+	cues.push(curr.join(" "));
 	context.client.get_user(context.sender.name).send(cues.join('\n'));
 };
 
