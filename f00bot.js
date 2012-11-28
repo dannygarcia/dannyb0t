@@ -89,10 +89,10 @@ f00bert.prototype.sendCues = function (context, text) {
 
 	for (var i = 0, j = cuekeys.length; i < j; i++) {
 		var key = cuekeys[i];
-		cues.push(key + ": " + this.db.collection.cues[key]);
+		cues.push(key);
 	}
 
-	context.client.get_user(context.sender.name).send(cues.join('\n'));
+	context.client.get_user(context.sender.name).send(cues.join(' '));
 };
 
 f00bert.prototype.set = function (context, text) {
