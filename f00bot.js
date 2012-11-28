@@ -120,8 +120,23 @@ f00bert.prototype.set = function (context, text) {
 		this.db.collection.cues = {};
 	}
 
-	if (!this.db.collection.cues[trigger]) {
+	var taken;
+
+	for (var key in this.db.collection.cues) {
+		if (rest === this.db.collection.cues[key]) {
+			taken = key;
+			break;
+		}
+	}
+
+	if (!taken && !this.db.collection.cues[trigger]) {
 		this.db.collection.cues[trigger] = rest;
+	} else {
+		if (taken) {
+			context.channel.echo("Sorry, " + taken + " stole your gif and also your thunder.");
+		} else {
+			context.channel.echo("Sorry, " + trigger + " is already taken.");
+		}
 	}
 
 	console.log(this.db.collection.cues);
