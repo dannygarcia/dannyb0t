@@ -72,6 +72,7 @@ f00bert.prototype.init = function() {
 	this.register_command('poll', this.addPoll, {help: "create a new poll. !poll [question]"});
 	this.register_command('msgs', this.messages, {help: "see any messages people have left for you"});
 	this.register_command('xkcd', this.xkcd, {help: "random xkcd link"});
+	this.register_command('gis', this.gis, {help: "Find random Google Images."});
 	this.register_command('join', this.onJoin);
 
 	this.register_command('set', this.set, {help: "add a canned response. syntax: !set #[name] [String]"});
@@ -263,6 +264,40 @@ f00bert.prototype.xkcd = function(context, text){
 				alt = img.attr("title");
 
 			context.channel.echo([src, ent.decode(alt)].join("\n"));
+		}
+	);
+};
+
+f00bert.prototype.gis = function(context, text){
+	var ent = require("ent");
+	var jsdom = require("jsdom");
+	var gis = "http://www.google.com/search?q=foo&hl=en&safe=active&tbm=isch&q=" + text;
+
+	console.log(text, gis);
+
+	jsdom.env(
+		gis,
+		["http://code.jquery.com/jquery.js"],
+		function (errors, window) {
+			if (errors || !window) {
+				return console.error(errors);
+			}
+
+			var $ = window.$;
+			var images = $("img");
+			var gifs = images.filter(function (img) {
+				return (/\.gif/.test(img.src));
+			});
+
+			console.log(gifs.length);
+			images = gifs.length ? gifs : images;
+
+			var idx = Math.floor(Math.random() * images.length);
+			var parent = images.eq(idx).closest("a");
+			var src = parent.attr("href").split("imgurl=")[1].split("&")[0];
+
+			console.log(src);
+			context.channel.echo(src);
 		}
 	);
 };
