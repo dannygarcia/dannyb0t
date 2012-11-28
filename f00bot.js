@@ -59,7 +59,7 @@ f00bert.prototype.init = function() {
 	this.register_listener( /(\+1)/g, this.upvote);
 	this.register_listener( /(\-1)/g, this.downvote);
 
-	this.register_listener(/^\#([a-zA-Z0-9]){2,20}/g, this.trycmd);
+	this.register_listener(/\#([a-zA-Z0-9]){2,20}/g, this.trycmd);
 
 	this.register_listener( /([a-zA-Z0-9])\+\+/, this.addPoints);
 	this.register_listener( /([a-zA-Z0-9])\-\-/, this.removePoints);
@@ -122,9 +122,8 @@ f00bert.prototype.set = function (context, text) {
 
 f00bert.prototype.trycmd = function (context, text) {
 	var cmd = text.split(/\s/g);
-	console.log(cmd);
 
-	if (cmd[0] && cmd[0].charAt(0) === '/') {
+	if (!this.db.collection.cues || (cmd[0] && cmd[0].charAt(0) === '/')) {
 		return;
 	}
 
