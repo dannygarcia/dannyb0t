@@ -294,7 +294,7 @@ f00bert.prototype.gis = function(context, text){
 
 			var idx = Math.floor(Math.random() * images.length);
 			var parent = images.eq(idx).closest("a");
-			var src = parent.attr("href").split("imgurl=")[1].split("&")[0];
+			var src = ent.decode(parent.attr("href").split("imgurl=")[1].split("&")[0]);
 
 			console.log(src);
 			context.channel.echo(src);
