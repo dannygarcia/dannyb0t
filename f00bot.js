@@ -159,7 +159,7 @@ f00bert.prototype.unset = function (context, text) {
 
 	console.log("Unset", trigger, this.db.collection.cues[trigger]);
 	delete this.db.collection.cues[trigger];
-}
+};
 
 
 f00bert.prototype.trycmd = function (context, text) {
@@ -271,7 +271,7 @@ f00bert.prototype.xkcd = function(context, text){
 f00bert.prototype.gis = function(context, text){
 	var ent = require("ent");
 	var jsdom = require("jsdom");
-	var gis = "http://www.google.com/search?q=foo&hl=en&safe=active&tbm=isch&q=" + text;
+	var gis = "http://www.google.com/search?hl=en&safe=active&tbm=isch&q=" + text;
 
 	console.log(text, gis);
 
