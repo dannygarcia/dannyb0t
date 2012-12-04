@@ -437,6 +437,7 @@ f00bert.prototype.gifmanager = function(context, text){
 f00bert.prototype.grab_url = function(context, text){
 
 	this.checkForTweet.call(this, context, text);
+	this.checkForYouTube.call(this, context, text);
 
 	//#####################
 	// save this link to the json db
@@ -477,6 +478,65 @@ f00bert.prototype.checkForTweet = function (context, text) {
 				context.channel.echo("@" + user + ": " + ent.decode(text.trim()));
 			}
 		);
+	}
+};
+
+f00bert.prototype.checkForYouTube = function (context, text) {
+	var regExp = /youtube.com\/(?:.*)v=([a-zA-Z0-9]+)/;
+	var match = text.match(regExp);
+
+	if (match && match.length) {
+		var request = require("request");
+		var ent = require("ent");
+
+		var user = match[1];
+		var yt = "https://gdata.youtube.com/feeds/api/videos/" + match[1] + "?alt=json";
+
+		request({
+			url : yt,
+			json : true
+		}, function (error, response, body) {
+			var entry = body.entry;
+
+			if (!entry) {
+				return;
+			}
+
+			var media = entry["media$group"];
+
+			if (!media) {
+				return;
+			}
+
+			var title = media["media$title"];
+			var duration = media["yt$duration"];
+
+			if (title && duration) {
+				var duration = parseFloat(duration.seconds);
+				var hours = Math.floor(duration / 3600);
+
+				duration = duration - hours * 3600;
+				var minutes = Math.floor(duration / 60).toString();
+				var seconds = (duration - minutes * 60).toString();
+
+				if (minutes.length < 2) {
+					minutes = "0" + minutes;
+				}
+
+				if (seconds.length < 2) {
+					seconds = "0" + seconds;
+				}
+
+				if (hours && hours.length < 2) {
+					hours = "0" + hours;
+				}
+
+				var time = " [" + (hours ? hours + ":" : "") + [minutes, seconds].join(":") + "]";
+
+				console.log(title["$t"], minutes, seconds);
+				context.channel.echo("Video: " + title["$t"] + time);
+			}
+		});
 	}
 };
 

@@ -6,7 +6,8 @@
   "dependencies": {
     "underscore": "~1.4.x",
     "ent": "~0.0.x",
-    "jsdom": "~0.2.x"
+    "jsdom": "~0.2.x",
+    "request": "~2.12.x"
   },
   "devDependencies": {},
   "scripts": {
