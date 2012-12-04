@@ -73,6 +73,7 @@ f00bert.prototype.init = function() {
 	this.register_command('msgs', this.messages, {help: "see any messages people have left for you"});
 	this.register_command('xkcd', this.xkcd, {help: "random xkcd link"});
 	this.register_command('gis', this.gis, {help: "Find random Google Images."});
+	this.register_command('gif', this.gif, {help: "Find random Google Image GIF files."});
 	this.register_command('join', this.onJoin);
 
 	this.register_command('set', this.set, {help: "add a canned response. syntax: !set #[name] [String]"});
@@ -268,10 +269,10 @@ f00bert.prototype.xkcd = function(context, text){
 	);
 };
 
-f00bert.prototype.gis = function(context, text){
+f00bert.prototype.gis = function(context, text, args){
 	var ent = require("ent");
 	var jsdom = require("jsdom");
-	var gis = "http://www.google.com/search?hl=en&safe=active&tbm=isch&q=" + text;
+	var gis = "http://www.google.com/search?hl=en&safe=active&tbm=isch&q=" + text + (args || "");
 
 	console.log(text, gis);
 
@@ -302,6 +303,10 @@ f00bert.prototype.gis = function(context, text){
 		}
 	);
 };
+
+f00bert.prototype.gif = function(context, text){
+	return this.gis.call(this, context, text, "+filetype:gif");
+}
 
 f00bert.prototype.messages = function(context, text){
 
