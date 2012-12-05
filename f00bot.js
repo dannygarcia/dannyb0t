@@ -497,7 +497,7 @@ f00bert.prototype.checkForTweet = function (context, text) {
 };
 
 f00bert.prototype.checkForYouTube = function (context, text) {
-	var regExp = /youtube.com\/(?:.*)v=([a-zA-Z0-9]+)/;
+	var regExp = /youtube.com\/(?:.*)v=([a-zA-Z0-9_-]+)/;
 	var match = text.match(regExp);
 
 	if (match && match.length) {
