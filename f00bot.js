@@ -43,6 +43,8 @@ var f00bert = function(profile) {
 		}
 	});
 
+	this.on('message', this.onMessage);
+
 	this.imageRegExp = "(" + this.imageDomains.join("|") + ")";
 	this.imageRegExp = this.imageRegExp.replace(/\./g, "\\.");
 	this.imageRegExp = this.imageRegExp.replace(/\\/g, "\\");
@@ -89,7 +91,6 @@ f00bert.prototype.init = function() {
 
 };
 
-
 f00bert.prototype.sendCues = function (context, text) {
 	var cues = [], limit = 20, currLimit = limit, curr = [],
 	cuekeys = Object.keys(this.db.collection.cues || {}).sort();
@@ -112,16 +113,12 @@ f00bert.prototype.sendCues = function (context, text) {
 };
 
 f00bert.prototype.set = function (context, text) {
-	console.log(text);
 	var cmd = text.split(/\s/g);
-	console.log(cmd);
 
 	var trigger = cmd[0];
 	var tl = trigger.length;
 
 	var rest = text.substring(tl+1, text.length);
-	console.log(rest);
-	console.log(trigger);
 
 	if (!this.db.collection.cues) {
 		this.db.collection.cues = {};
@@ -138,6 +135,7 @@ f00bert.prototype.set = function (context, text) {
 
 	if (!taken && !this.db.collection.cues[trigger]) {
 		this.db.collection.cues[trigger] = rest;
+		console.log("Set", trigger, this.db.collection.cues[trigger]);
 	} else {
 		if (taken && trigger !== taken) {
 			context.channel.echo("Sorry, " + taken + " stole your gif and also your thunder.");
@@ -145,8 +143,6 @@ f00bert.prototype.set = function (context, text) {
 			context.channel.echo("Sorry, " + trigger + " is already taken.");
 		}
 	}
-
-	console.log(this.db.collection.cues);
 };
 
 f00bert.prototype.unset = function (context, text) {
@@ -242,9 +238,7 @@ f00bert.prototype.score = function(context, text){
 
 	}
 
-	console.log(sorted);
 	sorted.sort(function (a, b) { return b[1] - a[1]; } );
-	console.log(sorted);
 	statsmsg = '';
 
 	for (var i = 0; i < 5; i++) {
@@ -258,6 +252,38 @@ f00bert.prototype.score = function(context, text){
 
 f00bert.prototype.onJoin = function(context, text){
 	console.log('JOIN EVENT \n\n ', context, text, '\n\n');
+};
+
+f00bert.prototype.onMessage = function (context, text) {
+	// Five minutes
+	var interval = 10 * (60 * 1000);
+
+	var randomKeywords = [
+		"kitten",
+		"fail",
+		"puppy",
+		"happy",
+		"otter",
+		"awkward",
+		"hamster",
+		"nope",
+		"hedgehog",
+		"random",
+		"rainbow",
+		"unicorn"
+	];
+
+	if (this.awkwardTimer) {
+		console.log("Awkward timer restarted.");
+		clearTimeout(this.awkwardTimer);
+	}
+
+	this.awkwardTimer = setTimeout(function () {
+		var r = Math.floor(Math.random() * randomKeywords.length);
+
+		this.gif.call(this, context, randomKeywords[r]);
+		this.onMessage.call(this, context);
+	}.bind(this), interval);
 };
 
 f00bert.prototype.activePoll = null;
@@ -289,7 +315,8 @@ f00bert.prototype.gis = function(context, text, args){
 	var jsdom = require("jsdom");
 	var gis = "http://www.google.com/search?hl=en&safe=active&tbm=isch&q=" + text + (args || "");
 
-	console.log(text, gis);
+	var channel = (typeof context.echo !== "undefined") ? context : context.channel;
+	console.log(channel, text, gis);
 
 	jsdom.env(
 		gis,
@@ -314,7 +341,7 @@ f00bert.prototype.gis = function(context, text, args){
 			var src = window.decodeURIComponent(raw);
 
 			console.log(src);
-			context.channel.echo(src);
+			channel.echo(src);
 		}
 	);
 };
