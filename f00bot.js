@@ -2,7 +2,6 @@ var file = require('fs');
 var path = require('path');
 var util = require("util");
 var http = require("http");
-var _ = require('underscore');
 
 var Cleverbot = require("cleverbot-node");
 
