@@ -4,6 +4,8 @@ var util = require("util");
 var http = require("http");
 var _ = require('underscore');
 
+var Cleverbot = require("cleverbot-node");
+
 var JSONdb = require("./lib/db");
 var Bot = require("./lib/irc");
 
@@ -63,6 +65,8 @@ f00bert.prototype.init = function() {
 
 	this.register_listener( /([a-zA-Z0-9])\+\+/, this.addPoints);
 	this.register_listener( /([a-zA-Z0-9])\-\-/, this.removePoints);
+
+	this.register_listener(/f00bot/, this.askCleverbot);
 
 	this.register_command('help', this.help, {help: "List of available commands."});
 	this.register_command('tldr', this.tldr, {help: "Lists out all of the links posted in IRC over the last 2 hours."});
@@ -180,6 +184,17 @@ f00bert.prototype.trycmd = function (context, text) {
 		i++;
 	}
 };
+
+f00bert.prototype.askCleverbot = function (context, text) {
+	this.cleverbot = this.cleverbot || new Cleverbot();
+	var cleverize = text.replace(/f00bot/igm, "Cleverbot");
+
+	console.log("Asking:", cleverize);
+	this.cleverbot.write(text, function (response) {
+		var f000ize = response.message.replace(/cleverbot/igm, "f00bot");
+		context.channel.echo(f000ize);
+	});
+}
 
 f00bert.prototype.addPoints = function (context, text) {
 	var cmd = text.split(' ')[0];
