@@ -310,13 +310,15 @@ f00bert.prototype.xkcd = function(context, text){
 	);
 };
 
-f00bert.prototype.gis = function(context, text, args){
+f00bert.prototype.gis = function(context, text, trigger, args){
+	text = text.replace(/\s/g, "+");
+
 	var ent = require("ent");
 	var jsdom = require("jsdom");
 	var gis = "http://www.google.com/search?hl=en&safe=active&tbm=isch&q=" + text + (args || "");
 
 	var channel = (typeof context.echo !== "undefined") ? context : context.channel;
-	console.log(channel, text, gis);
+	console.log(text, gis);
 
 	jsdom.env(
 		gis,
@@ -347,7 +349,7 @@ f00bert.prototype.gis = function(context, text, args){
 };
 
 f00bert.prototype.gif = function(context, text){
-	return this.gis.call(this, context, text, "+filetype:gif");
+	return this.gis.call(this, context, text, null, "+filetype:gif");
 }
 
 f00bert.prototype.messages = function(context, text){
