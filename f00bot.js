@@ -9,6 +9,8 @@ var extras = require("./lib/extras");
 var JSONdb = require("./lib/db");
 var Bot = require("./lib/irc");
 
+var QUIET = true;
+
 var f00bert = function(profile) {
 	this.db = new JSONdb();
 	this.db.init(path.join(__dirname, "f00bot-db.json"));
@@ -43,7 +45,9 @@ var f00bert = function(profile) {
 		}
 	});
 
-	this.on('message', this.onMessage);
+	if (!QUIET) {
+		this.on('message', this.onMessage);
+	}
 
 	this.imageRegExp = "(" + this.imageDomains.join("|") + ")";
 	this.imageRegExp = this.imageRegExp.replace(/\./g, "\\.");
