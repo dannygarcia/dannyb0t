@@ -43,6 +43,16 @@ var f00bert = function(profile) {
 				this.db.activity();
 			}
 		}
+
+		if (this.db && this.db.collection.cues) {
+			var sap = "will";
+			var cue = this.db.collection.cues["#" + sap];
+			var text = "Hi #" + sap + "!\n" + cue;
+
+			if (user.host.indexOf(sap) !== -1 && cue) {
+				context.client.get_channel(context.name).echo(text);
+			}
+		}
 	});
 
 	if (!QUIET) {
