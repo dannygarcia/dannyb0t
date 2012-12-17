@@ -209,13 +209,15 @@ f00bert.prototype.askCleverbot = function (context, text) {
 f00bert.prototype.addPoints = function (context, text) {
 	var cmd = text.split(' ')[0];
 	var user = cmd.split('++')[0];
-	if (this.db.collection.userstats[user]) {
-		this.db.collection.userstats[user].points += 1;
-		context.channel.echo(user + ' now has ' +this.db.collection.userstats[user].points + ' points.');
+	var uLower = user.toLowerCase();
+
+	if (this.db.collection.userstats[uLower]) {
+		this.db.collection.userstats[uLower].points += 1;
+		context.channel.echo(user + ' now has ' +this.db.collection.userstats[uLower].points + ' points.');
 		this.db.activity();
 	} else {
-		this.db.collection.userstats[user] = {points:1};
-		context.channel.echo(user + ' now has ' + this.db.collection.userstats[user].points + ' points.');
+		this.db.collection.userstats[uLower] = {points:1};
+		context.channel.echo(user + ' now has ' + this.db.collection.userstats[uLower].points + ' points.');
 		this.db.activity();
 	}
 
@@ -224,14 +226,15 @@ f00bert.prototype.addPoints = function (context, text) {
 f00bert.prototype.removePoints = function (context, text) {
 	var cmd = text.split(' ')[0];
 	var user = cmd.split('--')[0];
+	var uLower = user.toLowerCase();
 
-	if (this.db.collection.userstats[user]) {
-		this.db.collection.userstats[user].points -= 1;
-		context.channel.echo(user + ' now has ' + this.db.collection.userstats[user].points + ' points.');
+	if (this.db.collection.userstats[uLower]) {
+		this.db.collection.userstats[uLower].points -= 1;
+		context.channel.echo(user + ' now has ' + this.db.collection.userstats[uLower].points + ' points.');
 		this.db.activity();
 	} else {
-		this.db.collection.userstats[user] = {points:0};
-		context.channel.echo(user + ' now has ' +  this.db.collection.userstats[user].points + ' points.');
+		this.db.collection.userstats[uLower] = {points:0};
+		context.channel.echo(user + ' now has ' +  this.db.collection.userstats[uLower].points + ' points.');
 		this.db.activity();
 	}
 
