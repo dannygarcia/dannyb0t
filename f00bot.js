@@ -128,6 +128,7 @@ f00bert.prototype.doom = function (context, text) {
 			var s = $("#el_s1").text();
 
 			context.channel.echo([d, h, m, s].join(":") + " until the world ends and we all die of deadness.");
+			context.channel.echo("http://25.media.tumblr.com/tumblr_m2kvw7tev21qbh4e2o1_500.gif");
 		}
 	);
 
