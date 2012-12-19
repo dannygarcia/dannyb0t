@@ -103,6 +103,34 @@ f00bert.prototype.init = function() {
 	this.register_command('score', this.score, {help: "high scores. [name]++ or [name]-- to add or remove points."});
 
 
+	this.register_command('doom', this.doom, {help: "DOOM!!~!"});
+};
+
+f00bert.prototype.doom = function (context, text) {
+	// http://www.timeanddate.com/countdown/maya
+	var ent = require("ent");
+	var jsdom = require("jsdom");
+	var doom = "http://www.timeanddate.com/countdown/maya";
+
+	jsdom.env(
+		doom,
+		["http://code.jquery.com/jquery.js"],
+		function (errors, window) {
+			if (errors || !window) {
+				return console.error(errors);
+			}
+
+			var $ = window.$;
+
+			var d = $("#el_d1").text();
+			var h = $("#el_h1").text();
+			var m = $("#el_m1").text();
+			var s = $("#el_s1").text();
+
+			context.channel.echo([d, h, m, s].join(":") + " until the world ends and we all die of deadness.");
+		}
+	);
+
 };
 
 f00bert.prototype.sendCues = function (context, text) {
