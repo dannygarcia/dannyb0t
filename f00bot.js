@@ -122,12 +122,12 @@ f00bert.prototype.doom = function (context, text) {
 
 			var $ = window.$;
 
-			var d = $("#el_d1").text();
-			var h = $("#el_h1").text();
-			var m = $("#el_m1").text();
-			var s = $("#el_s1").text();
+			var d = $("#el_d1").text() + " days";
+			var h = $("#el_h1").text() + " hours";
+			var m = $("#el_m1").text() + " minutes";
+			var s = $("#el_s1").text() + " seconds";
 
-			context.channel.echo([d, h, m, s].join(":") + " until the world ends and we all die of deadness.");
+			context.channel.echo([d, h, m, s].join(" ") + " until the world ends and we all die of deadness.");
 			context.channel.echo("http://25.media.tumblr.com/tumblr_m2kvw7tev21qbh4e2o1_500.gif");
 		}
 	);
