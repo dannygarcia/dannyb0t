@@ -337,7 +337,8 @@ f00bert.prototype.gis = function(context, text, trigger, args){
 
 	var ent = require("ent");
 	var jsdom = require("jsdom");
-	var gis = "http://www.google.com/search?hl=en&safe=active&tbm=isch&q=" + text + (args || "");
+	// var gis = "http://www.google.com/search?hl=en&safe=active&tbm=isch&q=" + text + (args || "");
+	var gis = "http://www.google.com/search?hl=en&tbm=isch&q=" + text + (args || "");
 
 	var channel = (typeof context.echo !== "undefined") ? context : context.channel;
 	console.log(text, gis);
