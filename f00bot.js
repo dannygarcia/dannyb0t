@@ -107,31 +107,7 @@ f00bert.prototype.init = function() {
 };
 
 f00bert.prototype.doom = function (context, text) {
-	// http://www.timeanddate.com/countdown/maya
-	var ent = require("ent");
-	var jsdom = require("jsdom");
-	var doom = "http://www.timeanddate.com/countdown/maya";
-
-	jsdom.env(
-		doom,
-		["http://code.jquery.com/jquery.js"],
-		function (errors, window) {
-			if (errors || !window) {
-				return console.error(errors);
-			}
-
-			var $ = window.$;
-
-			var d = $("#el_d1").text() + " days";
-			var h = $("#el_h1").text() + " hours";
-			var m = $("#el_m1").text() + " minutes";
-			var s = $("#el_s1").text() + " seconds";
-
-			context.channel.echo([d, h, m, s].join(" ") + " until the world ends and we all die of deadness.");
-			context.channel.echo("http://25.media.tumblr.com/tumblr_m2kvw7tev21qbh4e2o1_500.gif");
-		}
-	);
-
+	context.channel.echo("You all should be dead now. God damn it, Skynet...");
 };
 
 f00bert.prototype.sendCues = function (context, text) {
