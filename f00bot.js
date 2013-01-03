@@ -101,13 +101,6 @@ f00bert.prototype.init = function() {
 
 	this.register_command('cues', this.sendCues, {help: "displays all known cues"});
 	this.register_command('score', this.score, {help: "high scores. [name]++ or [name]-- to add or remove points."});
-
-
-	this.register_command('doom', this.doom, {help: "DOOM!!~!"});
-};
-
-f00bert.prototype.doom = function (context, text) {
-	context.channel.echo("You all should be dead now. God damn it, Skynet...");
 };
 
 f00bert.prototype.sendCues = function (context, text) {
