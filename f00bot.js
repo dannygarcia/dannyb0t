@@ -185,8 +185,13 @@ f00bert.prototype.trycmd = function (context, text) {
 	var i = 0;
 
 	while (cmd[i]) {
-		if (this.db.collection.cues[cmd[i]]) {
-			context.channel.echo(this.db.collection.cues[cmd[i]]);
+		if (cmd[i].charAt(0) === "#") {
+			if (this.db.collection.cues[cmd[i]]) {
+				context.channel.echo(this.db.collection.cues[cmd[i]]);
+			} else {
+				context.channel.echo("Nothing under " + cmd[i] + ". How about this:");
+				this.gis.call(this, context, cmd[i].replace("#", ""));
+			}
 		}
 
 		i++;
