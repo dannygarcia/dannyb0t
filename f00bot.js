@@ -55,6 +55,17 @@ var f00bert = function(profile) {
 		}
 	});
 
+	this.on("pm", function (context, text) {
+		console.log(context, text);
+		var isSaneUser = (context.name === "doctyper" || context.name === "landon");
+		var channel = profile[0].channels[0];
+
+		if (text.indexOf("$") !== -1 && isSaneUser) {
+			text = text.replace(/(\s)?\$(\s?)/img, "");
+			context.client.get_channel(channel).echo(text);
+		}
+	});
+
 	if (!QUIET) {
 		this.on('message', this.onMessage);
 	}
