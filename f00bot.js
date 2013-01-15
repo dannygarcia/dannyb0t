@@ -230,45 +230,97 @@ f00bert.prototype.askCleverbot = function (context, text) {
 	});
 };
 
-f00bert.prototype.addPoints = function (context, text) {
-	var cmd = text.split(' ')[0];
-	var user = cmd.split('++')[0];
-	var uLower = user.toLowerCase();
+f00bert.prototype.handlePoints = function (context, text, positive) {
+	var user = text.match(/([\w]+)(?:\+\+|\-\-)/);
 
-	if (this.db.collection.userstats[uLower]) {
-		this.db.collection.userstats[uLower].points += 1;
-		context.channel.echo(user + ' now has ' +this.db.collection.userstats[uLower].points + ' points.');
-		this.db.activity();
-	} else {
-		this.db.collection.userstats[uLower] = {points:1};
-		context.channel.echo(user + ' now has ' + this.db.collection.userstats[uLower].points + ' points.');
-		this.db.activity();
+	if (!user || !user[1]) {
+		return;
 	}
 
+	var u = user[1].toLowerCase();
+	var collection = this.db.collection;
+
+	collection.stats = collection.stats || {};
+
+	if (context.sender && context.sender.name) {
+		var n = context.sender.name.toLowerCase();
+
+		if (n === u) {
+			context.channel.echo("No gaming the system, " + context.sender.name + ".");
+			return;
+		}
+
+		collection.stats[n] = collection.stats[n] || {};
+
+		if (collection.stats[n].voted) {
+			var timeSince = (new Date().getTime() - collection.stats[n].voted.time) / 1000;
+			console.log(timeSince);
+
+			if (timeSince < 60 && collection.stats[n].voted.user === u) {
+				context.channel.echo("You can vote for " + u + " again in ~" + Math.round(60 - timeSince) + " seconds, " + context.sender.name + ".");
+				return;
+			}
+		}
+
+		collection.stats[n].voted = {
+			time : new Date().getTime(),
+			user : u
+		};
+	}
+
+	collection.stats[u] = collection.stats[u] || {
+		points : 0
+	};
+
+	var sarcasm = {
+		"++" : [
+			"Hooray.",
+			"Not that they mean anything.",
+			"Seriously, they don't mean anything.",
+			"You must feel loved. Nobody loves me.",
+			"Sweet, more imaginary points.",
+			"Somewhere Drew Carey is smiling.",
+			"Achievement unlocked.",
+			"Quite the accomplishment.",
+			"Remember that one time Danny showed us porn?",
+			"#will \n https://s3.amazonaws.com/static.tumblr.com/cxkcond/q6lmde6lh/dogface.gif"
+		],
+
+		"--" : [
+			"What an asshole.",
+			"Might as well end it now.",
+			"Is it time for lunch yet?",
+			"Now you know how I feel.",
+			"You humans and your points...",
+			"Let's start a slow clap.",
+			"Come on, people now. Smile on your brother.",
+			"Somewhere Ryan Stiles is sobbing quietly.",
+			"That's no way to make friends.",
+			"Dick move."
+		]
+	};
+
+	var group = (positive ? sarcasm["++"] : sarcasm["--"]);
+	var rand = Math.floor(Math.random() * group.length);
+
+	collection.stats[u].points += 1 * (positive ? 1 : -1);
+	context.channel.echo(user[1] + ' now has ' + collection.stats[u].points + ' points. ' + group[rand]);
+
+	this.db.activity();
+}
+
+f00bert.prototype.addPoints = function (context, text) {
+	return this.handlePoints.call(this, context, text, true);
 };
 
 f00bert.prototype.removePoints = function (context, text) {
-	var cmd = text.split(' ')[0];
-	var user = cmd.split('--')[0];
-	var uLower = user.toLowerCase();
-
-	if (this.db.collection.userstats[uLower]) {
-		this.db.collection.userstats[uLower].points -= 1;
-		context.channel.echo(user + ' now has ' + this.db.collection.userstats[uLower].points + ' points.');
-		this.db.activity();
-	} else {
-		this.db.collection.userstats[uLower] = {points:0};
-		context.channel.echo(user + ' now has ' +  this.db.collection.userstats[uLower].points + ' points.');
-		this.db.activity();
-	}
-
-
+	return this.handlePoints.call(this, context, text, false);
 };
 
 f00bert.prototype.score = function(context, text){
 	//pull the users stats and dump them to chan
 
-	var users = this.db.collection.userstats;
+	var users = this.db.collection.stats;
 
 	var sorted = [];
 
