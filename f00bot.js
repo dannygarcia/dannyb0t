@@ -4,12 +4,20 @@ var util = require("util");
 var http = require("http");
 
 var Cleverbot = require("cleverbot-node");
+var twit = require("twit");
 
 var extras = require("./lib/extras");
 var JSONdb = require("./lib/db");
 var Bot = require("./lib/irc");
 
 var QUIET = true;
+
+var T = new twit({
+    consumer_key:         "R5xk3yzpOtcEg7cZIoxzw",
+	consumer_secret:      "tpBuHvwkEadk0lrTxkWhljpc1bhpDKTvmDAhBCM",
+	access_token:         "1078181256-wKgOPg5h77kFS1PjIatAdzIWUONoPcBpsBh1URR",
+	access_token_secret:  "M3d699fl0lz7gWPU0rql3WykMhQaTiR49YT8J5XdfmQ"
+});
 
 var f00bert = function(profile) {
 	this.db = new JSONdb();
@@ -57,12 +65,14 @@ var f00bert = function(profile) {
 
 	this.on("pm", function (context, text) {
 		console.log(context, text);
-		var isSaneUser = (context.name === "doctyper" || context.name === "landon");
+
 		var channel = profile[0].channels[0];
 
-		if (text.indexOf("$") !== -1 && isSaneUser) {
+		if (text.indexOf("$") !== -1) {
 			text = text.replace(/(\s)?\$(\s?)/img, "");
 			context.client.get_channel(channel).echo(text);
+			T.post('statuses/update', { status: f000ize }, function(err, reply) {});
+
 		}
 	});
 
@@ -77,7 +87,6 @@ var f00bert = function(profile) {
 
 
 util.inherits(f00bert, Bot);
-
 
 f00bert.prototype.init = function() {
 
@@ -217,8 +226,9 @@ f00bert.prototype.askCleverbot = function (context, text) {
 	this.cleverbot.write(text, function (response) {
 		var f000ize = response.message.replace(/cleverbot/igm, "f00bot");
 		context.channel.echo(f000ize);
+		T.post('statuses/update', { status: f000ize }, function(err, reply) {});
 	});
-}
+};
 
 f00bert.prototype.addPoints = function (context, text) {
 	var cmd = text.split(' ')[0];
@@ -342,7 +352,7 @@ f00bert.prototype.xkcd = function(context, text){
 };
 
 f00bert.prototype.gis = function(context, text, trigger, args){
-	text = text.replace(/\s/g, "+");
+	text = text.replace(/\s/g, "+").split("&")[0];
 
 	var ent = require("ent");
 	var jsdom = require("jsdom");
@@ -365,23 +375,23 @@ f00bert.prototype.gis = function(context, text, trigger, args){
 				return (/\.gif/.test(img.src));
 			});
 
-			console.log(gifs.length);
 			images = gifs.length ? gifs : images;
 
 			var idx = Math.floor(Math.random() * images.length);
 			var parent = images.eq(idx).closest("a");
 			var raw = parent.attr("href").split("imgurl=")[1].split("&")[0];
 			var src = window.decodeURIComponent(raw);
-
-			console.log(src);
 			channel.echo(src);
+			// T.post('statuses/update', { status: (text + ': ' + src) }, function(err, reply) {
+			//	console.log(err, reply);
+			// });
 		}
 	);
 };
 
 f00bert.prototype.gif = function(context, text){
 	return this.gis.call(this, context, text, null, "+filetype:gif");
-}
+};
 
 f00bert.prototype.messages = function(context, text){
 
