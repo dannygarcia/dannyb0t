@@ -238,6 +238,11 @@ f00bert.prototype.handlePoints = function (context, text, positive) {
 	}
 
 	var u = user[1].toLowerCase();
+
+	if (u === 'emi') {
+		context.channel.echo(u + ' has ' + collection.stats[u].points + '.');
+		return;
+	}
 	var collection = this.db.collection;
 
 	collection.stats = collection.stats || {};
