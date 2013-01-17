@@ -281,8 +281,9 @@ f00bert.prototype.handlePoints = function (context, text, positive) {
 			"Somewhere Drew Carey is smiling.",
 			"Achievement unlocked.",
 			"Quite the accomplishment.",
+			"Ding!",
 			"Remember that one time Danny showed us porn?",
-			"#will \n https://s3.amazonaws.com/static.tumblr.com/cxkcond/q6lmde6lh/dogface.gif"
+			"Remember that one time Landon showed us porn?"
 		],
 
 		"--" : [
@@ -306,7 +307,7 @@ f00bert.prototype.handlePoints = function (context, text, positive) {
 	context.channel.echo(user[1] + ' now has ' + collection.stats[u].points + ' points. ' + group[rand]);
 
 	this.db.activity();
-}
+};
 
 f00bert.prototype.addPoints = function (context, text) {
 	return this.handlePoints.call(this, context, text, true);
