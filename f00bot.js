@@ -268,9 +268,8 @@ f00bert.prototype.handlePoints = function (context, text, positive) {
 		};
 	}
 
-	collection.stats[u] = collection.stats[u] || {
-		points : 0
-	};
+	collection.stats[u] = collection.stats[u] || {};
+	collection.stats[u].points = collection.stats[u].points || 0;
 
 	var sarcasm = {
 		"++" : [
