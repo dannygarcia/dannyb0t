@@ -11,6 +11,7 @@ var JSONdb = require("./lib/db");
 var Bot = require("./lib/irc");
 
 var QUIET = true;
+var HELLBANNED = ['emi', 'vance'];
 
 var T = new twit({
     consumer_key:         "R5xk3yzpOtcEg7cZIoxzw",
@@ -124,6 +125,7 @@ f00bert.prototype.init = function() {
 };
 
 f00bert.prototype.sendCues = function (context, text) {
+	if (HELLBANNED.indexOf(context.sender.name) > -1) {return;}
 	var cues = [], limit = 20, currLimit = limit, curr = [],
 	cuekeys = Object.keys(this.db.collection.cues || {}).sort();
 
@@ -145,6 +147,7 @@ f00bert.prototype.sendCues = function (context, text) {
 };
 
 f00bert.prototype.set = function (context, text) {
+	if (HELLBANNED.indexOf(context.sender.name) > -1) {return;}
 	var cmd = text.split(/\s/g);
 
 	var trigger = cmd[0];
@@ -178,6 +181,7 @@ f00bert.prototype.set = function (context, text) {
 };
 
 f00bert.prototype.unset = function (context, text) {
+	if (HELLBANNED.indexOf(context.sender.name) > -1) {return;}
 	var cmd = text.split(/\s/g);
 
 	var trigger = cmd[0];
@@ -196,6 +200,7 @@ f00bert.prototype.unset = function (context, text) {
 
 
 f00bert.prototype.trycmd = function (context, text) {
+	if (HELLBANNED.indexOf(context.sender.name) > -1) {return;}
 	var cmd = text.split(/\s/g);
 
 	if (!this.db.collection.cues || (cmd[0] && cmd[0].charAt(0) === '/')) {
@@ -219,6 +224,7 @@ f00bert.prototype.trycmd = function (context, text) {
 };
 
 f00bert.prototype.askCleverbot = function (context, text) {
+	if (HELLBANNED.indexOf(context.sender.name) > -1) {return;}
 	this.cleverbot = this.cleverbot || new Cleverbot();
 	var cleverize = text.replace(/f00bot/igm, "Cleverbot");
 
@@ -231,6 +237,7 @@ f00bert.prototype.askCleverbot = function (context, text) {
 };
 
 f00bert.prototype.handlePoints = function (context, text, positive) {
+	if (HELLBANNED.indexOf(context.sender.name) > -1) {return;}
 	var user = text.match(/([\w]+)(?:\+\+|\-\-)/);
 
 	if (!user || !user[1]) {
@@ -240,9 +247,10 @@ f00bert.prototype.handlePoints = function (context, text, positive) {
 	var u = user[1].toLowerCase();
 
 	if (u === 'emi') {
-		context.channel.echo(u + ' has ' + collection.stats[u].points + '.');
+		context.channel.echo('emi has ONE BILLION POINTS OF FAIL.');
 		return;
 	}
+
 	var collection = this.db.collection;
 
 	collection.stats = collection.stats || {};
@@ -323,6 +331,7 @@ f00bert.prototype.removePoints = function (context, text) {
 };
 
 f00bert.prototype.score = function(context, text){
+	if (HELLBANNED.indexOf(context.sender.name) > -1) {return;}
 	//pull the users stats and dump them to chan
 
 	var users = this.db.collection.stats;
@@ -349,10 +358,12 @@ f00bert.prototype.score = function(context, text){
 
 
 f00bert.prototype.onJoin = function(context, text){
+	if (HELLBANNED.indexOf(context.sender.name) > -1) {return;}
 	console.log('JOIN EVENT \n\n ', context, text, '\n\n');
 };
 
 f00bert.prototype.onMessage = function (context, text) {
+	if (HELLBANNED.indexOf(context.sender.name) > -1) {return;}
 	// Five minutes
 	var interval = 10 * (60 * 1000);
 
@@ -387,6 +398,7 @@ f00bert.prototype.onMessage = function (context, text) {
 f00bert.prototype.activePoll = null;
 
 f00bert.prototype.xkcd = function(context, text){
+	if (HELLBANNED.indexOf(context.sender.name) > -1) {return;}
 	var ent = require("ent");
 	var jsdom = require("jsdom");
 	var xkcd = "http://dynamic.xkcd.com/comic/random/";
@@ -409,6 +421,7 @@ f00bert.prototype.xkcd = function(context, text){
 };
 
 f00bert.prototype.gis = function(context, text, trigger, args){
+	if (HELLBANNED.indexOf(context.sender.name) > -1) {return;}
 	text = text.replace(/\s/g, "+").split("&")[0];
 
 	var ent = require("ent");
@@ -447,11 +460,12 @@ f00bert.prototype.gis = function(context, text, trigger, args){
 };
 
 f00bert.prototype.gif = function(context, text){
+	if (HELLBANNED.indexOf(context.sender.name) > -1) {return;}
 	return this.gis.call(this, context, text, null, "+filetype:gif");
 };
 
 f00bert.prototype.messages = function(context, text){
-
+	if (HELLBANNED.indexOf(context.sender.name) > -1) {return;}
 	if (this.db.collection.messages[context.sender.name] && this.db.collection.messages[context.sender.name].count > 0) {
 
 		var reply = '';
@@ -473,6 +487,7 @@ f00bert.prototype.messages = function(context, text){
 };
 
 f00bert.prototype.upvote = function(context, text){
+	if (HELLBANNED.indexOf(context.sender.name) > -1) {return;}
 	if (this.activePoll) {
 		this.db.collection.polls[this.activePoll].upvotes +=1;
 		this.db.activity();
@@ -480,6 +495,7 @@ f00bert.prototype.upvote = function(context, text){
 };
 
 f00bert.prototype.downvote = function(context, text){
+	if (HELLBANNED.indexOf(context.sender.name) > -1) {return;}
 	if (this.activePoll) {
 		this.db.collection.polls[this.activePoll].downvotes +=1;
 		this.db.activity();
@@ -487,6 +503,7 @@ f00bert.prototype.downvote = function(context, text){
 };
 
 f00bert.prototype.addPoll = function(context, text){
+	if (HELLBANNED.indexOf(context.sender.name) > -1) {return;}
 
 	var question = text;
 
@@ -516,6 +533,7 @@ f00bert.prototype.addPoll = function(context, text){
 };
 
 f00bert.prototype.clearPoll = function(context, question){
+	if (HELLBANNED.indexOf(context.sender.name) > -1) {return;}
 	var tally = this.db.collection.polls[question];
 
 	if (tally.upvotes > tally.downvotes) {
@@ -532,6 +550,7 @@ f00bert.prototype.clearPoll = function(context, question){
 };
 
 f00bert.prototype.clearmessages = function(context, text){
+	if (HELLBANNED.indexOf(context.sender.name) > -1) {return;}
 	if (this.db.collection.messages[context.sender.name]) {
 		this.db.collection.messages[context.sender.name] = {count: 0};
 	}
@@ -541,6 +560,7 @@ f00bert.prototype.clearmessages = function(context, text){
 
 
 f00bert.prototype.msg = function(context, text){
+	if (HELLBANNED.indexOf(context.sender.name) > -1) {return;}
 
 	if (!this.db.collection.messages) {
 		this.db.collection.messages = {};
@@ -577,7 +597,7 @@ f00bert.prototype.gifmanager = function(context, text){
 };
 
 f00bert.prototype.grab_url = function(context, text){
-
+	if (HELLBANNED.indexOf(context.sender.name) > -1) {return;}
 	this.checkForTweet.call(this, context, text);
 	this.checkForYouTube.call(this, context, text);
 
@@ -599,6 +619,7 @@ f00bert.prototype.grab_url = function(context, text){
 };
 
 f00bert.prototype.checkForTweet = function (context, text) {
+	if (HELLBANNED.indexOf(context.sender.name) > -1) {return;}
 	var regExp = /twitter.com\/(\w+)\/status(?:es)?\/[\d]+/;
 	var match = text.match(regExp);
 
@@ -624,6 +645,7 @@ f00bert.prototype.checkForTweet = function (context, text) {
 };
 
 f00bert.prototype.checkForYouTube = function (context, text) {
+	if (HELLBANNED.indexOf(context.sender.name) > -1) {return;}
 	var regExp = /(?:youtube.com\/(?:.*)v=|youtu.be\/)([a-zA-Z0-9_-]+)/;
 	var match = text.match(regExp);
 
@@ -683,6 +705,7 @@ f00bert.prototype.checkForYouTube = function (context, text) {
 };
 
 f00bert.prototype.help = function (context, text) {
+	if (HELLBANNED.indexOf(context.sender.name) > -1) {return;}
 	var reply = '',
 		cmds = Bot.prototype.get_commands.call(this) || {};
 
@@ -697,6 +720,7 @@ f00bert.prototype.help = function (context, text) {
 
 
 f00bert.prototype.tldr = function(context, text, mode){
+	if (HELLBANNED.indexOf(context.sender.name) > -1) {return;}
 	var links = [], limit = 10, last, link;
 	var stamp = Math.floor(new Date().getTime()/1000);
 

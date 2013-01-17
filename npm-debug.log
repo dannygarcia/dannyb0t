@@ -51,1053 +51,950 @@
 48 silly lockFile 406c98fe-express-3-0-x express@~3.0.x
 49 verbose lock express@~3.0.x /Users/landon.noss/.npm/406c98fe-express-3-0-x.lock
 50 silly addNameRange { name: 'ent', range: '>=0.0.0- <0.1.0-', hasData: false }
-51 silly addNameRange { name: 'jsdom', range: '>=0.2.0- <0.3.0-', hasData: false }
-52 silly addNameRange { name: 'cleverbot-node',
-52 silly addNameRange   range: '>=0.1.0- <0.2.0-',
-52 silly addNameRange   hasData: false }
-53 silly addNameRange { name: 'request', range: '>=2.12.0- <2.13.0-', hasData: false }
+51 silly addNameRange { name: 'request', range: '>=2.12.0- <2.13.0-', hasData: false }
+52 silly addNameRange { name: 'jsdom', range: '>=0.2.0- <0.3.0-', hasData: false }
+53 silly addNameRange { name: 'cleverbot-node',
+53 silly addNameRange   range: '>=0.1.0- <0.2.0-',
+53 silly addNameRange   hasData: false }
 54 silly addNameRange { name: 'express', range: '>=3.0.0- <3.1.0-', hasData: false }
 55 verbose url raw ent
 56 verbose url resolving [ 'https://registry.npmjs.org/', './ent' ]
 57 verbose url resolved https://registry.npmjs.org/ent
-58 info retry registry request attempt 1 at 17:07:02
+58 info retry registry request attempt 1 at 17:37:00
 59 verbose etag "CQNQMTQBZ6WO160AW2Y7Z4USV"
 60 http GET https://registry.npmjs.org/ent
 61 verbose url raw cleverbot-node
 62 verbose url resolving [ 'https://registry.npmjs.org/', './cleverbot-node' ]
 63 verbose url resolved https://registry.npmjs.org/cleverbot-node
-64 info retry registry request attempt 1 at 17:07:02
+64 info retry registry request attempt 1 at 17:37:00
 65 verbose etag "78XHGNT4XGOJD4J0SVSS8GZGR"
 66 http GET https://registry.npmjs.org/cleverbot-node
-67 verbose url raw jsdom
-68 verbose url resolving [ 'https://registry.npmjs.org/', './jsdom' ]
-69 verbose url resolved https://registry.npmjs.org/jsdom
-70 info retry registry request attempt 1 at 17:07:02
-71 verbose etag "CSGS97ZIY7QE8KEI6X5DT7M85"
-72 http GET https://registry.npmjs.org/jsdom
-73 verbose url raw express
-74 verbose url resolving [ 'https://registry.npmjs.org/', './express' ]
-75 verbose url resolved https://registry.npmjs.org/express
-76 info retry registry request attempt 1 at 17:07:02
-77 verbose etag "CT94Z1C1RRXVQMF00R7BWS7OM"
-78 http GET https://registry.npmjs.org/express
-79 verbose url raw request
-80 verbose url resolving [ 'https://registry.npmjs.org/', './request' ]
-81 verbose url resolved https://registry.npmjs.org/request
-82 info retry registry request attempt 1 at 17:07:02
-83 verbose etag "AP4BX7CHQHDPVPICLD7IT481M"
-84 http GET https://registry.npmjs.org/request
-85 http 304 https://registry.npmjs.org/cleverbot-node
+67 verbose url raw express
+68 verbose url resolving [ 'https://registry.npmjs.org/', './express' ]
+69 verbose url resolved https://registry.npmjs.org/express
+70 info retry registry request attempt 1 at 17:37:00
+71 verbose etag "549565DFMON3H0UBCREG7LUG8"
+72 http GET https://registry.npmjs.org/express
+73 verbose url raw request
+74 verbose url resolving [ 'https://registry.npmjs.org/', './request' ]
+75 verbose url resolved https://registry.npmjs.org/request
+76 info retry registry request attempt 1 at 17:37:00
+77 verbose etag "AP4BX7CHQHDPVPICLD7IT481M"
+78 http GET https://registry.npmjs.org/request
+79 verbose url raw jsdom
+80 verbose url resolving [ 'https://registry.npmjs.org/', './jsdom' ]
+81 verbose url resolved https://registry.npmjs.org/jsdom
+82 info retry registry request attempt 1 at 17:37:00
+83 verbose etag "CSGS97ZIY7QE8KEI6X5DT7M85"
+84 http GET https://registry.npmjs.org/jsdom
+85 http 304 https://registry.npmjs.org/ent
 86 silly registry.get cb [ 304,
 86 silly registry.get   { server: 'CouchDB/1.2.1 (Erlang OTP/R15B)',
-86 silly registry.get     etag: '"78XHGNT4XGOJD4J0SVSS8GZGR"',
-86 silly registry.get     date: 'Thu, 17 Jan 2013 01:05:34 GMT',
+86 silly registry.get     etag: '"CQNQMTQBZ6WO160AW2Y7Z4USV"',
+86 silly registry.get     date: 'Thu, 17 Jan 2013 01:35:32 GMT',
 86 silly registry.get     'content-length': '0' } ]
-87 verbose etag cleverbot-node from cache
-88 silly addNameRange number 2 { name: 'cleverbot-node',
-88 silly addNameRange   range: '>=0.1.0- <0.2.0-',
-88 silly addNameRange   hasData: true }
-89 silly addNameRange versions [ 'cleverbot-node', [ '0.1.0', '0.1.1' ] ]
-90 verbose addNamed [ 'cleverbot-node', '0.1.1' ]
-91 verbose addNamed [ '0.1.1', '0.1.1' ]
-92 silly lockFile 291197f2-cleverbot-node-0-1-1 cleverbot-node@0.1.1
-93 verbose lock cleverbot-node@0.1.1 /Users/landon.noss/.npm/291197f2-cleverbot-node-0-1-1.lock
-94 verbose read json /Users/landon.noss/.npm/cleverbot-node/0.1.1/package/package.json
-95 silly lockFile 291197f2-cleverbot-node-0-1-1 cleverbot-node@0.1.1
-96 silly lockFile 8f90be33-cleverbot-node-0-1-x cleverbot-node@~0.1.x
-97 verbose from cache /Users/landon.noss/Projects/f00bar/node_modules/cleverbot-node/package.json
-98 http 304 https://registry.npmjs.org/request
+87 verbose etag ent from cache
+88 silly addNameRange number 2 { name: 'ent', range: '>=0.0.0- <0.1.0-', hasData: true }
+89 silly addNameRange versions [ 'ent', [ '0.0.1', '0.0.2', '0.0.3', '0.0.4', '0.0.5' ] ]
+90 verbose addNamed [ 'ent', '0.0.5' ]
+91 verbose addNamed [ '0.0.5', '0.0.5' ]
+92 silly lockFile dd1d4498-ent-0-0-5 ent@0.0.5
+93 verbose lock ent@0.0.5 /Users/landon.noss/.npm/dd1d4498-ent-0-0-5.lock
+94 verbose read json /Users/landon.noss/.npm/ent/0.0.5/package/package.json
+95 silly lockFile dd1d4498-ent-0-0-5 ent@0.0.5
+96 silly lockFile 21428ccc-ent-0-0-x ent@~0.0.x
+97 verbose from cache /Users/landon.noss/Projects/f00bar/node_modules/ent/package.json
+98 http 304 https://registry.npmjs.org/express
 99 silly registry.get cb [ 304,
 99 silly registry.get   { server: 'CouchDB/1.2.1 (Erlang OTP/R15B)',
-99 silly registry.get     etag: '"AP4BX7CHQHDPVPICLD7IT481M"',
-99 silly registry.get     date: 'Thu, 17 Jan 2013 01:05:34 GMT',
+99 silly registry.get     etag: '"549565DFMON3H0UBCREG7LUG8"',
+99 silly registry.get     date: 'Thu, 17 Jan 2013 01:35:32 GMT',
 99 silly registry.get     'content-length': '0' } ]
-100 verbose etag request from cache
-101 silly addNameRange number 2 { name: 'request', range: '>=2.12.0- <2.13.0-', hasData: true }
-102 silly addNameRange versions [ 'request',
-102 silly addNameRange   [ '0.10.0',
-102 silly addNameRange     '0.8.3',
-102 silly addNameRange     '0.9.0',
-102 silly addNameRange     '0.9.1',
-102 silly addNameRange     '0.9.5',
-102 silly addNameRange     '1.0.0',
-102 silly addNameRange     '1.1.0',
-102 silly addNameRange     '1.1.1',
-102 silly addNameRange     '1.2.0',
-102 silly addNameRange     '1.9.0',
-102 silly addNameRange     '1.9.1',
-102 silly addNameRange     '1.9.2',
-102 silly addNameRange     '1.9.3',
-102 silly addNameRange     '1.9.5',
-102 silly addNameRange     '1.9.7',
-102 silly addNameRange     '1.9.8',
-102 silly addNameRange     '1.9.9',
-102 silly addNameRange     '2.0.0',
-102 silly addNameRange     '2.0.1',
-102 silly addNameRange     '2.0.2',
-102 silly addNameRange     '2.0.3',
-102 silly addNameRange     '2.0.4',
-102 silly addNameRange     '2.0.5',
-102 silly addNameRange     '2.1.0',
-102 silly addNameRange     '2.1.1',
-102 silly addNameRange     '2.2.0',
-102 silly addNameRange     '2.2.5',
-102 silly addNameRange     '2.2.6',
-102 silly addNameRange     '2.2.9',
-102 silly addNameRange     '2.9.0',
-102 silly addNameRange     '2.9.1',
-102 silly addNameRange     '2.9.2',
-102 silly addNameRange     '2.9.3',
-102 silly addNameRange     '2.9.100',
-102 silly addNameRange     '2.9.150',
-102 silly addNameRange     '2.9.151',
-102 silly addNameRange     '2.9.152',
-102 silly addNameRange     '2.9.153',
-102 silly addNameRange     '2.9.200',
-102 silly addNameRange     '2.9.201',
-102 silly addNameRange     '2.9.202',
-102 silly addNameRange     '2.9.203',
-102 silly addNameRange     '2.10.0',
-102 silly addNameRange     '2.11.0',
-102 silly addNameRange     '2.11.1',
-102 silly addNameRange     '2.11.2',
-102 silly addNameRange     '2.11.3',
-102 silly addNameRange     '2.11.4',
-102 silly addNameRange     '2.12.0' ] ]
-103 verbose addNamed [ 'request', '2.12.0' ]
-104 verbose addNamed [ '2.12.0', '2.12.0' ]
-105 silly lockFile ba282548-request-2-12-0 request@2.12.0
-106 verbose lock request@2.12.0 /Users/landon.noss/.npm/ba282548-request-2-12-0.lock
-107 http 304 https://registry.npmjs.org/ent
+100 verbose etag express from cache
+101 http 304 https://registry.npmjs.org/request
+102 silly registry.get cb [ 304,
+102 silly registry.get   { server: 'CouchDB/1.2.1 (Erlang OTP/R15B)',
+102 silly registry.get     etag: '"AP4BX7CHQHDPVPICLD7IT481M"',
+102 silly registry.get     date: 'Thu, 17 Jan 2013 01:35:32 GMT',
+102 silly registry.get     'content-length': '0' } ]
+103 verbose etag request from cache
+104 http 304 https://registry.npmjs.org/cleverbot-node
+105 silly registry.get cb [ 304,
+105 silly registry.get   { server: 'CouchDB/1.2.1 (Erlang OTP/R15B)',
+105 silly registry.get     etag: '"78XHGNT4XGOJD4J0SVSS8GZGR"',
+105 silly registry.get     date: 'Thu, 17 Jan 2013 01:35:32 GMT',
+105 silly registry.get     'content-length': '0' } ]
+106 verbose etag cleverbot-node from cache
+107 http 304 https://registry.npmjs.org/jsdom
 108 silly registry.get cb [ 304,
 108 silly registry.get   { server: 'CouchDB/1.2.1 (Erlang OTP/R15B)',
-108 silly registry.get     etag: '"CQNQMTQBZ6WO160AW2Y7Z4USV"',
-108 silly registry.get     date: 'Thu, 17 Jan 2013 01:05:34 GMT',
+108 silly registry.get     etag: '"CSGS97ZIY7QE8KEI6X5DT7M85"',
+108 silly registry.get     date: 'Thu, 17 Jan 2013 01:35:32 GMT',
 108 silly registry.get     'content-length': '0' } ]
-109 verbose etag ent from cache
-110 http 304 https://registry.npmjs.org/jsdom
-111 silly registry.get cb [ 304,
-111 silly registry.get   { server: 'CouchDB/1.2.1 (Erlang OTP/R15B)',
-111 silly registry.get     etag: '"CSGS97ZIY7QE8KEI6X5DT7M85"',
-111 silly registry.get     date: 'Thu, 17 Jan 2013 01:05:34 GMT',
-111 silly registry.get     'content-length': '0' } ]
-112 verbose etag jsdom from cache
-113 verbose read json /Users/landon.noss/.npm/request/2.12.0/package/package.json
-114 silly addNameRange number 2 { name: 'ent', range: '>=0.0.0- <0.1.0-', hasData: true }
-115 silly addNameRange versions [ 'ent', [ '0.0.1', '0.0.2', '0.0.3', '0.0.4', '0.0.5' ] ]
-116 verbose addNamed [ 'ent', '0.0.5' ]
-117 verbose addNamed [ '0.0.5', '0.0.5' ]
-118 silly lockFile dd1d4498-ent-0-0-5 ent@0.0.5
-119 verbose lock ent@0.0.5 /Users/landon.noss/.npm/dd1d4498-ent-0-0-5.lock
-120 silly addNameRange number 2 { name: 'jsdom', range: '>=0.2.0- <0.3.0-', hasData: true }
-121 silly addNameRange versions [ 'jsdom',
-121 silly addNameRange   [ '0.0.1',
-121 silly addNameRange     '0.1.2',
-121 silly addNameRange     '0.1.4',
-121 silly addNameRange     '0.1.5',
-121 silly addNameRange     '0.1.6',
-121 silly addNameRange     '0.1.7',
-121 silly addNameRange     '0.1.8',
-121 silly addNameRange     '0.1.9',
-121 silly addNameRange     '0.1.10',
-121 silly addNameRange     '0.1.11',
-121 silly addNameRange     '0.1.12',
-121 silly addNameRange     '0.1.13',
-121 silly addNameRange     '0.1.15',
-121 silly addNameRange     '0.1.16',
-121 silly addNameRange     '0.1.17',
-121 silly addNameRange     '0.1.18',
-121 silly addNameRange     '0.1.19',
-121 silly addNameRange     '0.1.20',
-121 silly addNameRange     '0.1.21',
-121 silly addNameRange     '0.1.22',
-121 silly addNameRange     '0.1.23',
-121 silly addNameRange     '0.2.0',
-121 silly addNameRange     '0.2.1',
-121 silly addNameRange     '0.2.2',
-121 silly addNameRange     '0.2.3',
-121 silly addNameRange     '0.2.4',
-121 silly addNameRange     '0.2.5',
-121 silly addNameRange     '0.2.6',
-121 silly addNameRange     '0.2.7',
-121 silly addNameRange     '0.2.8',
-121 silly addNameRange     '0.2.9',
-121 silly addNameRange     '0.2.10',
-121 silly addNameRange     '0.2.11',
-121 silly addNameRange     '0.2.12',
-121 silly addNameRange     '0.2.13',
-121 silly addNameRange     '0.2.14',
-121 silly addNameRange     '0.2.15',
-121 silly addNameRange     '0.2.16',
-121 silly addNameRange     '0.2.17',
-121 silly addNameRange     '0.2.18',
-121 silly addNameRange     '0.2.19',
-121 silly addNameRange     '0.3.0',
-121 silly addNameRange     '0.3.1',
-121 silly addNameRange     '0.3.2',
-121 silly addNameRange     '0.3.3',
-121 silly addNameRange     '0.3.4' ] ]
-122 verbose addNamed [ 'jsdom', '0.2.19' ]
-123 verbose addNamed [ '0.2.19', '0.2.19' ]
-124 silly lockFile 37e839c1-jsdom-0-2-19 jsdom@0.2.19
-125 verbose lock jsdom@0.2.19 /Users/landon.noss/.npm/37e839c1-jsdom-0-2-19.lock
-126 verbose read json /Users/landon.noss/.npm/jsdom/0.2.19/package/package.json
-127 verbose read json /Users/landon.noss/.npm/ent/0.0.5/package/package.json
-128 silly lockFile ba282548-request-2-12-0 request@2.12.0
-129 silly lockFile c41d6fda-request-2-12-x request@~2.12.x
-130 verbose from cache /Users/landon.noss/Projects/f00bar/node_modules/request/package.json
-131 verbose read json /Users/landon.noss/Projects/f00bar/node_modules/request/node_modules/form-data/package.json
-132 verbose read json /Users/landon.noss/Projects/f00bar/node_modules/request/node_modules/mime/package.json
-133 silly lockFile dd1d4498-ent-0-0-5 ent@0.0.5
-134 verbose cache add [ 'form-data', '~0.0.3' ]
-135 silly cache add name="form-data" spec="~0.0.3" args=["form-data","~0.0.3"]
-136 verbose parsed url { pathname: '~0.0.3', path: '~0.0.3', href: '~0.0.3' }
-137 verbose addNamed [ 'form-data', '~0.0.3' ]
-138 verbose addNamed [ null, '>=0.0.3- <0.1.0-' ]
-139 silly lockFile 539eee6c-form-data-0-0-3 form-data@~0.0.3
-140 verbose lock form-data@~0.0.3 /Users/landon.noss/.npm/539eee6c-form-data-0-0-3.lock
-141 verbose cache add [ 'mime', '~1.2.7' ]
-142 silly cache add name="mime" spec="~1.2.7" args=["mime","~1.2.7"]
-143 verbose parsed url { pathname: '~1.2.7', path: '~1.2.7', href: '~1.2.7' }
-144 verbose addNamed [ 'mime', '~1.2.7' ]
-145 verbose addNamed [ null, '>=1.2.7- <1.3.0-' ]
-146 silly lockFile 3725bc70-mime-1-2-7 mime@~1.2.7
-147 verbose lock mime@~1.2.7 /Users/landon.noss/.npm/3725bc70-mime-1-2-7.lock
-148 silly addNameRange { name: 'form-data', range: '>=0.0.3- <0.1.0-', hasData: false }
-149 silly lockFile 21428ccc-ent-0-0-x ent@~0.0.x
-150 silly addNameRange { name: 'mime', range: '>=1.2.7- <1.3.0-', hasData: false }
-151 verbose from cache /Users/landon.noss/Projects/f00bar/node_modules/ent/package.json
-152 silly lockFile 37e839c1-jsdom-0-2-19 jsdom@0.2.19
-153 verbose url raw form-data
-154 verbose url resolving [ 'https://registry.npmjs.org/', './form-data' ]
-155 verbose url resolved https://registry.npmjs.org/form-data
-156 info retry registry request attempt 1 at 17:07:03
-157 verbose etag "ALDYAS3BCZT7AH0PEBXZIBY08"
-158 http GET https://registry.npmjs.org/form-data
-159 silly lockFile eafad90a-jsdom-0-2-x jsdom@~0.2.x
-160 verbose url raw mime
-161 verbose url resolving [ 'https://registry.npmjs.org/', './mime' ]
-162 verbose url resolved https://registry.npmjs.org/mime
-163 info retry registry request attempt 1 at 17:07:03
-164 verbose etag "7L2TT0VBAMKKFDULLOR5KTHU"
-165 http GET https://registry.npmjs.org/mime
-166 verbose from cache /Users/landon.noss/Projects/f00bar/node_modules/jsdom/package.json
-167 verbose read json /Users/landon.noss/Projects/f00bar/node_modules/jsdom/node_modules/contextify/package.json
-168 verbose read json /Users/landon.noss/Projects/f00bar/node_modules/jsdom/node_modules/cssom/package.json
-169 verbose read json /Users/landon.noss/Projects/f00bar/node_modules/jsdom/node_modules/cssstyle/package.json
-170 verbose read json /Users/landon.noss/Projects/f00bar/node_modules/jsdom/node_modules/htmlparser/package.json
-171 verbose cache add [ 'htmlparser', '1.x' ]
-172 silly cache add name="htmlparser" spec="1.x" args=["htmlparser","1.x"]
-173 verbose parsed url { pathname: '1.x', path: '1.x', href: '1.x' }
-174 verbose addNamed [ 'htmlparser', '1.x' ]
-175 verbose addNamed [ null, '>=1.0.0- <2.0.0-' ]
-176 silly lockFile 4d163ec2-htmlparser-1-x htmlparser@1.x
-177 verbose lock htmlparser@1.x /Users/landon.noss/.npm/4d163ec2-htmlparser-1-x.lock
-178 verbose cache add [ 'request', '2.x' ]
-179 silly cache add name="request" spec="2.x" args=["request","2.x"]
-180 verbose parsed url { pathname: '2.x', path: '2.x', href: '2.x' }
-181 verbose addNamed [ 'request', '2.x' ]
-182 verbose addNamed [ null, '>=2.0.0- <3.0.0-' ]
-183 silly lockFile c23ecae0-request-2-x request@2.x
-184 verbose lock request@2.x /Users/landon.noss/.npm/c23ecae0-request-2-x.lock
-185 verbose cache add [ 'cssom', '0.2.x' ]
-186 silly cache add name="cssom" spec="0.2.x" args=["cssom","0.2.x"]
-187 verbose parsed url { pathname: '0.2.x', path: '0.2.x', href: '0.2.x' }
-188 verbose addNamed [ 'cssom', '0.2.x' ]
-189 verbose addNamed [ null, '>=0.2.0- <0.3.0-' ]
-190 silly lockFile c83aab2e-cssom-0-2-x cssom@0.2.x
-191 verbose lock cssom@0.2.x /Users/landon.noss/.npm/c83aab2e-cssom-0-2-x.lock
-192 verbose cache add [ 'cssstyle', '>=0.2.3' ]
-193 silly cache add name="cssstyle" spec=">=0.2.3" args=["cssstyle",">=0.2.3"]
-194 verbose parsed url { pathname: '%3E=0.2.3', path: '%3E=0.2.3', href: '%3E=0.2.3' }
-195 verbose addNamed [ 'cssstyle', '>=0.2.3' ]
-196 verbose addNamed [ null, '>=0.2.3' ]
-197 silly lockFile 76808a6b-cssstyle-0-2-3 cssstyle@>=0.2.3
-198 verbose lock cssstyle@>=0.2.3 /Users/landon.noss/.npm/76808a6b-cssstyle-0-2-3.lock
-199 verbose cache add [ 'contextify', '0.1.x' ]
-200 silly cache add name="contextify" spec="0.1.x" args=["contextify","0.1.x"]
-201 verbose parsed url { pathname: '0.1.x', path: '0.1.x', href: '0.1.x' }
-202 verbose addNamed [ 'contextify', '0.1.x' ]
-203 verbose addNamed [ null, '>=0.1.0- <0.2.0-' ]
-204 silly lockFile fb83e208-contextify-0-1-x contextify@0.1.x
-205 verbose lock contextify@0.1.x /Users/landon.noss/.npm/fb83e208-contextify-0-1-x.lock
-206 silly addNameRange { name: 'htmlparser', range: '>=1.0.0- <2.0.0-', hasData: false }
-207 silly addNameRange { name: 'request', range: '>=2.0.0- <3.0.0-', hasData: false }
-208 silly addNameRange { name: 'cssom', range: '>=0.2.0- <0.3.0-', hasData: false }
-209 silly addNameRange { name: 'cssstyle', range: '>=0.2.3', hasData: false }
-210 silly addNameRange { name: 'contextify', range: '>=0.1.0- <0.2.0-', hasData: false }
-211 verbose url raw request
-212 verbose url resolving [ 'https://registry.npmjs.org/', './request' ]
-213 verbose url resolved https://registry.npmjs.org/request
-214 info retry registry request attempt 1 at 17:07:03
-215 verbose etag "AP4BX7CHQHDPVPICLD7IT481M"
-216 http GET https://registry.npmjs.org/request
-217 verbose url raw htmlparser
-218 verbose url resolving [ 'https://registry.npmjs.org/', './htmlparser' ]
-219 verbose url resolved https://registry.npmjs.org/htmlparser
-220 info retry registry request attempt 1 at 17:07:03
-221 verbose etag "7CTE7AP4B8SUS9RPOVJFW5HSD"
-222 http GET https://registry.npmjs.org/htmlparser
-223 verbose url raw cssom
-224 verbose url resolving [ 'https://registry.npmjs.org/', './cssom' ]
-225 verbose url resolved https://registry.npmjs.org/cssom
-226 info retry registry request attempt 1 at 17:07:03
-227 verbose etag "3YQVJQWKFIOHVJBPSG74DUHAN"
-228 http GET https://registry.npmjs.org/cssom
-229 verbose url raw contextify
-230 verbose url resolving [ 'https://registry.npmjs.org/', './contextify' ]
-231 verbose url resolved https://registry.npmjs.org/contextify
-232 info retry registry request attempt 1 at 17:07:03
-233 verbose etag "31A2C4G6QIPCLNKVBU245LED1"
-234 http GET https://registry.npmjs.org/contextify
-235 verbose url raw cssstyle
-236 verbose url resolving [ 'https://registry.npmjs.org/', './cssstyle' ]
-237 verbose url resolved https://registry.npmjs.org/cssstyle
-238 info retry registry request attempt 1 at 17:07:03
-239 verbose etag "7X6CF7D7C8ZXWT83EYV89MAS4"
-240 http GET https://registry.npmjs.org/cssstyle
-241 http 200 https://registry.npmjs.org/express
-242 silly registry.get cb [ 200,
-242 silly registry.get   { vary: 'Accept',
-242 silly registry.get     server: 'CouchDB/1.2.1 (Erlang OTP/R15B)',
-242 silly registry.get     etag: '"549565DFMON3H0UBCREG7LUG8"',
-242 silly registry.get     date: 'Thu, 17 Jan 2013 01:05:34 GMT',
-242 silly registry.get     'content-type': 'application/json',
-242 silly registry.get     'content-length': '261441' } ]
-243 silly addNameRange number 2 { name: 'express', range: '>=3.0.0- <3.1.0-', hasData: true }
-244 silly addNameRange versions [ 'express',
-244 silly addNameRange   [ '0.14.0',
-244 silly addNameRange     '0.14.1',
-244 silly addNameRange     '1.0.0beta',
-244 silly addNameRange     '1.0.0beta2',
-244 silly addNameRange     '1.0.0rc',
-244 silly addNameRange     '1.0.0rc2',
-244 silly addNameRange     '1.0.0rc3',
-244 silly addNameRange     '1.0.0rc4',
-244 silly addNameRange     '1.0.0',
-244 silly addNameRange     '1.0.1',
-244 silly addNameRange     '1.0.2',
-244 silly addNameRange     '1.0.3',
-244 silly addNameRange     '1.0.4',
-244 silly addNameRange     '1.0.5',
-244 silly addNameRange     '1.0.6',
-244 silly addNameRange     '1.0.7',
-244 silly addNameRange     '2.0.0beta',
-244 silly addNameRange     '1.0.8',
-244 silly addNameRange     '2.0.0beta2',
-244 silly addNameRange     '2.0.0beta3',
-244 silly addNameRange     '2.0.0rc',
-244 silly addNameRange     '2.0.0rc2',
-244 silly addNameRange     '2.0.0rc3',
-244 silly addNameRange     '2.0.0',
-244 silly addNameRange     '2.1.0',
-244 silly addNameRange     '2.1.1',
-244 silly addNameRange     '2.2.0',
-244 silly addNameRange     '2.2.1',
-244 silly addNameRange     '2.2.2',
-244 silly addNameRange     '2.3.0',
-244 silly addNameRange     '2.3.1',
-244 silly addNameRange     '2.3.2',
-244 silly addNameRange     '2.3.3',
-244 silly addNameRange     '2.3.4',
-244 silly addNameRange     '2.3.5',
-244 silly addNameRange     '2.3.6',
-244 silly addNameRange     '2.3.7',
-244 silly addNameRange     '2.3.8',
-244 silly addNameRange     '2.3.9',
-244 silly addNameRange     '2.3.10',
-244 silly addNameRange     '2.3.11',
-244 silly addNameRange     '2.3.12',
-244 silly addNameRange     '2.4.0',
-244 silly addNameRange     '2.4.1',
-244 silly addNameRange     '2.4.2',
-244 silly addNameRange     '2.4.3',
-244 silly addNameRange     '2.4.4',
-244 silly addNameRange     '2.4.5',
-244 silly addNameRange     '2.4.6',
-244 silly addNameRange     '2.4.7',
-244 silly addNameRange     '2.5.0',
-244 silly addNameRange     '2.5.1',
-244 silly addNameRange     '2.5.2',
-244 silly addNameRange     '2.5.3',
-244 silly addNameRange     '2.5.4',
-244 silly addNameRange     '2.5.5',
-244 silly addNameRange     '2.5.6',
-244 silly addNameRange     '2.5.7',
-244 silly addNameRange     '2.5.8',
-244 silly addNameRange     '2.5.9',
-244 silly addNameRange     '3.0.0alpha1',
-244 silly addNameRange     '3.0.0alpha2',
-244 silly addNameRange     '3.0.0alpha3',
-244 silly addNameRange     '3.0.0alpha4',
-244 silly addNameRange     '3.0.0alpha5',
-244 silly addNameRange     '3.0.0beta1',
-244 silly addNameRange     '3.0.0beta2',
-244 silly addNameRange     '3.0.0beta3',
-244 silly addNameRange     '2.5.10',
-244 silly addNameRange     '3.0.0beta4',
-244 silly addNameRange     '2.5.11',
-244 silly addNameRange     '3.0.0beta6',
-244 silly addNameRange     '3.0.0beta7',
-244 silly addNameRange     '3.0.0rc1',
-244 silly addNameRange     '3.0.0rc2',
-244 silly addNameRange     '3.0.0rc3',
-244 silly addNameRange     '3.0.0rc4',
-244 silly addNameRange     '3.0.0rc5',
-244 silly addNameRange     '3.0.0',
-244 silly addNameRange     '3.0.1',
-244 silly addNameRange     '3.0.2',
-244 silly addNameRange     '3.0.3',
-244 silly addNameRange     '3.0.4',
-244 silly addNameRange     '3.0.5',
-244 silly addNameRange     '3.0.6' ] ]
-245 verbose addNamed [ 'express', '3.0.6' ]
-246 verbose addNamed [ '3.0.6', '3.0.6' ]
-247 silly lockFile e902e1c0-express-3-0-6 express@3.0.6
-248 verbose lock express@3.0.6 /Users/landon.noss/.npm/e902e1c0-express-3-0-6.lock
-249 verbose read json /Users/landon.noss/.npm/express/3.0.6/package/package.json
-250 silly lockFile e902e1c0-express-3-0-6 express@3.0.6
-251 silly lockFile 406c98fe-express-3-0-x express@~3.0.x
-252 http 304 https://registry.npmjs.org/cssom
-253 silly registry.get cb [ 304,
-253 silly registry.get   { server: 'CouchDB/1.2.1 (Erlang OTP/R15B)',
-253 silly registry.get     etag: '"3YQVJQWKFIOHVJBPSG74DUHAN"',
-253 silly registry.get     date: 'Thu, 17 Jan 2013 01:05:34 GMT',
-253 silly registry.get     'content-length': '0' } ]
-254 verbose etag cssom from cache
-255 http 304 https://registry.npmjs.org/mime
-256 silly registry.get cb [ 304,
-256 silly registry.get   { server: 'CouchDB/1.2.1 (Erlang OTP/R15B)',
-256 silly registry.get     etag: '"7L2TT0VBAMKKFDULLOR5KTHU"',
-256 silly registry.get     date: 'Thu, 17 Jan 2013 01:05:34 GMT',
-256 silly registry.get     'content-length': '0' } ]
-257 verbose etag mime from cache
-258 http 304 https://registry.npmjs.org/form-data
-259 silly registry.get cb [ 304,
-259 silly registry.get   { server: 'CouchDB/1.2.1 (Erlang OTP/R15B)',
-259 silly registry.get     etag: '"ALDYAS3BCZT7AH0PEBXZIBY08"',
-259 silly registry.get     date: 'Thu, 17 Jan 2013 01:05:34 GMT',
-259 silly registry.get     'content-length': '0' } ]
-260 verbose etag form-data from cache
-261 silly addNameRange number 2 { name: 'mime', range: '>=1.2.7- <1.3.0-', hasData: true }
-262 silly addNameRange versions [ 'mime',
-262 silly addNameRange   [ '1.0.0',
-262 silly addNameRange     '1.1.0',
-262 silly addNameRange     '1.2.1',
-262 silly addNameRange     '1.2.2',
-262 silly addNameRange     '1.2.3',
-262 silly addNameRange     '1.2.4',
-262 silly addNameRange     '1.2.5',
-262 silly addNameRange     '1.2.6',
-262 silly addNameRange     '1.2.7',
-262 silly addNameRange     '1.2.8' ] ]
-263 verbose addNamed [ 'mime', '1.2.8' ]
-264 verbose addNamed [ '1.2.8', '1.2.8' ]
-265 silly lockFile 25954247-mime-1-2-8 mime@1.2.8
-266 verbose lock mime@1.2.8 /Users/landon.noss/.npm/25954247-mime-1-2-8.lock
-267 silly addNameRange number 2 { name: 'cssom', range: '>=0.2.0- <0.3.0-', hasData: true }
-268 silly addNameRange versions [ 'cssom',
-268 silly addNameRange   [ '0.2.0', '0.2.1', '0.2.2', '0.2.3', '0.2.4', '0.2.5' ] ]
-269 verbose addNamed [ 'cssom', '0.2.5' ]
-270 verbose addNamed [ '0.2.5', '0.2.5' ]
-271 silly lockFile 452affd3-cssom-0-2-5 cssom@0.2.5
-272 verbose lock cssom@0.2.5 /Users/landon.noss/.npm/452affd3-cssom-0-2-5.lock
-273 silly addNameRange number 2 { name: 'form-data', range: '>=0.0.3- <0.1.0-', hasData: true }
-274 silly addNameRange versions [ 'form-data',
-274 silly addNameRange   [ '0.0.0', '0.0.2', '0.0.3', '0.0.4', '0.0.5', '0.0.6' ] ]
-275 verbose addNamed [ 'form-data', '0.0.6' ]
-276 verbose addNamed [ '0.0.6', '0.0.6' ]
-277 silly lockFile 7e6f9332-form-data-0-0-6 form-data@0.0.6
-278 verbose lock form-data@0.0.6 /Users/landon.noss/.npm/7e6f9332-form-data-0-0-6.lock
-279 verbose read json /Users/landon.noss/.npm/mime/1.2.8/package/package.json
-280 http 304 https://registry.npmjs.org/htmlparser
-281 silly registry.get cb [ 304,
-281 silly registry.get   { server: 'CouchDB/1.2.1 (Erlang OTP/R15B)',
-281 silly registry.get     etag: '"7CTE7AP4B8SUS9RPOVJFW5HSD"',
-281 silly registry.get     date: 'Thu, 17 Jan 2013 01:05:34 GMT',
-281 silly registry.get     'content-length': '0' } ]
-282 verbose etag htmlparser from cache
-283 verbose read json /Users/landon.noss/.npm/cssom/0.2.5/package/package.json
-284 verbose read json /Users/landon.noss/.npm/form-data/0.0.6/package/package.json
-285 silly addNameRange number 2 { name: 'htmlparser', range: '>=1.0.0- <2.0.0-', hasData: true }
-286 silly addNameRange versions [ 'htmlparser',
-286 silly addNameRange   [ '1.6.2',
-286 silly addNameRange     '1.7.0',
-286 silly addNameRange     '1.7.1',
-286 silly addNameRange     '1.7.2',
-286 silly addNameRange     '1.7.3',
-286 silly addNameRange     '1.7.4',
-286 silly addNameRange     '1.7.5',
-286 silly addNameRange     '1.7.6' ] ]
-287 verbose addNamed [ 'htmlparser', '1.7.6' ]
-288 verbose addNamed [ '1.7.6', '1.7.6' ]
-289 silly lockFile 1f8880a7-htmlparser-1-7-6 htmlparser@1.7.6
-290 verbose lock htmlparser@1.7.6 /Users/landon.noss/.npm/1f8880a7-htmlparser-1-7-6.lock
-291 verbose read json /Users/landon.noss/.npm/htmlparser/1.7.6/package/package.json
-292 silly lockFile 7e6f9332-form-data-0-0-6 form-data@0.0.6
-293 http 304 https://registry.npmjs.org/request
-294 silly registry.get cb [ 304,
-294 silly registry.get   { server: 'CouchDB/1.2.1 (Erlang OTP/R15B)',
-294 silly registry.get     etag: '"AP4BX7CHQHDPVPICLD7IT481M"',
-294 silly registry.get     date: 'Thu, 17 Jan 2013 01:05:34 GMT',
-294 silly registry.get     'content-length': '0' } ]
-295 verbose etag request from cache
-296 silly lockFile 452affd3-cssom-0-2-5 cssom@0.2.5
-297 silly lockFile 25954247-mime-1-2-8 mime@1.2.8
-298 silly lockFile 539eee6c-form-data-0-0-3 form-data@~0.0.3
-299 silly lockFile c83aab2e-cssom-0-2-x cssom@0.2.x
-300 silly lockFile 3725bc70-mime-1-2-7 mime@~1.2.7
-301 verbose from cache /Users/landon.noss/Projects/f00bar/node_modules/request/node_modules/form-data/package.json
-302 silly addNameRange number 2 { name: 'request', range: '>=2.0.0- <3.0.0-', hasData: true }
-303 silly addNameRange versions [ 'request',
-303 silly addNameRange   [ '0.10.0',
-303 silly addNameRange     '0.8.3',
-303 silly addNameRange     '0.9.0',
-303 silly addNameRange     '0.9.1',
-303 silly addNameRange     '0.9.5',
-303 silly addNameRange     '1.0.0',
-303 silly addNameRange     '1.1.0',
-303 silly addNameRange     '1.1.1',
-303 silly addNameRange     '1.2.0',
-303 silly addNameRange     '1.9.0',
-303 silly addNameRange     '1.9.1',
-303 silly addNameRange     '1.9.2',
-303 silly addNameRange     '1.9.3',
-303 silly addNameRange     '1.9.5',
-303 silly addNameRange     '1.9.7',
-303 silly addNameRange     '1.9.8',
-303 silly addNameRange     '1.9.9',
-303 silly addNameRange     '2.0.0',
-303 silly addNameRange     '2.0.1',
-303 silly addNameRange     '2.0.2',
-303 silly addNameRange     '2.0.3',
-303 silly addNameRange     '2.0.4',
-303 silly addNameRange     '2.0.5',
-303 silly addNameRange     '2.1.0',
-303 silly addNameRange     '2.1.1',
-303 silly addNameRange     '2.2.0',
-303 silly addNameRange     '2.2.5',
-303 silly addNameRange     '2.2.6',
-303 silly addNameRange     '2.2.9',
-303 silly addNameRange     '2.9.0',
-303 silly addNameRange     '2.9.1',
-303 silly addNameRange     '2.9.2',
-303 silly addNameRange     '2.9.3',
-303 silly addNameRange     '2.9.100',
-303 silly addNameRange     '2.9.150',
-303 silly addNameRange     '2.9.151',
-303 silly addNameRange     '2.9.152',
-303 silly addNameRange     '2.9.153',
-303 silly addNameRange     '2.9.200',
-303 silly addNameRange     '2.9.201',
-303 silly addNameRange     '2.9.202',
-303 silly addNameRange     '2.9.203',
-303 silly addNameRange     '2.10.0',
-303 silly addNameRange     '2.11.0',
-303 silly addNameRange     '2.11.1',
-303 silly addNameRange     '2.11.2',
-303 silly addNameRange     '2.11.3',
-303 silly addNameRange     '2.11.4',
-303 silly addNameRange     '2.12.0' ] ]
-304 verbose addNamed [ 'request', '2.12.0' ]
-305 verbose addNamed [ '2.12.0', '2.12.0' ]
-306 silly lockFile ba282548-request-2-12-0 request@2.12.0
-307 verbose lock request@2.12.0 /Users/landon.noss/.npm/ba282548-request-2-12-0.lock
-308 verbose from cache /Users/landon.noss/Projects/f00bar/node_modules/jsdom/node_modules/cssom/package.json
-309 verbose from cache /Users/landon.noss/Projects/f00bar/node_modules/request/node_modules/mime/package.json
-310 verbose read json /Users/landon.noss/Projects/f00bar/node_modules/request/node_modules/form-data/node_modules/async/package.json
-311 verbose read json /Users/landon.noss/Projects/f00bar/node_modules/request/node_modules/form-data/node_modules/combined-stream/package.json
-312 verbose from cache /Users/landon.noss/.npm/request/2.12.0/package/package.json
-313 silly lockFile ba282548-request-2-12-0 request@2.12.0
-314 http 304 https://registry.npmjs.org/cssstyle
-315 silly registry.get cb [ 304,
-315 silly registry.get   { server: 'CouchDB/1.2.1 (Erlang OTP/R15B)',
-315 silly registry.get     etag: '"7X6CF7D7C8ZXWT83EYV89MAS4"',
-315 silly registry.get     date: 'Thu, 17 Jan 2013 01:05:34 GMT',
-315 silly registry.get     'content-length': '0' } ]
-316 verbose etag cssstyle from cache
-317 http 304 https://registry.npmjs.org/contextify
-318 silly registry.get cb [ 304,
-318 silly registry.get   { server: 'CouchDB/1.2.1 (Erlang OTP/R15B)',
-318 silly registry.get     etag: '"31A2C4G6QIPCLNKVBU245LED1"',
-318 silly registry.get     date: 'Thu, 17 Jan 2013 01:05:34 GMT',
-318 silly registry.get     'content-length': '0' } ]
-319 verbose etag contextify from cache
-320 silly lockFile c23ecae0-request-2-x request@2.x
-321 silly lockFile 1f8880a7-htmlparser-1-7-6 htmlparser@1.7.6
-322 verbose read json /Users/landon.noss/Projects/f00bar/node_modules/jsdom/node_modules/request/package.json
-323 silly lockFile 4d163ec2-htmlparser-1-x htmlparser@1.x
-324 silly addNameRange number 2 { name: 'cssstyle', range: '>=0.2.3', hasData: true }
-325 silly addNameRange versions [ 'cssstyle', [ '0.1.0', '0.2.0', '0.2.1', '0.2.2', '0.2.3' ] ]
-326 verbose addNamed [ 'cssstyle', '0.2.3' ]
-327 verbose addNamed [ '0.2.3', '0.2.3' ]
-328 silly lockFile 8a9b7d6a-cssstyle-0-2-3 cssstyle@0.2.3
-329 verbose lock cssstyle@0.2.3 /Users/landon.noss/.npm/8a9b7d6a-cssstyle-0-2-3.lock
-330 silly addNameRange number 2 { name: 'contextify', range: '>=0.1.0- <0.2.0-', hasData: true }
-331 silly addNameRange versions [ 'contextify',
-331 silly addNameRange   [ '0.0.2',
-331 silly addNameRange     '0.0.3',
-331 silly addNameRange     '0.0.4',
-331 silly addNameRange     '0.0.5',
-331 silly addNameRange     '0.0.6',
-331 silly addNameRange     '0.0.7',
-331 silly addNameRange     '0.1.0',
-331 silly addNameRange     '0.1.1',
-331 silly addNameRange     '0.1.2',
-331 silly addNameRange     '0.1.3' ] ]
-332 verbose addNamed [ 'contextify', '0.1.3' ]
-333 verbose addNamed [ '0.1.3', '0.1.3' ]
-334 silly lockFile 7770d4b3-contextify-0-1-3 contextify@0.1.3
-335 verbose lock contextify@0.1.3 /Users/landon.noss/.npm/7770d4b3-contextify-0-1-3.lock
-336 verbose from cache /Users/landon.noss/Projects/f00bar/node_modules/jsdom/node_modules/htmlparser/package.json
-337 verbose read json /Users/landon.noss/.npm/cssstyle/0.2.3/package/package.json
-338 verbose read json /Users/landon.noss/.npm/contextify/0.1.3/package/package.json
-339 verbose cache add [ 'combined-stream', '0.0.3' ]
-340 silly cache add name="combined-stream" spec="0.0.3" args=["combined-stream","0.0.3"]
-341 verbose parsed url { pathname: '0.0.3', path: '0.0.3', href: '0.0.3' }
-342 verbose addNamed [ 'combined-stream', '0.0.3' ]
-343 verbose addNamed [ '0.0.3', '0.0.3' ]
-344 silly lockFile ebf89023-combined-stream-0-0-3 combined-stream@0.0.3
-345 verbose lock combined-stream@0.0.3 /Users/landon.noss/.npm/ebf89023-combined-stream-0-0-3.lock
-346 verbose cache add [ 'mime', '~1.2.2' ]
-347 silly cache add name="mime" spec="~1.2.2" args=["mime","~1.2.2"]
-348 verbose parsed url { pathname: '~1.2.2', path: '~1.2.2', href: '~1.2.2' }
-349 verbose addNamed [ 'mime', '~1.2.2' ]
-350 verbose addNamed [ null, '>=1.2.2- <1.3.0-' ]
-351 silly lockFile e9223251-mime-1-2-2 mime@~1.2.2
-352 verbose lock mime@~1.2.2 /Users/landon.noss/.npm/e9223251-mime-1-2-2.lock
-353 verbose cache add [ 'async', '~0.1.9' ]
-354 silly cache add name="async" spec="~0.1.9" args=["async","~0.1.9"]
-355 verbose parsed url { pathname: '~0.1.9', path: '~0.1.9', href: '~0.1.9' }
-356 verbose addNamed [ 'async', '~0.1.9' ]
-357 verbose addNamed [ null, '>=0.1.9- <0.2.0-' ]
-358 silly lockFile e08457bb-async-0-1-9 async@~0.1.9
-359 verbose lock async@~0.1.9 /Users/landon.noss/.npm/e08457bb-async-0-1-9.lock
-360 silly addNameRange { name: 'mime', range: '>=1.2.2- <1.3.0-', hasData: false }
-361 silly addNameRange { name: 'async', range: '>=0.1.9- <0.2.0-', hasData: false }
-362 verbose url raw mime
-363 verbose url resolving [ 'https://registry.npmjs.org/', './mime' ]
-364 verbose url resolved https://registry.npmjs.org/mime
-365 info retry registry request attempt 1 at 17:07:03
-366 verbose etag "7L2TT0VBAMKKFDULLOR5KTHU"
-367 http GET https://registry.npmjs.org/mime
-368 verbose url raw combined-stream/0.0.3
-369 verbose url resolving [ 'https://registry.npmjs.org/', './combined-stream/0.0.3' ]
-370 verbose url resolved https://registry.npmjs.org/combined-stream/0.0.3
-371 info retry registry request attempt 1 at 17:07:03
-372 verbose etag "83EVMDGB72N9T9P3D7EEOHFVY"
-373 http GET https://registry.npmjs.org/combined-stream/0.0.3
-374 verbose url raw async
-375 verbose url resolving [ 'https://registry.npmjs.org/', './async' ]
-376 verbose url resolved https://registry.npmjs.org/async
-377 info retry registry request attempt 1 at 17:07:03
-378 verbose etag "34J5E9LDLHZ5TWGOVY4ON8S96"
-379 http GET https://registry.npmjs.org/async
-380 silly lockFile 7770d4b3-contextify-0-1-3 contextify@0.1.3
-381 silly lockFile fb83e208-contextify-0-1-x contextify@0.1.x
-382 verbose from cache /Users/landon.noss/Projects/f00bar/node_modules/jsdom/node_modules/contextify/package.json
-383 verbose read json /Users/landon.noss/Projects/f00bar/node_modules/jsdom/node_modules/contextify/node_modules/bindings/package.json
+109 verbose etag jsdom from cache
+110 silly addNameRange number 2 { name: 'express', range: '>=3.0.0- <3.1.0-', hasData: true }
+111 silly addNameRange versions [ 'express',
+111 silly addNameRange   [ '0.14.0',
+111 silly addNameRange     '0.14.1',
+111 silly addNameRange     '1.0.0beta',
+111 silly addNameRange     '1.0.0beta2',
+111 silly addNameRange     '1.0.0rc',
+111 silly addNameRange     '1.0.0rc2',
+111 silly addNameRange     '1.0.0rc3',
+111 silly addNameRange     '1.0.0rc4',
+111 silly addNameRange     '1.0.0',
+111 silly addNameRange     '1.0.1',
+111 silly addNameRange     '1.0.2',
+111 silly addNameRange     '1.0.3',
+111 silly addNameRange     '1.0.4',
+111 silly addNameRange     '1.0.5',
+111 silly addNameRange     '1.0.6',
+111 silly addNameRange     '1.0.7',
+111 silly addNameRange     '2.0.0beta',
+111 silly addNameRange     '1.0.8',
+111 silly addNameRange     '2.0.0beta2',
+111 silly addNameRange     '2.0.0beta3',
+111 silly addNameRange     '2.0.0rc',
+111 silly addNameRange     '2.0.0rc2',
+111 silly addNameRange     '2.0.0rc3',
+111 silly addNameRange     '2.0.0',
+111 silly addNameRange     '2.1.0',
+111 silly addNameRange     '2.1.1',
+111 silly addNameRange     '2.2.0',
+111 silly addNameRange     '2.2.1',
+111 silly addNameRange     '2.2.2',
+111 silly addNameRange     '2.3.0',
+111 silly addNameRange     '2.3.1',
+111 silly addNameRange     '2.3.2',
+111 silly addNameRange     '2.3.3',
+111 silly addNameRange     '2.3.4',
+111 silly addNameRange     '2.3.5',
+111 silly addNameRange     '2.3.6',
+111 silly addNameRange     '2.3.7',
+111 silly addNameRange     '2.3.8',
+111 silly addNameRange     '2.3.9',
+111 silly addNameRange     '2.3.10',
+111 silly addNameRange     '2.3.11',
+111 silly addNameRange     '2.3.12',
+111 silly addNameRange     '2.4.0',
+111 silly addNameRange     '2.4.1',
+111 silly addNameRange     '2.4.2',
+111 silly addNameRange     '2.4.3',
+111 silly addNameRange     '2.4.4',
+111 silly addNameRange     '2.4.5',
+111 silly addNameRange     '2.4.6',
+111 silly addNameRange     '2.4.7',
+111 silly addNameRange     '2.5.0',
+111 silly addNameRange     '2.5.1',
+111 silly addNameRange     '2.5.2',
+111 silly addNameRange     '2.5.3',
+111 silly addNameRange     '2.5.4',
+111 silly addNameRange     '2.5.5',
+111 silly addNameRange     '2.5.6',
+111 silly addNameRange     '2.5.7',
+111 silly addNameRange     '2.5.8',
+111 silly addNameRange     '2.5.9',
+111 silly addNameRange     '3.0.0alpha1',
+111 silly addNameRange     '3.0.0alpha2',
+111 silly addNameRange     '3.0.0alpha3',
+111 silly addNameRange     '3.0.0alpha4',
+111 silly addNameRange     '3.0.0alpha5',
+111 silly addNameRange     '3.0.0beta1',
+111 silly addNameRange     '3.0.0beta2',
+111 silly addNameRange     '3.0.0beta3',
+111 silly addNameRange     '2.5.10',
+111 silly addNameRange     '3.0.0beta4',
+111 silly addNameRange     '2.5.11',
+111 silly addNameRange     '3.0.0beta6',
+111 silly addNameRange     '3.0.0beta7',
+111 silly addNameRange     '3.0.0rc1',
+111 silly addNameRange     '3.0.0rc2',
+111 silly addNameRange     '3.0.0rc3',
+111 silly addNameRange     '3.0.0rc4',
+111 silly addNameRange     '3.0.0rc5',
+111 silly addNameRange     '3.0.0',
+111 silly addNameRange     '3.0.1',
+111 silly addNameRange     '3.0.2',
+111 silly addNameRange     '3.0.3',
+111 silly addNameRange     '3.0.4',
+111 silly addNameRange     '3.0.5',
+111 silly addNameRange     '3.0.6' ] ]
+112 verbose addNamed [ 'express', '3.0.6' ]
+113 verbose addNamed [ '3.0.6', '3.0.6' ]
+114 silly lockFile e902e1c0-express-3-0-6 express@3.0.6
+115 verbose lock express@3.0.6 /Users/landon.noss/.npm/e902e1c0-express-3-0-6.lock
+116 verbose read json /Users/landon.noss/.npm/express/3.0.6/package/package.json
+117 silly addNameRange number 2 { name: 'request', range: '>=2.12.0- <2.13.0-', hasData: true }
+118 silly addNameRange versions [ 'request',
+118 silly addNameRange   [ '0.10.0',
+118 silly addNameRange     '0.8.3',
+118 silly addNameRange     '0.9.0',
+118 silly addNameRange     '0.9.1',
+118 silly addNameRange     '0.9.5',
+118 silly addNameRange     '1.0.0',
+118 silly addNameRange     '1.1.0',
+118 silly addNameRange     '1.1.1',
+118 silly addNameRange     '1.2.0',
+118 silly addNameRange     '1.9.0',
+118 silly addNameRange     '1.9.1',
+118 silly addNameRange     '1.9.2',
+118 silly addNameRange     '1.9.3',
+118 silly addNameRange     '1.9.5',
+118 silly addNameRange     '1.9.7',
+118 silly addNameRange     '1.9.8',
+118 silly addNameRange     '1.9.9',
+118 silly addNameRange     '2.0.0',
+118 silly addNameRange     '2.0.1',
+118 silly addNameRange     '2.0.2',
+118 silly addNameRange     '2.0.3',
+118 silly addNameRange     '2.0.4',
+118 silly addNameRange     '2.0.5',
+118 silly addNameRange     '2.1.0',
+118 silly addNameRange     '2.1.1',
+118 silly addNameRange     '2.2.0',
+118 silly addNameRange     '2.2.5',
+118 silly addNameRange     '2.2.6',
+118 silly addNameRange     '2.2.9',
+118 silly addNameRange     '2.9.0',
+118 silly addNameRange     '2.9.1',
+118 silly addNameRange     '2.9.2',
+118 silly addNameRange     '2.9.3',
+118 silly addNameRange     '2.9.100',
+118 silly addNameRange     '2.9.150',
+118 silly addNameRange     '2.9.151',
+118 silly addNameRange     '2.9.152',
+118 silly addNameRange     '2.9.153',
+118 silly addNameRange     '2.9.200',
+118 silly addNameRange     '2.9.201',
+118 silly addNameRange     '2.9.202',
+118 silly addNameRange     '2.9.203',
+118 silly addNameRange     '2.10.0',
+118 silly addNameRange     '2.11.0',
+118 silly addNameRange     '2.11.1',
+118 silly addNameRange     '2.11.2',
+118 silly addNameRange     '2.11.3',
+118 silly addNameRange     '2.11.4',
+118 silly addNameRange     '2.12.0' ] ]
+119 verbose addNamed [ 'request', '2.12.0' ]
+120 verbose addNamed [ '2.12.0', '2.12.0' ]
+121 silly lockFile ba282548-request-2-12-0 request@2.12.0
+122 verbose lock request@2.12.0 /Users/landon.noss/.npm/ba282548-request-2-12-0.lock
+123 silly addNameRange number 2 { name: 'cleverbot-node',
+123 silly addNameRange   range: '>=0.1.0- <0.2.0-',
+123 silly addNameRange   hasData: true }
+124 silly addNameRange versions [ 'cleverbot-node', [ '0.1.0', '0.1.1' ] ]
+125 verbose addNamed [ 'cleverbot-node', '0.1.1' ]
+126 verbose addNamed [ '0.1.1', '0.1.1' ]
+127 silly lockFile 291197f2-cleverbot-node-0-1-1 cleverbot-node@0.1.1
+128 verbose lock cleverbot-node@0.1.1 /Users/landon.noss/.npm/291197f2-cleverbot-node-0-1-1.lock
+129 verbose read json /Users/landon.noss/.npm/request/2.12.0/package/package.json
+130 verbose read json /Users/landon.noss/.npm/cleverbot-node/0.1.1/package/package.json
+131 silly addNameRange number 2 { name: 'jsdom', range: '>=0.2.0- <0.3.0-', hasData: true }
+132 silly addNameRange versions [ 'jsdom',
+132 silly addNameRange   [ '0.0.1',
+132 silly addNameRange     '0.1.2',
+132 silly addNameRange     '0.1.4',
+132 silly addNameRange     '0.1.5',
+132 silly addNameRange     '0.1.6',
+132 silly addNameRange     '0.1.7',
+132 silly addNameRange     '0.1.8',
+132 silly addNameRange     '0.1.9',
+132 silly addNameRange     '0.1.10',
+132 silly addNameRange     '0.1.11',
+132 silly addNameRange     '0.1.12',
+132 silly addNameRange     '0.1.13',
+132 silly addNameRange     '0.1.15',
+132 silly addNameRange     '0.1.16',
+132 silly addNameRange     '0.1.17',
+132 silly addNameRange     '0.1.18',
+132 silly addNameRange     '0.1.19',
+132 silly addNameRange     '0.1.20',
+132 silly addNameRange     '0.1.21',
+132 silly addNameRange     '0.1.22',
+132 silly addNameRange     '0.1.23',
+132 silly addNameRange     '0.2.0',
+132 silly addNameRange     '0.2.1',
+132 silly addNameRange     '0.2.2',
+132 silly addNameRange     '0.2.3',
+132 silly addNameRange     '0.2.4',
+132 silly addNameRange     '0.2.5',
+132 silly addNameRange     '0.2.6',
+132 silly addNameRange     '0.2.7',
+132 silly addNameRange     '0.2.8',
+132 silly addNameRange     '0.2.9',
+132 silly addNameRange     '0.2.10',
+132 silly addNameRange     '0.2.11',
+132 silly addNameRange     '0.2.12',
+132 silly addNameRange     '0.2.13',
+132 silly addNameRange     '0.2.14',
+132 silly addNameRange     '0.2.15',
+132 silly addNameRange     '0.2.16',
+132 silly addNameRange     '0.2.17',
+132 silly addNameRange     '0.2.18',
+132 silly addNameRange     '0.2.19',
+132 silly addNameRange     '0.3.0',
+132 silly addNameRange     '0.3.1',
+132 silly addNameRange     '0.3.2',
+132 silly addNameRange     '0.3.3',
+132 silly addNameRange     '0.3.4' ] ]
+133 verbose addNamed [ 'jsdom', '0.2.19' ]
+134 verbose addNamed [ '0.2.19', '0.2.19' ]
+135 silly lockFile 37e839c1-jsdom-0-2-19 jsdom@0.2.19
+136 verbose lock jsdom@0.2.19 /Users/landon.noss/.npm/37e839c1-jsdom-0-2-19.lock
+137 silly lockFile ba282548-request-2-12-0 request@2.12.0
+138 silly lockFile 291197f2-cleverbot-node-0-1-1 cleverbot-node@0.1.1
+139 verbose read json /Users/landon.noss/.npm/jsdom/0.2.19/package/package.json
+140 silly lockFile e902e1c0-express-3-0-6 express@3.0.6
+141 silly lockFile c41d6fda-request-2-12-x request@~2.12.x
+142 silly lockFile 406c98fe-express-3-0-x express@~3.0.x
+143 silly lockFile 8f90be33-cleverbot-node-0-1-x cleverbot-node@~0.1.x
+144 verbose from cache /Users/landon.noss/Projects/f00bar/node_modules/request/package.json
+145 verbose read json /Users/landon.noss/Projects/f00bar/node_modules/request/node_modules/form-data/package.json
+146 verbose read json /Users/landon.noss/Projects/f00bar/node_modules/request/node_modules/mime/package.json
+147 verbose from cache /Users/landon.noss/Projects/f00bar/node_modules/cleverbot-node/package.json
+148 silly lockFile 37e839c1-jsdom-0-2-19 jsdom@0.2.19
+149 silly lockFile eafad90a-jsdom-0-2-x jsdom@~0.2.x
+150 verbose from cache /Users/landon.noss/Projects/f00bar/node_modules/jsdom/package.json
+151 verbose cache add [ 'form-data', '~0.0.3' ]
+152 silly cache add name="form-data" spec="~0.0.3" args=["form-data","~0.0.3"]
+153 verbose parsed url { pathname: '~0.0.3', path: '~0.0.3', href: '~0.0.3' }
+154 verbose addNamed [ 'form-data', '~0.0.3' ]
+155 verbose addNamed [ null, '>=0.0.3- <0.1.0-' ]
+156 silly lockFile 539eee6c-form-data-0-0-3 form-data@~0.0.3
+157 verbose lock form-data@~0.0.3 /Users/landon.noss/.npm/539eee6c-form-data-0-0-3.lock
+158 verbose cache add [ 'mime', '~1.2.7' ]
+159 silly cache add name="mime" spec="~1.2.7" args=["mime","~1.2.7"]
+160 verbose parsed url { pathname: '~1.2.7', path: '~1.2.7', href: '~1.2.7' }
+161 verbose addNamed [ 'mime', '~1.2.7' ]
+162 verbose addNamed [ null, '>=1.2.7- <1.3.0-' ]
+163 silly lockFile 3725bc70-mime-1-2-7 mime@~1.2.7
+164 verbose lock mime@~1.2.7 /Users/landon.noss/.npm/3725bc70-mime-1-2-7.lock
+165 verbose read json /Users/landon.noss/Projects/f00bar/node_modules/jsdom/node_modules/contextify/package.json
+166 verbose read json /Users/landon.noss/Projects/f00bar/node_modules/jsdom/node_modules/cssom/package.json
+167 verbose read json /Users/landon.noss/Projects/f00bar/node_modules/jsdom/node_modules/cssstyle/package.json
+168 verbose read json /Users/landon.noss/Projects/f00bar/node_modules/jsdom/node_modules/htmlparser/package.json
+169 silly addNameRange { name: 'form-data', range: '>=0.0.3- <0.1.0-', hasData: false }
+170 silly addNameRange { name: 'mime', range: '>=1.2.7- <1.3.0-', hasData: false }
+171 verbose url raw form-data
+172 verbose url resolving [ 'https://registry.npmjs.org/', './form-data' ]
+173 verbose url resolved https://registry.npmjs.org/form-data
+174 info retry registry request attempt 1 at 17:37:01
+175 verbose etag "ALDYAS3BCZT7AH0PEBXZIBY08"
+176 http GET https://registry.npmjs.org/form-data
+177 verbose cache add [ 'htmlparser', '1.x' ]
+178 silly cache add name="htmlparser" spec="1.x" args=["htmlparser","1.x"]
+179 verbose parsed url { pathname: '1.x', path: '1.x', href: '1.x' }
+180 verbose addNamed [ 'htmlparser', '1.x' ]
+181 verbose addNamed [ null, '>=1.0.0- <2.0.0-' ]
+182 silly lockFile 4d163ec2-htmlparser-1-x htmlparser@1.x
+183 verbose lock htmlparser@1.x /Users/landon.noss/.npm/4d163ec2-htmlparser-1-x.lock
+184 verbose cache add [ 'request', '2.x' ]
+185 silly cache add name="request" spec="2.x" args=["request","2.x"]
+186 verbose parsed url { pathname: '2.x', path: '2.x', href: '2.x' }
+187 verbose addNamed [ 'request', '2.x' ]
+188 verbose addNamed [ null, '>=2.0.0- <3.0.0-' ]
+189 silly lockFile c23ecae0-request-2-x request@2.x
+190 verbose lock request@2.x /Users/landon.noss/.npm/c23ecae0-request-2-x.lock
+191 verbose cache add [ 'cssom', '0.2.x' ]
+192 silly cache add name="cssom" spec="0.2.x" args=["cssom","0.2.x"]
+193 verbose parsed url { pathname: '0.2.x', path: '0.2.x', href: '0.2.x' }
+194 verbose addNamed [ 'cssom', '0.2.x' ]
+195 verbose addNamed [ null, '>=0.2.0- <0.3.0-' ]
+196 silly lockFile c83aab2e-cssom-0-2-x cssom@0.2.x
+197 verbose lock cssom@0.2.x /Users/landon.noss/.npm/c83aab2e-cssom-0-2-x.lock
+198 verbose cache add [ 'cssstyle', '>=0.2.3' ]
+199 silly cache add name="cssstyle" spec=">=0.2.3" args=["cssstyle",">=0.2.3"]
+200 verbose parsed url { pathname: '%3E=0.2.3', path: '%3E=0.2.3', href: '%3E=0.2.3' }
+201 verbose addNamed [ 'cssstyle', '>=0.2.3' ]
+202 verbose addNamed [ null, '>=0.2.3' ]
+203 silly lockFile 76808a6b-cssstyle-0-2-3 cssstyle@>=0.2.3
+204 verbose lock cssstyle@>=0.2.3 /Users/landon.noss/.npm/76808a6b-cssstyle-0-2-3.lock
+205 verbose cache add [ 'contextify', '0.1.x' ]
+206 silly cache add name="contextify" spec="0.1.x" args=["contextify","0.1.x"]
+207 verbose parsed url { pathname: '0.1.x', path: '0.1.x', href: '0.1.x' }
+208 verbose addNamed [ 'contextify', '0.1.x' ]
+209 verbose addNamed [ null, '>=0.1.0- <0.2.0-' ]
+210 silly lockFile fb83e208-contextify-0-1-x contextify@0.1.x
+211 verbose lock contextify@0.1.x /Users/landon.noss/.npm/fb83e208-contextify-0-1-x.lock
+212 silly addNameRange { name: 'htmlparser', range: '>=1.0.0- <2.0.0-', hasData: false }
+213 silly addNameRange { name: 'request', range: '>=2.0.0- <3.0.0-', hasData: false }
+214 silly addNameRange { name: 'cssom', range: '>=0.2.0- <0.3.0-', hasData: false }
+215 silly addNameRange { name: 'cssstyle', range: '>=0.2.3', hasData: false }
+216 silly addNameRange { name: 'contextify', range: '>=0.1.0- <0.2.0-', hasData: false }
+217 verbose url raw mime
+218 verbose url resolving [ 'https://registry.npmjs.org/', './mime' ]
+219 verbose url resolved https://registry.npmjs.org/mime
+220 info retry registry request attempt 1 at 17:37:01
+221 verbose etag "7L2TT0VBAMKKFDULLOR5KTHU"
+222 http GET https://registry.npmjs.org/mime
+223 verbose url raw request
+224 verbose url resolving [ 'https://registry.npmjs.org/', './request' ]
+225 verbose url resolved https://registry.npmjs.org/request
+226 info retry registry request attempt 1 at 17:37:01
+227 verbose etag "AP4BX7CHQHDPVPICLD7IT481M"
+228 http GET https://registry.npmjs.org/request
+229 verbose url raw htmlparser
+230 verbose url resolving [ 'https://registry.npmjs.org/', './htmlparser' ]
+231 verbose url resolved https://registry.npmjs.org/htmlparser
+232 info retry registry request attempt 1 at 17:37:01
+233 verbose etag "7CTE7AP4B8SUS9RPOVJFW5HSD"
+234 http GET https://registry.npmjs.org/htmlparser
+235 verbose url raw cssom
+236 verbose url resolving [ 'https://registry.npmjs.org/', './cssom' ]
+237 verbose url resolved https://registry.npmjs.org/cssom
+238 info retry registry request attempt 1 at 17:37:01
+239 verbose etag "3YQVJQWKFIOHVJBPSG74DUHAN"
+240 http GET https://registry.npmjs.org/cssom
+241 verbose url raw contextify
+242 verbose url resolving [ 'https://registry.npmjs.org/', './contextify' ]
+243 verbose url resolved https://registry.npmjs.org/contextify
+244 info retry registry request attempt 1 at 17:37:01
+245 verbose etag "31A2C4G6QIPCLNKVBU245LED1"
+246 http GET https://registry.npmjs.org/contextify
+247 verbose url raw cssstyle
+248 verbose url resolving [ 'https://registry.npmjs.org/', './cssstyle' ]
+249 verbose url resolved https://registry.npmjs.org/cssstyle
+250 info retry registry request attempt 1 at 17:37:01
+251 verbose etag "7X6CF7D7C8ZXWT83EYV89MAS4"
+252 http GET https://registry.npmjs.org/cssstyle
+253 http 304 https://registry.npmjs.org/form-data
+254 silly registry.get cb [ 304,
+254 silly registry.get   { server: 'CouchDB/1.2.1 (Erlang OTP/R15B)',
+254 silly registry.get     etag: '"ALDYAS3BCZT7AH0PEBXZIBY08"',
+254 silly registry.get     date: 'Thu, 17 Jan 2013 01:35:32 GMT',
+254 silly registry.get     'content-length': '0' } ]
+255 verbose etag form-data from cache
+256 silly addNameRange number 2 { name: 'form-data', range: '>=0.0.3- <0.1.0-', hasData: true }
+257 silly addNameRange versions [ 'form-data',
+257 silly addNameRange   [ '0.0.0', '0.0.2', '0.0.3', '0.0.4', '0.0.5', '0.0.6' ] ]
+258 verbose addNamed [ 'form-data', '0.0.6' ]
+259 verbose addNamed [ '0.0.6', '0.0.6' ]
+260 silly lockFile 7e6f9332-form-data-0-0-6 form-data@0.0.6
+261 verbose lock form-data@0.0.6 /Users/landon.noss/.npm/7e6f9332-form-data-0-0-6.lock
+262 verbose read json /Users/landon.noss/.npm/form-data/0.0.6/package/package.json
+263 silly lockFile 7e6f9332-form-data-0-0-6 form-data@0.0.6
+264 silly lockFile 539eee6c-form-data-0-0-3 form-data@~0.0.3
+265 verbose from cache /Users/landon.noss/Projects/f00bar/node_modules/request/node_modules/form-data/package.json
+266 http 304 https://registry.npmjs.org/request
+267 silly registry.get cb [ 304,
+267 silly registry.get   { server: 'CouchDB/1.2.1 (Erlang OTP/R15B)',
+267 silly registry.get     etag: '"AP4BX7CHQHDPVPICLD7IT481M"',
+267 silly registry.get     date: 'Thu, 17 Jan 2013 01:35:32 GMT',
+267 silly registry.get     'content-length': '0' } ]
+268 verbose etag request from cache
+269 verbose read json /Users/landon.noss/Projects/f00bar/node_modules/request/node_modules/form-data/node_modules/async/package.json
+270 verbose read json /Users/landon.noss/Projects/f00bar/node_modules/request/node_modules/form-data/node_modules/combined-stream/package.json
+271 verbose cache add [ 'combined-stream', '0.0.3' ]
+272 silly cache add name="combined-stream" spec="0.0.3" args=["combined-stream","0.0.3"]
+273 verbose parsed url { pathname: '0.0.3', path: '0.0.3', href: '0.0.3' }
+274 verbose addNamed [ 'combined-stream', '0.0.3' ]
+275 verbose addNamed [ '0.0.3', '0.0.3' ]
+276 silly lockFile ebf89023-combined-stream-0-0-3 combined-stream@0.0.3
+277 verbose lock combined-stream@0.0.3 /Users/landon.noss/.npm/ebf89023-combined-stream-0-0-3.lock
+278 verbose cache add [ 'mime', '~1.2.2' ]
+279 silly cache add name="mime" spec="~1.2.2" args=["mime","~1.2.2"]
+280 verbose parsed url { pathname: '~1.2.2', path: '~1.2.2', href: '~1.2.2' }
+281 verbose addNamed [ 'mime', '~1.2.2' ]
+282 verbose addNamed [ null, '>=1.2.2- <1.3.0-' ]
+283 silly lockFile e9223251-mime-1-2-2 mime@~1.2.2
+284 verbose lock mime@~1.2.2 /Users/landon.noss/.npm/e9223251-mime-1-2-2.lock
+285 verbose cache add [ 'async', '~0.1.9' ]
+286 silly cache add name="async" spec="~0.1.9" args=["async","~0.1.9"]
+287 verbose parsed url { pathname: '~0.1.9', path: '~0.1.9', href: '~0.1.9' }
+288 verbose addNamed [ 'async', '~0.1.9' ]
+289 verbose addNamed [ null, '>=0.1.9- <0.2.0-' ]
+290 silly lockFile e08457bb-async-0-1-9 async@~0.1.9
+291 verbose lock async@~0.1.9 /Users/landon.noss/.npm/e08457bb-async-0-1-9.lock
+292 silly addNameRange { name: 'mime', range: '>=1.2.2- <1.3.0-', hasData: false }
+293 silly addNameRange number 2 { name: 'request', range: '>=2.0.0- <3.0.0-', hasData: true }
+294 silly addNameRange versions [ 'request',
+294 silly addNameRange   [ '0.10.0',
+294 silly addNameRange     '0.8.3',
+294 silly addNameRange     '0.9.0',
+294 silly addNameRange     '0.9.1',
+294 silly addNameRange     '0.9.5',
+294 silly addNameRange     '1.0.0',
+294 silly addNameRange     '1.1.0',
+294 silly addNameRange     '1.1.1',
+294 silly addNameRange     '1.2.0',
+294 silly addNameRange     '1.9.0',
+294 silly addNameRange     '1.9.1',
+294 silly addNameRange     '1.9.2',
+294 silly addNameRange     '1.9.3',
+294 silly addNameRange     '1.9.5',
+294 silly addNameRange     '1.9.7',
+294 silly addNameRange     '1.9.8',
+294 silly addNameRange     '1.9.9',
+294 silly addNameRange     '2.0.0',
+294 silly addNameRange     '2.0.1',
+294 silly addNameRange     '2.0.2',
+294 silly addNameRange     '2.0.3',
+294 silly addNameRange     '2.0.4',
+294 silly addNameRange     '2.0.5',
+294 silly addNameRange     '2.1.0',
+294 silly addNameRange     '2.1.1',
+294 silly addNameRange     '2.2.0',
+294 silly addNameRange     '2.2.5',
+294 silly addNameRange     '2.2.6',
+294 silly addNameRange     '2.2.9',
+294 silly addNameRange     '2.9.0',
+294 silly addNameRange     '2.9.1',
+294 silly addNameRange     '2.9.2',
+294 silly addNameRange     '2.9.3',
+294 silly addNameRange     '2.9.100',
+294 silly addNameRange     '2.9.150',
+294 silly addNameRange     '2.9.151',
+294 silly addNameRange     '2.9.152',
+294 silly addNameRange     '2.9.153',
+294 silly addNameRange     '2.9.200',
+294 silly addNameRange     '2.9.201',
+294 silly addNameRange     '2.9.202',
+294 silly addNameRange     '2.9.203',
+294 silly addNameRange     '2.10.0',
+294 silly addNameRange     '2.11.0',
+294 silly addNameRange     '2.11.1',
+294 silly addNameRange     '2.11.2',
+294 silly addNameRange     '2.11.3',
+294 silly addNameRange     '2.11.4',
+294 silly addNameRange     '2.12.0' ] ]
+295 verbose addNamed [ 'request', '2.12.0' ]
+296 verbose addNamed [ '2.12.0', '2.12.0' ]
+297 silly lockFile ba282548-request-2-12-0 request@2.12.0
+298 verbose lock request@2.12.0 /Users/landon.noss/.npm/ba282548-request-2-12-0.lock
+299 silly addNameRange { name: 'async', range: '>=0.1.9- <0.2.0-', hasData: false }
+300 http 304 https://registry.npmjs.org/mime
+301 silly registry.get cb [ 304,
+301 silly registry.get   { server: 'CouchDB/1.2.1 (Erlang OTP/R15B)',
+301 silly registry.get     etag: '"7L2TT0VBAMKKFDULLOR5KTHU"',
+301 silly registry.get     date: 'Thu, 17 Jan 2013 01:35:32 GMT',
+301 silly registry.get     'content-length': '0' } ]
+302 verbose etag mime from cache
+303 verbose from cache /Users/landon.noss/.npm/request/2.12.0/package/package.json
+304 verbose url raw mime
+305 verbose url resolving [ 'https://registry.npmjs.org/', './mime' ]
+306 verbose url resolved https://registry.npmjs.org/mime
+307 info retry registry request attempt 1 at 17:37:01
+308 verbose etag "7L2TT0VBAMKKFDULLOR5KTHU"
+309 http GET https://registry.npmjs.org/mime
+310 silly lockFile ba282548-request-2-12-0 request@2.12.0
+311 verbose url raw combined-stream/0.0.3
+312 verbose url resolving [ 'https://registry.npmjs.org/', './combined-stream/0.0.3' ]
+313 verbose url resolved https://registry.npmjs.org/combined-stream/0.0.3
+314 info retry registry request attempt 1 at 17:37:01
+315 verbose etag "83EVMDGB72N9T9P3D7EEOHFVY"
+316 http GET https://registry.npmjs.org/combined-stream/0.0.3
+317 silly lockFile c23ecae0-request-2-x request@2.x
+318 verbose url raw async
+319 verbose url resolving [ 'https://registry.npmjs.org/', './async' ]
+320 verbose url resolved https://registry.npmjs.org/async
+321 info retry registry request attempt 1 at 17:37:01
+322 verbose etag "34J5E9LDLHZ5TWGOVY4ON8S96"
+323 http GET https://registry.npmjs.org/async
+324 silly addNameRange number 2 { name: 'mime', range: '>=1.2.7- <1.3.0-', hasData: true }
+325 silly addNameRange versions [ 'mime',
+325 silly addNameRange   [ '1.0.0',
+325 silly addNameRange     '1.1.0',
+325 silly addNameRange     '1.2.1',
+325 silly addNameRange     '1.2.2',
+325 silly addNameRange     '1.2.3',
+325 silly addNameRange     '1.2.4',
+325 silly addNameRange     '1.2.5',
+325 silly addNameRange     '1.2.6',
+325 silly addNameRange     '1.2.7',
+325 silly addNameRange     '1.2.8' ] ]
+326 verbose addNamed [ 'mime', '1.2.8' ]
+327 verbose addNamed [ '1.2.8', '1.2.8' ]
+328 silly lockFile 25954247-mime-1-2-8 mime@1.2.8
+329 verbose lock mime@1.2.8 /Users/landon.noss/.npm/25954247-mime-1-2-8.lock
+330 verbose read json /Users/landon.noss/Projects/f00bar/node_modules/jsdom/node_modules/request/package.json
+331 verbose read json /Users/landon.noss/.npm/mime/1.2.8/package/package.json
+332 http 304 https://registry.npmjs.org/htmlparser
+333 silly registry.get cb [ 304,
+333 silly registry.get   { server: 'CouchDB/1.2.1 (Erlang OTP/R15B)',
+333 silly registry.get     etag: '"7CTE7AP4B8SUS9RPOVJFW5HSD"',
+333 silly registry.get     date: 'Thu, 17 Jan 2013 01:35:32 GMT',
+333 silly registry.get     'content-length': '0' } ]
+334 verbose etag htmlparser from cache
+335 http 304 https://registry.npmjs.org/contextify
+336 silly registry.get cb [ 304,
+336 silly registry.get   { server: 'CouchDB/1.2.1 (Erlang OTP/R15B)',
+336 silly registry.get     etag: '"31A2C4G6QIPCLNKVBU245LED1"',
+336 silly registry.get     date: 'Thu, 17 Jan 2013 01:35:32 GMT',
+336 silly registry.get     'content-length': '0' } ]
+337 verbose etag contextify from cache
+338 http 304 https://registry.npmjs.org/cssom
+339 silly registry.get cb [ 304,
+339 silly registry.get   { server: 'CouchDB/1.2.1 (Erlang OTP/R15B)',
+339 silly registry.get     etag: '"3YQVJQWKFIOHVJBPSG74DUHAN"',
+339 silly registry.get     date: 'Thu, 17 Jan 2013 01:35:32 GMT',
+339 silly registry.get     'content-length': '0' } ]
+340 verbose etag cssom from cache
+341 silly addNameRange number 2 { name: 'htmlparser', range: '>=1.0.0- <2.0.0-', hasData: true }
+342 silly addNameRange versions [ 'htmlparser',
+342 silly addNameRange   [ '1.6.2',
+342 silly addNameRange     '1.7.0',
+342 silly addNameRange     '1.7.1',
+342 silly addNameRange     '1.7.2',
+342 silly addNameRange     '1.7.3',
+342 silly addNameRange     '1.7.4',
+342 silly addNameRange     '1.7.5',
+342 silly addNameRange     '1.7.6' ] ]
+343 verbose addNamed [ 'htmlparser', '1.7.6' ]
+344 verbose addNamed [ '1.7.6', '1.7.6' ]
+345 silly lockFile 1f8880a7-htmlparser-1-7-6 htmlparser@1.7.6
+346 verbose lock htmlparser@1.7.6 /Users/landon.noss/.npm/1f8880a7-htmlparser-1-7-6.lock
+347 silly addNameRange number 2 { name: 'contextify', range: '>=0.1.0- <0.2.0-', hasData: true }
+348 silly addNameRange versions [ 'contextify',
+348 silly addNameRange   [ '0.0.2',
+348 silly addNameRange     '0.0.3',
+348 silly addNameRange     '0.0.4',
+348 silly addNameRange     '0.0.5',
+348 silly addNameRange     '0.0.6',
+348 silly addNameRange     '0.0.7',
+348 silly addNameRange     '0.1.0',
+348 silly addNameRange     '0.1.1',
+348 silly addNameRange     '0.1.2',
+348 silly addNameRange     '0.1.3' ] ]
+349 verbose addNamed [ 'contextify', '0.1.3' ]
+350 verbose addNamed [ '0.1.3', '0.1.3' ]
+351 silly lockFile 7770d4b3-contextify-0-1-3 contextify@0.1.3
+352 verbose lock contextify@0.1.3 /Users/landon.noss/.npm/7770d4b3-contextify-0-1-3.lock
+353 silly addNameRange number 2 { name: 'cssom', range: '>=0.2.0- <0.3.0-', hasData: true }
+354 silly addNameRange versions [ 'cssom',
+354 silly addNameRange   [ '0.2.0', '0.2.1', '0.2.2', '0.2.3', '0.2.4', '0.2.5' ] ]
+355 verbose addNamed [ 'cssom', '0.2.5' ]
+356 verbose addNamed [ '0.2.5', '0.2.5' ]
+357 silly lockFile 452affd3-cssom-0-2-5 cssom@0.2.5
+358 verbose lock cssom@0.2.5 /Users/landon.noss/.npm/452affd3-cssom-0-2-5.lock
+359 verbose read json /Users/landon.noss/.npm/htmlparser/1.7.6/package/package.json
+360 verbose read json /Users/landon.noss/.npm/cssom/0.2.5/package/package.json
+361 http 304 https://registry.npmjs.org/cssstyle
+362 silly registry.get cb [ 304,
+362 silly registry.get   { server: 'CouchDB/1.2.1 (Erlang OTP/R15B)',
+362 silly registry.get     etag: '"7X6CF7D7C8ZXWT83EYV89MAS4"',
+362 silly registry.get     date: 'Thu, 17 Jan 2013 01:35:32 GMT',
+362 silly registry.get     'content-length': '0' } ]
+363 verbose etag cssstyle from cache
+364 silly lockFile 25954247-mime-1-2-8 mime@1.2.8
+365 verbose read json /Users/landon.noss/.npm/contextify/0.1.3/package/package.json
+366 silly lockFile 3725bc70-mime-1-2-7 mime@~1.2.7
+367 verbose from cache /Users/landon.noss/Projects/f00bar/node_modules/request/node_modules/mime/package.json
+368 silly addNameRange number 2 { name: 'cssstyle', range: '>=0.2.3', hasData: true }
+369 silly addNameRange versions [ 'cssstyle', [ '0.1.0', '0.2.0', '0.2.1', '0.2.2', '0.2.3' ] ]
+370 verbose addNamed [ 'cssstyle', '0.2.3' ]
+371 verbose addNamed [ '0.2.3', '0.2.3' ]
+372 silly lockFile 8a9b7d6a-cssstyle-0-2-3 cssstyle@0.2.3
+373 verbose lock cssstyle@0.2.3 /Users/landon.noss/.npm/8a9b7d6a-cssstyle-0-2-3.lock
+374 silly lockFile 1f8880a7-htmlparser-1-7-6 htmlparser@1.7.6
+375 silly lockFile 452affd3-cssom-0-2-5 cssom@0.2.5
+376 verbose read json /Users/landon.noss/.npm/cssstyle/0.2.3/package/package.json
+377 silly lockFile 4d163ec2-htmlparser-1-x htmlparser@1.x
+378 silly lockFile c83aab2e-cssom-0-2-x cssom@0.2.x
+379 silly lockFile 7770d4b3-contextify-0-1-3 contextify@0.1.3
+380 verbose from cache /Users/landon.noss/Projects/f00bar/node_modules/jsdom/node_modules/htmlparser/package.json
+381 verbose from cache /Users/landon.noss/Projects/f00bar/node_modules/jsdom/node_modules/cssom/package.json
+382 silly lockFile fb83e208-contextify-0-1-x contextify@0.1.x
+383 verbose from cache /Users/landon.noss/Projects/f00bar/node_modules/jsdom/node_modules/contextify/package.json
 384 silly lockFile 8a9b7d6a-cssstyle-0-2-3 cssstyle@0.2.3
-385 silly lockFile 76808a6b-cssstyle-0-2-3 cssstyle@>=0.2.3
-386 verbose from cache /Users/landon.noss/Projects/f00bar/node_modules/jsdom/node_modules/cssstyle/package.json
-387 verbose cache add [ 'cssom', '0.2.x' ]
-388 silly cache add name="cssom" spec="0.2.x" args=["cssom","0.2.x"]
-389 verbose parsed url { pathname: '0.2.x', path: '0.2.x', href: '0.2.x' }
-390 verbose addNamed [ 'cssom', '0.2.x' ]
-391 verbose addNamed [ null, '>=0.2.0- <0.3.0-' ]
-392 silly lockFile c83aab2e-cssom-0-2-x cssom@0.2.x
-393 verbose lock cssom@0.2.x /Users/landon.noss/.npm/c83aab2e-cssom-0-2-x.lock
-394 silly addNameRange { name: 'cssom', range: '>=0.2.0- <0.3.0-', hasData: false }
-395 verbose cache add [ 'bindings', '*' ]
-396 silly cache add name="bindings" spec="*" args=["bindings","*"]
-397 verbose parsed url { pathname: '*', path: '*', href: '*' }
-398 verbose addNamed [ 'bindings', '*' ]
-399 verbose addNamed [ null, '' ]
-400 silly lockFile a3858fc2-bindings bindings@*
-401 verbose lock bindings@* /Users/landon.noss/.npm/a3858fc2-bindings.lock
-402 verbose url raw cssom
-403 verbose url resolving [ 'https://registry.npmjs.org/', './cssom' ]
-404 verbose url resolved https://registry.npmjs.org/cssom
-405 info retry registry request attempt 1 at 17:07:03
-406 verbose etag "3YQVJQWKFIOHVJBPSG74DUHAN"
-407 http GET https://registry.npmjs.org/cssom
-408 silly addNameRange { name: 'bindings', range: '', hasData: false }
-409 verbose url raw bindings
-410 verbose url resolving [ 'https://registry.npmjs.org/', './bindings' ]
-411 verbose url resolved https://registry.npmjs.org/bindings
-412 info retry registry request attempt 1 at 17:07:03
-413 verbose etag "3HXPYMT3WWBWOM5Y7K1RUU55F"
-414 http GET https://registry.npmjs.org/bindings
-415 http 304 https://registry.npmjs.org/mime
-416 silly registry.get cb [ 304,
-416 silly registry.get   { server: 'CouchDB/1.2.1 (Erlang OTP/R15B)',
-416 silly registry.get     etag: '"7L2TT0VBAMKKFDULLOR5KTHU"',
-416 silly registry.get     date: 'Thu, 17 Jan 2013 01:05:35 GMT',
-416 silly registry.get     'content-length': '0' } ]
-417 verbose etag mime from cache
-418 silly addNameRange number 2 { name: 'mime', range: '>=1.2.2- <1.3.0-', hasData: true }
-419 silly addNameRange versions [ 'mime',
-419 silly addNameRange   [ '1.0.0',
-419 silly addNameRange     '1.1.0',
-419 silly addNameRange     '1.2.1',
-419 silly addNameRange     '1.2.2',
-419 silly addNameRange     '1.2.3',
-419 silly addNameRange     '1.2.4',
-419 silly addNameRange     '1.2.5',
-419 silly addNameRange     '1.2.6',
-419 silly addNameRange     '1.2.7',
-419 silly addNameRange     '1.2.8' ] ]
-420 verbose addNamed [ 'mime', '1.2.8' ]
-421 verbose addNamed [ '1.2.8', '1.2.8' ]
-422 silly lockFile 25954247-mime-1-2-8 mime@1.2.8
-423 verbose lock mime@1.2.8 /Users/landon.noss/.npm/25954247-mime-1-2-8.lock
-424 verbose from cache /Users/landon.noss/.npm/mime/1.2.8/package/package.json
-425 silly lockFile 25954247-mime-1-2-8 mime@1.2.8
-426 silly lockFile e9223251-mime-1-2-2 mime@~1.2.2
-427 verbose read json /Users/landon.noss/Projects/f00bar/node_modules/request/node_modules/form-data/node_modules/mime/package.json
-428 http 304 https://registry.npmjs.org/combined-stream/0.0.3
-429 silly registry.get cb [ 304,
-429 silly registry.get   { server: 'CouchDB/1.2.1 (Erlang OTP/R15B)',
-429 silly registry.get     etag: '"83EVMDGB72N9T9P3D7EEOHFVY"',
-429 silly registry.get     date: 'Thu, 17 Jan 2013 01:05:35 GMT',
-429 silly registry.get     'content-length': '0' } ]
-430 verbose etag combined-stream/0.0.3 from cache
-431 verbose read json /Users/landon.noss/.npm/combined-stream/0.0.3/package/package.json
-432 silly lockFile ebf89023-combined-stream-0-0-3 combined-stream@0.0.3
-433 verbose from cache /Users/landon.noss/Projects/f00bar/node_modules/request/node_modules/form-data/node_modules/combined-stream/package.json
-434 verbose read json /Users/landon.noss/Projects/f00bar/node_modules/request/node_modules/form-data/node_modules/combined-stream/node_modules/delayed-stream/package.json
-435 verbose cache add [ 'delayed-stream', '0.0.5' ]
-436 silly cache add name="delayed-stream" spec="0.0.5" args=["delayed-stream","0.0.5"]
-437 verbose parsed url { pathname: '0.0.5', path: '0.0.5', href: '0.0.5' }
-438 verbose addNamed [ 'delayed-stream', '0.0.5' ]
-439 verbose addNamed [ '0.0.5', '0.0.5' ]
-440 silly lockFile 1ace22b7-delayed-stream-0-0-5 delayed-stream@0.0.5
-441 verbose lock delayed-stream@0.0.5 /Users/landon.noss/.npm/1ace22b7-delayed-stream-0-0-5.lock
-442 http 304 https://registry.npmjs.org/async
-443 silly registry.get cb [ 304,
-443 silly registry.get   { server: 'CouchDB/1.2.1 (Erlang OTP/R15B)',
-443 silly registry.get     etag: '"34J5E9LDLHZ5TWGOVY4ON8S96"',
-443 silly registry.get     date: 'Thu, 17 Jan 2013 01:05:35 GMT',
-443 silly registry.get     'content-length': '0' } ]
-444 verbose etag async from cache
-445 http 304 https://registry.npmjs.org/bindings
-446 silly registry.get cb [ 304,
-446 silly registry.get   { server: 'CouchDB/1.2.1 (Erlang OTP/R15B)',
-446 silly registry.get     etag: '"3HXPYMT3WWBWOM5Y7K1RUU55F"',
-446 silly registry.get     date: 'Thu, 17 Jan 2013 01:05:35 GMT',
-446 silly registry.get     'content-length': '0' } ]
-447 verbose etag bindings from cache
-448 http 304 https://registry.npmjs.org/cssom
-449 silly registry.get cb [ 304,
-449 silly registry.get   { server: 'CouchDB/1.2.1 (Erlang OTP/R15B)',
-449 silly registry.get     etag: '"3YQVJQWKFIOHVJBPSG74DUHAN"',
-449 silly registry.get     date: 'Thu, 17 Jan 2013 01:05:35 GMT',
-449 silly registry.get     'content-length': '0' } ]
-450 verbose etag cssom from cache
-451 verbose url raw delayed-stream/0.0.5
-452 verbose url resolving [ 'https://registry.npmjs.org/', './delayed-stream/0.0.5' ]
-453 verbose url resolved https://registry.npmjs.org/delayed-stream/0.0.5
-454 info retry registry request attempt 1 at 17:07:04
-455 verbose etag "2M9MYZL0N1ZNYDK47OE29WS79"
-456 http GET https://registry.npmjs.org/delayed-stream/0.0.5
-457 silly addNameRange number 2 { name: 'async', range: '>=0.1.9- <0.2.0-', hasData: true }
-458 silly addNameRange versions [ 'async',
-458 silly addNameRange   [ '0.1.0',
-458 silly addNameRange     '0.1.1',
-458 silly addNameRange     '0.1.2',
-458 silly addNameRange     '0.1.3',
-458 silly addNameRange     '0.1.4',
-458 silly addNameRange     '0.1.5',
-458 silly addNameRange     '0.1.6',
-458 silly addNameRange     '0.1.7',
-458 silly addNameRange     '0.1.8',
-458 silly addNameRange     '0.1.9',
-458 silly addNameRange     '0.1.10',
-458 silly addNameRange     '0.1.11',
-458 silly addNameRange     '0.1.12',
-458 silly addNameRange     '0.1.13',
-458 silly addNameRange     '0.1.14',
-458 silly addNameRange     '0.1.15',
-458 silly addNameRange     '0.1.16',
-458 silly addNameRange     '0.1.17',
-458 silly addNameRange     '0.1.18',
-458 silly addNameRange     '0.1.19',
-458 silly addNameRange     '0.1.20',
-458 silly addNameRange     '0.1.21',
-458 silly addNameRange     '0.1.22' ] ]
-459 verbose addNamed [ 'async', '0.1.22' ]
-460 verbose addNamed [ '0.1.22', '0.1.22' ]
-461 silly lockFile 09d21715-async-0-1-22 async@0.1.22
-462 verbose lock async@0.1.22 /Users/landon.noss/.npm/09d21715-async-0-1-22.lock
-463 silly addNameRange number 2 { name: 'bindings', range: '', hasData: true }
-464 silly addNameRange versions [ 'bindings',
-464 silly addNameRange   [ '0.0.1',
-464 silly addNameRange     '0.1.0',
-464 silly addNameRange     '0.1.1',
-464 silly addNameRange     '0.2.0',
-464 silly addNameRange     '0.2.1',
-464 silly addNameRange     '0.2.2',
-464 silly addNameRange     '0.2.3',
-464 silly addNameRange     '0.2.4',
-464 silly addNameRange     '0.3.0',
-464 silly addNameRange     '0.4.0',
-464 silly addNameRange     '1.0.0' ] ]
-465 verbose addNamed [ 'bindings', '1.0.0' ]
-466 verbose addNamed [ '1.0.0', '1.0.0' ]
-467 silly lockFile f01e5454-bindings-1-0-0 bindings@1.0.0
-468 verbose lock bindings@1.0.0 /Users/landon.noss/.npm/f01e5454-bindings-1-0-0.lock
-469 silly addNameRange number 2 { name: 'cssom', range: '>=0.2.0- <0.3.0-', hasData: true }
-470 silly addNameRange versions [ 'cssom',
-470 silly addNameRange   [ '0.2.0', '0.2.1', '0.2.2', '0.2.3', '0.2.4', '0.2.5' ] ]
-471 verbose addNamed [ 'cssom', '0.2.5' ]
-472 verbose addNamed [ '0.2.5', '0.2.5' ]
-473 silly lockFile 452affd3-cssom-0-2-5 cssom@0.2.5
-474 verbose lock cssom@0.2.5 /Users/landon.noss/.npm/452affd3-cssom-0-2-5.lock
-475 verbose read json /Users/landon.noss/.npm/async/0.1.22/package/package.json
-476 verbose read json /Users/landon.noss/.npm/bindings/1.0.0/package/package.json
-477 verbose from cache /Users/landon.noss/.npm/cssom/0.2.5/package/package.json
-478 silly lockFile 452affd3-cssom-0-2-5 cssom@0.2.5
-479 silly lockFile c83aab2e-cssom-0-2-x cssom@0.2.x
-480 verbose read json /Users/landon.noss/Projects/f00bar/node_modules/jsdom/node_modules/cssstyle/node_modules/cssom/package.json
-481 silly lockFile f01e5454-bindings-1-0-0 bindings@1.0.0
-482 silly lockFile a3858fc2-bindings bindings@*
-483 verbose from cache /Users/landon.noss/Projects/f00bar/node_modules/jsdom/node_modules/contextify/node_modules/bindings/package.json
-484 silly lockFile 09d21715-async-0-1-22 async@0.1.22
-485 silly lockFile e08457bb-async-0-1-9 async@~0.1.9
-486 verbose from cache /Users/landon.noss/Projects/f00bar/node_modules/request/node_modules/form-data/node_modules/async/package.json
-487 http 304 https://registry.npmjs.org/delayed-stream/0.0.5
-488 silly registry.get cb [ 304,
-488 silly registry.get   { server: 'CouchDB/1.2.1 (Erlang OTP/R15B)',
-488 silly registry.get     etag: '"2M9MYZL0N1ZNYDK47OE29WS79"',
-488 silly registry.get     date: 'Thu, 17 Jan 2013 01:05:35 GMT',
-488 silly registry.get     'content-length': '0' } ]
-489 verbose etag delayed-stream/0.0.5 from cache
-490 verbose read json /Users/landon.noss/.npm/delayed-stream/0.0.5/package/package.json
-491 silly lockFile 1ace22b7-delayed-stream-0-0-5 delayed-stream@0.0.5
-492 verbose from cache /Users/landon.noss/Projects/f00bar/node_modules/request/node_modules/form-data/node_modules/combined-stream/node_modules/delayed-stream/package.json
-493 info outdated updating [ [ '/Users/landon.noss/Projects/f00bar',
-493 info outdated     'express',
-493 info outdated     '3.0.3',
-493 info outdated     '3.0.6' ] ]
-494 verbose install where,what [ '/Users/landon.noss/Projects/f00bar', [ 'express@3.0.6' ] ]
-495 verbose from cache /Users/landon.noss/Projects/f00bar/package.json
-496 verbose from cache /Users/landon.noss/Projects/f00bar/node_modules/cleverbot-node/package.json
-497 verbose from cache /Users/landon.noss/Projects/f00bar/node_modules/ent/package.json
-498 verbose from cache /Users/landon.noss/Projects/f00bar/node_modules/express/package.json
-499 verbose from cache /Users/landon.noss/Projects/f00bar/node_modules/forever/package.json
-500 verbose from cache /Users/landon.noss/Projects/f00bar/node_modules/jsdom/package.json
-501 verbose from cache /Users/landon.noss/Projects/f00bar/node_modules/request/package.json
-502 verbose from cache /Users/landon.noss/Projects/f00bar/node_modules/twit/package.json
-503 verbose from cache /Users/landon.noss/Projects/f00bar/node_modules/twitter/package.json
-504 verbose from cache /Users/landon.noss/Projects/f00bar/node_modules/underscore/package.json
-505 verbose from cache /Users/landon.noss/Projects/f00bar/package.json
-506 verbose readDependencies using package.json deps
-507 verbose cache add [ 'express@3.0.6', null ]
-508 silly cache add name=undefined spec="express@3.0.6" args=["express@3.0.6",null]
-509 verbose parsed url { pathname: 'express@3.0.6',
-509 verbose parsed url   path: 'express@3.0.6',
-509 verbose parsed url   href: 'express@3.0.6' }
-510 silly cache add name="express" spec="3.0.6" args=["express","3.0.6"]
-511 verbose parsed url { pathname: '3.0.6', path: '3.0.6', href: '3.0.6' }
-512 verbose addNamed [ 'express', '3.0.6' ]
-513 verbose addNamed [ '3.0.6', '3.0.6' ]
-514 silly lockFile e902e1c0-express-3-0-6 express@3.0.6
-515 verbose lock express@3.0.6 /Users/landon.noss/.npm/e902e1c0-express-3-0-6.lock
-516 verbose url raw express/3.0.6
-517 verbose url resolving [ 'https://registry.npmjs.org/', './express/3.0.6' ]
-518 verbose url resolved https://registry.npmjs.org/express/3.0.6
-519 info retry registry request attempt 1 at 17:07:04
-520 verbose etag "CT94Z1C1RRXVQMF00R7BWS7OM"
-521 http GET https://registry.npmjs.org/express/3.0.6
-522 http 200 https://registry.npmjs.org/express/3.0.6
-523 silly registry.get cb [ 200,
-523 silly registry.get   { vary: 'Accept',
-523 silly registry.get     server: 'CouchDB/1.2.1 (Erlang OTP/R15B)',
-523 silly registry.get     etag: '"549565DFMON3H0UBCREG7LUG8"',
-523 silly registry.get     date: 'Thu, 17 Jan 2013 01:05:36 GMT',
-523 silly registry.get     'content-type': 'application/json',
-523 silly registry.get     'content-length': '7530' } ]
-524 silly lockFile 78f5258d-js-org-express-express-3-0-6-tgz https://registry.npmjs.org/express/-/express-3.0.6.tgz
-525 verbose lock https://registry.npmjs.org/express/-/express-3.0.6.tgz /Users/landon.noss/.npm/78f5258d-js-org-express-express-3-0-6-tgz.lock
-526 verbose addRemoteTarball [ 'https://registry.npmjs.org/express/-/express-3.0.6.tgz',
-526 verbose addRemoteTarball   'd274fcb868b95788bf4af62168d75d13fd77d8b4' ]
-527 info retry fetch attempt 1 at 17:07:05
-528 verbose fetch to= /var/folders/7y/q62v3k490s59j_zhkfk_qdbh000134/T/npm-11600/1358384825137-0.15393720800057054/tmp.tgz
-529 http GET https://registry.npmjs.org/express/-/express-3.0.6.tgz
-530 http 200 https://registry.npmjs.org/express/-/express-3.0.6.tgz
-531 silly shasum updated bytes 34936
-532 info shasum d274fcb868b95788bf4af62168d75d13fd77d8b4
-532 info shasum /var/folders/7y/q62v3k490s59j_zhkfk_qdbh000134/T/npm-11600/1358384825137-0.15393720800057054/tmp.tgz
-533 verbose tar unpack /var/folders/7y/q62v3k490s59j_zhkfk_qdbh000134/T/npm-11600/1358384825137-0.15393720800057054/tmp.tgz
-534 silly lockFile 7df9d3c7-5137-0-15393720800057054-package /var/folders/7y/q62v3k490s59j_zhkfk_qdbh000134/T/npm-11600/1358384825137-0.15393720800057054/package
-535 verbose lock /var/folders/7y/q62v3k490s59j_zhkfk_qdbh000134/T/npm-11600/1358384825137-0.15393720800057054/package /Users/landon.noss/.npm/7df9d3c7-5137-0-15393720800057054-package.lock
-536 silly gunzTarPerm modes [ '777', '666' ]
-537 silly gunzTarPerm extractEntry package.json
-538 silly gunzTarPerm modified mode [ 'package.json', 420, 438 ]
-539 silly gunzTarPerm extractEntry .npmignore
-540 silly gunzTarPerm modified mode [ '.npmignore', 420, 438 ]
-541 silly gunzTarPerm extractEntry LICENSE
-542 silly gunzTarPerm modified mode [ 'LICENSE', 420, 438 ]
-543 silly gunzTarPerm extractEntry client.js
-544 silly gunzTarPerm modified mode [ 'client.js', 420, 438 ]
-545 silly gunzTarPerm extractEntry index.js
-546 silly gunzTarPerm modified mode [ 'index.js', 420, 438 ]
-547 silly gunzTarPerm extractEntry test.js
-548 silly gunzTarPerm modified mode [ 'test.js', 420, 438 ]
-549 silly gunzTarPerm extractEntry .travis.yml
-550 silly gunzTarPerm modified mode [ '.travis.yml', 420, 438 ]
-551 silly gunzTarPerm extractEntry History.md
-552 silly gunzTarPerm modified mode [ 'History.md', 420, 438 ]
-553 silly gunzTarPerm extractEntry Makefile
-554 silly gunzTarPerm modified mode [ 'Makefile', 420, 438 ]
-555 silly gunzTarPerm extractEntry bin/express
-556 silly gunzTarPerm modified mode [ 'bin/express', 493, 511 ]
-557 silly gunzTarPerm extractEntry Readme.md
-558 silly gunzTarPerm modified mode [ 'Readme.md', 420, 438 ]
-559 silly gunzTarPerm extractEntry lib/application.js
-560 silly gunzTarPerm modified mode [ 'lib/application.js', 420, 438 ]
-561 silly gunzTarPerm extractEntry lib/express.js
-562 silly gunzTarPerm modified mode [ 'lib/express.js', 420, 438 ]
-563 silly gunzTarPerm extractEntry lib/middleware.js
-564 silly gunzTarPerm modified mode [ 'lib/middleware.js', 420, 438 ]
-565 silly gunzTarPerm extractEntry lib/request.js
-566 silly gunzTarPerm modified mode [ 'lib/request.js', 420, 438 ]
-567 silly gunzTarPerm extractEntry lib/response.js
-568 silly gunzTarPerm modified mode [ 'lib/response.js', 420, 438 ]
-569 silly gunzTarPerm extractEntry lib/utils.js
-570 silly gunzTarPerm modified mode [ 'lib/utils.js', 420, 438 ]
-571 silly gunzTarPerm extractEntry lib/view.js
-572 silly gunzTarPerm modified mode [ 'lib/view.js', 420, 438 ]
-573 silly gunzTarPerm extractEntry lib/router/index.js
-574 silly gunzTarPerm modified mode [ 'lib/router/index.js', 420, 438 ]
-575 silly gunzTarPerm extractEntry lib/router/route.js
-576 silly gunzTarPerm modified mode [ 'lib/router/route.js', 420, 438 ]
-577 verbose read json /var/folders/7y/q62v3k490s59j_zhkfk_qdbh000134/T/npm-11600/1358384825137-0.15393720800057054/package/package.json
-578 silly lockFile 7df9d3c7-5137-0-15393720800057054-package /var/folders/7y/q62v3k490s59j_zhkfk_qdbh000134/T/npm-11600/1358384825137-0.15393720800057054/package
-579 verbose from cache /var/folders/7y/q62v3k490s59j_zhkfk_qdbh000134/T/npm-11600/1358384825137-0.15393720800057054/package/package.json
-580 verbose tar pack [ '/Users/landon.noss/.npm/express/3.0.6/package.tgz',
-580 verbose tar pack   '/var/folders/7y/q62v3k490s59j_zhkfk_qdbh000134/T/npm-11600/1358384825137-0.15393720800057054/package' ]
-581 verbose tarball /Users/landon.noss/.npm/express/3.0.6/package.tgz
-582 verbose folder /var/folders/7y/q62v3k490s59j_zhkfk_qdbh000134/T/npm-11600/1358384825137-0.15393720800057054/package
-583 silly lockFile 21439695-ss-npm-express-3-0-6-package-tgz /Users/landon.noss/.npm/express/3.0.6/package.tgz
-584 verbose lock /Users/landon.noss/.npm/express/3.0.6/package.tgz /Users/landon.noss/.npm/21439695-ss-npm-express-3-0-6-package-tgz.lock
-585 silly lockFile 21439695-ss-npm-express-3-0-6-package-tgz /Users/landon.noss/.npm/express/3.0.6/package.tgz
-586 silly lockFile 9b4e31c0-n-noss-npm-express-3-0-6-package /Users/landon.noss/.npm/express/3.0.6/package
-587 verbose lock /Users/landon.noss/.npm/express/3.0.6/package /Users/landon.noss/.npm/9b4e31c0-n-noss-npm-express-3-0-6-package.lock
-588 silly lockFile 9b4e31c0-n-noss-npm-express-3-0-6-package /Users/landon.noss/.npm/express/3.0.6/package
-589 verbose tar unpack /Users/landon.noss/.npm/express/3.0.6/package.tgz
-590 silly lockFile 9b4e31c0-n-noss-npm-express-3-0-6-package /Users/landon.noss/.npm/express/3.0.6/package
-591 verbose lock /Users/landon.noss/.npm/express/3.0.6/package /Users/landon.noss/.npm/9b4e31c0-n-noss-npm-express-3-0-6-package.lock
-592 silly gunzTarPerm modes [ '777', '666' ]
-593 silly gunzTarPerm extractEntry package.json
-594 silly gunzTarPerm extractEntry .npmignore
-595 silly gunzTarPerm extractEntry LICENSE
-596 silly gunzTarPerm extractEntry client.js
-597 silly gunzTarPerm extractEntry index.js
-598 silly gunzTarPerm extractEntry test.js
-599 silly gunzTarPerm extractEntry .travis.yml
-600 silly gunzTarPerm extractEntry History.md
-601 silly gunzTarPerm extractEntry Makefile
-602 silly gunzTarPerm extractEntry bin/express
-603 silly gunzTarPerm extractEntry Readme.md
-604 silly gunzTarPerm extractEntry lib/application.js
-605 silly gunzTarPerm extractEntry lib/express.js
-606 silly gunzTarPerm extractEntry lib/middleware.js
-607 silly gunzTarPerm extractEntry lib/request.js
-608 silly gunzTarPerm extractEntry lib/response.js
-609 silly gunzTarPerm extractEntry lib/utils.js
-610 silly gunzTarPerm extractEntry lib/view.js
-611 silly gunzTarPerm extractEntry lib/router/index.js
-612 silly gunzTarPerm extractEntry lib/router/route.js
-613 verbose from cache /Users/landon.noss/.npm/express/3.0.6/package/package.json
-614 silly lockFile 9b4e31c0-n-noss-npm-express-3-0-6-package /Users/landon.noss/.npm/express/3.0.6/package
-615 silly shasum updated bytes 34942
-616 info shasum 81211b4e4df56daa0d01c9d68b364b709587696e
-616 info shasum /Users/landon.noss/.npm/express/3.0.6/package.tgz
-617 verbose from cache /Users/landon.noss/.npm/express/3.0.6/package/package.json
-618 verbose chmod /Users/landon.noss/.npm/express/3.0.6/package.tgz 666
-619 verbose chown /Users/landon.noss/.npm/express/3.0.6/package.tgz [ 1124, 20 ]
-620 silly lockFile 78f5258d-js-org-express-express-3-0-6-tgz https://registry.npmjs.org/express/-/express-3.0.6.tgz
-621 silly lockFile e902e1c0-express-3-0-6 express@3.0.6
-622 silly resolved [ { name: 'express',
-622 silly resolved     description: 'Sinatra inspired web development framework',
-622 silly resolved     version: '3.0.6',
-622 silly resolved     author: { name: 'TJ Holowaychuk', email: 'tj@vision-media.ca' },
-622 silly resolved     contributors: [ [Object], [Object], [Object], [Object] ],
-622 silly resolved     dependencies:
-622 silly resolved      { connect: '2.7.2',
-622 silly resolved        commander: '0.6.1',
-622 silly resolved        'range-parser': '0.0.4',
-622 silly resolved        mkdirp: '0.3.3',
-622 silly resolved        cookie: '0.0.5',
-622 silly resolved        'buffer-crc32': '0.1.1',
-622 silly resolved        fresh: '0.1.0',
-622 silly resolved        methods: '0.0.1',
-622 silly resolved        send: '0.1.0',
-622 silly resolved        'cookie-signature': '0.0.1',
-622 silly resolved        debug: '*' },
-622 silly resolved     devDependencies:
-622 silly resolved      { ejs: '*',
-622 silly resolved        mocha: '*',
-622 silly resolved        jade: '*',
-622 silly resolved        hjs: '*',
-622 silly resolved        stylus: '*',
-622 silly resolved        should: '*',
-622 silly resolved        'connect-redis': '*',
-622 silly resolved        'github-flavored-markdown': '*',
-622 silly resolved        supertest: '0.0.1' },
-622 silly resolved     keywords:
-622 silly resolved      [ 'express',
-622 silly resolved        'framework',
-622 silly resolved        'sinatra',
-622 silly resolved        'web',
-622 silly resolved        'rest',
-622 silly resolved        'restful',
-622 silly resolved        'router',
-622 silly resolved        'app',
-622 silly resolved        'api' ],
-622 silly resolved     repository: { type: 'git', url: 'git://github.com/visionmedia/express' },
-622 silly resolved     main: 'index',
-622 silly resolved     bin: { express: './bin/express' },
-622 silly resolved     scripts: { prepublish: 'npm prune', test: 'make test' },
-622 silly resolved     engines: { node: '*' },
-622 silly resolved     readme: '![express logo](http://f.cl.ly/items/0V2S1n0K1i3y1c122g04/Screen%20Shot%202012-04-11%20at%209.59.42%20AM.png)\n\n  Fast, unopinionated, minimalist web framework for [node](http://nodejs.org). [![Build Status](https://secure.travis-ci.org/visionmedia/express.png)](http://travis-ci.org/visionmedia/express)\n\n```js\nvar express = require(\'express\');\nvar app = express();\n\napp.get(\'/\', function(req, res){\n  res.send(\'Hello World\');\n});\n\napp.listen(3000);\n```\n\n## Installation\n\n    $ npm install -g express\n\n## Quick Start\n\n The quickest way to get started with express is to utilize the executable `express(1)` to generate an application as shown below:\n\n Create the app:\n\n    $ npm install -g express\n    $ express /tmp/foo && cd /tmp/foo\n\n Install dependencies:\n\n    $ npm install\n\n Start the server:\n\n    $ node app\n\n## Features\n\n  * Built on [Connect](http://github.com/senchalabs/connect)\n  * Robust routing\n  * HTTP helpers (redirection, caching, etc)\n  * View system supporting 14+ template engines\n  * Content negotiation\n  * Focus on high performance\n  * Environment based configuration\n  * Executable for generating applications quickly\n  * High test coverage\n\n## Philosophy\n\n  The Express philosophy is to provide small, robust tooling for HTTP servers. Making\n  it a great solution for single page applications, web sites, hybrids, or public\n  HTTP APIs.\n  \n  Built on Connect you can use _only_ what you need, and nothing more, applications\n  can be as big or as small as you like, even a single file. Express does\n  not force you to use any specific ORM or template engine. With support for over\n  14 template engines via [Consolidate.js](http://github.com/visionmedia/consolidate.js)\n  you can quickly craft your perfect framework.\n\n## More Information\n\n  * Join #express on freenode\n  * [Google Group](http://groups.google.com/group/express-js) for discussion\n  * Follow [tjholowaychuk](http://twitter.com/tjholowaychuk) on twitter for updates\n  * Visit the [Wiki](http://github.com/visionmedia/express/wiki)\n  * [日本語ドキュメンテーション](http://hideyukisaito.com/doc/expressjs/) by [hideyukisaito](https://github.com/hideyukisaito)\n  * [Русскоязычная документация](http://express-js.ru/)\n\n## Viewing Examples\n\nClone the Express repo, then install the dev dependencies to install all the example / test suite deps:\n\n    $ git clone git://github.com/visionmedia/express.git --depth 1\n    $ cd express\n    $ npm install\n\nthen run whichever tests you want:\n\n    $ node examples/content-negotiation\n\n## Running Tests\n\nTo run the test suite first invoke the following command within the repo, installing the development dependencies:\n\n    $ npm install\n\nthen run the tests:\n\n    $ make test\n\n## Contributors\n\n```\nproject: express\ncommits: 3559\nactive : 468 days\nfiles  : 237\nauthors: \n 1891\tTj Holowaychuk          53.1%\n 1285\tvisionmedia             36.1%\n  182\tTJ Holowaychuk          5.1%\n   54\tAaron Heckmann          1.5%\n   34\tcsausdev                1.0%\n   26\tciaranj                 0.7%\n   21\tRobert Sköld            0.6%\n    6\tGuillermo Rauch         0.2%\n    3\tDav Glass               0.1%\n    3\tNick Poulden            0.1%\n    2\tRandy Merrill           0.1%\n    2\tBenny Wong              0.1%\n    2\tHunter Loftis           0.1%\n    2\tJake Gordon             0.1%\n    2\tBrian McKinney          0.1%\n    2\tRoman Shtylman          0.1%\n    2\tBen Weaver              0.1%\n    2\tDave Hoover             0.1%\n    2\tEivind Fjeldstad        0.1%\n    2\tDaniel Shaw             0.1%\n    1\tMatt Colyer             0.0%\n    1\tPau Ramon               0.0%\n    1\tPero Pejovic            0.0%\n    1\tPeter Rekdal Sunde      0.0%\n    1\tRaynos                  0.0%\n    1\tTeng Siong Ong          0.0%\n    1\tViktor Kelemen          0.0%\n    1\tctide                   0.0%\n    1\t8bitDesigner            0.0%\n    1\tisaacs                  0.0%\n    1\tmgutz                   0.0%\n    1\tpikeas                  0.0%\n    1\tshuwatto                0.0%\n    1\ttstrimple               0.0%\n    1\tewoudj                  0.0%\n    1\tAdam Sanderson          0.0%\n    1\tAndrii Kostenko         0.0%\n    1\tAndy Hiew               0.0%\n    1\tArpad Borsos            0.0%\n    1\tAshwin Purohit          0.0%\n    1\tBenjen                  0.0%\n    1\tDarren Torpey           0.0%\n    1\tGreg Ritter             0.0%\n    1\tGregory Ritter          0.0%\n    1\tJames Herdman           0.0%\n    1\tJim Snodgrass           0.0%\n    1\tJoe McCann              0.0%\n    1\tJonathan Dumaine        0.0%\n    1\tJonathan Palardy        0.0%\n    1\tJonathan Zacsh          0.0%\n    1\tJustin Lilly            0.0%\n    1\tKen Sato                0.0%\n    1\tMaciej Małecki          0.0%\n    1\tMasahiro Hayashi        0.0%\n```\n\n## License \n\n(The MIT License)\n\nCopyright (c) 2009-2012 TJ Holowaychuk &lt;tj@vision-media.ca&gt;\n\nPermission is hereby granted, free of charge, to any person obtaining\na copy of this software and associated documentation files (the\n\'Software\'), to deal in the Software without restriction, including\nwithout limitation the rights to use, copy, modify, merge, publish,\ndistribute, sublicense, and/or sell copies of the Software, and to\npermit persons to whom the Software is furnished to do so, subject to\nthe following conditions:\n\nThe above copyright notice and this permission notice shall be\nincluded in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \'AS IS\', WITHOUT WARRANTY OF ANY KIND,\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.\nIN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY\nCLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,\nTORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE\nSOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n',
-622 silly resolved     _id: 'express@3.0.6',
-622 silly resolved     dist: { shasum: '81211b4e4df56daa0d01c9d68b364b709587696e' },
-622 silly resolved     _from: 'express@3.0.6' } ]
-623 info install express@3.0.6 into /Users/landon.noss/Projects/f00bar
-624 info installOne express@3.0.6
-625 verbose from cache /Users/landon.noss/.npm/express/3.0.6/package/package.json
-626 info /Users/landon.noss/Projects/f00bar/node_modules/express unbuild
-627 verbose from cache /Users/landon.noss/Projects/f00bar/node_modules/express/package.json
-628 info preuninstall express@3.0.3
-629 info uninstall express@3.0.3
-630 verbose true,/Users/landon.noss/Projects/f00bar/node_modules,/Users/landon.noss/Projects/f00bar/node_modules unbuild express@3.0.3
-631 verbose /Users/landon.noss/Projects/f00bar/node_modules/.bin,[object Object] binRoot
-632 info /Users/landon.noss/Projects/f00bar/node_modules/express unbuild
-633 verbose read json /Users/landon.noss/Projects/f00bar/node_modules/express/package.json
-634 info preuninstall express@3.0.3
-635 info uninstall express@3.0.3
-636 verbose true,/Users/landon.noss/Projects/f00bar/node_modules,/Users/landon.noss/Projects/f00bar/node_modules unbuild express@3.0.3
-637 verbose /Users/landon.noss/Projects/f00bar/node_modules/.bin,[object Object] binRoot
-638 error error rolling back Error: EPERM, chmod '/Users/landon.noss/Projects/f00bar/node_modules/.bin/express'
-638 error error rolling back  express@3.0.6 { [Error: EPERM, chmod '/Users/landon.noss/Projects/f00bar/node_modules/.bin/express']
-638 error error rolling back   errno: 50,
-638 error error rolling back   code: 'EPERM',
-638 error error rolling back   path: '/Users/landon.noss/Projects/f00bar/node_modules/.bin/express' }
-639 error Error: EPERM, chmod '/Users/landon.noss/Projects/f00bar/node_modules/.bin/express'
-639 error  { [Error: EPERM, chmod '/Users/landon.noss/Projects/f00bar/node_modules/.bin/express']
-639 error   errno: 50,
-639 error   code: 'EPERM',
-639 error   path: '/Users/landon.noss/Projects/f00bar/node_modules/.bin/express' }
-640 error Please try running this command again as root/Administrator.
-641 error System Darwin 11.4.2
-642 error command "/usr/local/Cellar/node/0.8.8/bin/node" "/usr/local/bin/npm" "update"
-643 error cwd /Users/landon.noss/Projects/f00bar
-644 error node -v v0.8.8
-645 error npm -v 1.1.59
-646 error path /Users/landon.noss/Projects/f00bar/node_modules/.bin/express
-647 error code EPERM
-648 error errno 50
-649 error stack Error: EPERM, chmod '/Users/landon.noss/Projects/f00bar/node_modules/.bin/express'
-650 verbose exit [ 50, true ]
+385 verbose read json /Users/landon.noss/Projects/f00bar/node_modules/jsdom/node_modules/contextify/node_modules/bindings/package.json
+386 silly lockFile 76808a6b-cssstyle-0-2-3 cssstyle@>=0.2.3
+387 verbose from cache /Users/landon.noss/Projects/f00bar/node_modules/jsdom/node_modules/cssstyle/package.json
+388 verbose cache add [ 'bindings', '*' ]
+389 silly cache add name="bindings" spec="*" args=["bindings","*"]
+390 verbose parsed url { pathname: '*', path: '*', href: '*' }
+391 verbose addNamed [ 'bindings', '*' ]
+392 verbose addNamed [ null, '' ]
+393 silly lockFile a3858fc2-bindings bindings@*
+394 verbose lock bindings@* /Users/landon.noss/.npm/a3858fc2-bindings.lock
+395 verbose cache add [ 'cssom', '0.2.x' ]
+396 silly cache add name="cssom" spec="0.2.x" args=["cssom","0.2.x"]
+397 verbose parsed url { pathname: '0.2.x', path: '0.2.x', href: '0.2.x' }
+398 verbose addNamed [ 'cssom', '0.2.x' ]
+399 verbose addNamed [ null, '>=0.2.0- <0.3.0-' ]
+400 silly lockFile c83aab2e-cssom-0-2-x cssom@0.2.x
+401 verbose lock cssom@0.2.x /Users/landon.noss/.npm/c83aab2e-cssom-0-2-x.lock
+402 silly addNameRange { name: 'bindings', range: '', hasData: false }
+403 silly addNameRange { name: 'cssom', range: '>=0.2.0- <0.3.0-', hasData: false }
+404 verbose url raw cssom
+405 verbose url resolving [ 'https://registry.npmjs.org/', './cssom' ]
+406 verbose url resolved https://registry.npmjs.org/cssom
+407 info retry registry request attempt 1 at 17:37:01
+408 verbose etag "3YQVJQWKFIOHVJBPSG74DUHAN"
+409 http GET https://registry.npmjs.org/cssom
+410 verbose url raw bindings
+411 verbose url resolving [ 'https://registry.npmjs.org/', './bindings' ]
+412 verbose url resolved https://registry.npmjs.org/bindings
+413 info retry registry request attempt 1 at 17:37:01
+414 verbose etag "3HXPYMT3WWBWOM5Y7K1RUU55F"
+415 http GET https://registry.npmjs.org/bindings
+416 http 304 https://registry.npmjs.org/async
+417 silly registry.get cb [ 304,
+417 silly registry.get   { server: 'CouchDB/1.2.1 (Erlang OTP/R15B)',
+417 silly registry.get     etag: '"34J5E9LDLHZ5TWGOVY4ON8S96"',
+417 silly registry.get     date: 'Thu, 17 Jan 2013 01:35:32 GMT',
+417 silly registry.get     'content-length': '0' } ]
+418 verbose etag async from cache
+419 http 304 https://registry.npmjs.org/combined-stream/0.0.3
+420 silly registry.get cb [ 304,
+420 silly registry.get   { server: 'CouchDB/1.2.1 (Erlang OTP/R15B)',
+420 silly registry.get     etag: '"83EVMDGB72N9T9P3D7EEOHFVY"',
+420 silly registry.get     date: 'Thu, 17 Jan 2013 01:35:32 GMT',
+420 silly registry.get     'content-length': '0' } ]
+421 verbose etag combined-stream/0.0.3 from cache
+422 silly addNameRange number 2 { name: 'async', range: '>=0.1.9- <0.2.0-', hasData: true }
+423 silly addNameRange versions [ 'async',
+423 silly addNameRange   [ '0.1.0',
+423 silly addNameRange     '0.1.1',
+423 silly addNameRange     '0.1.2',
+423 silly addNameRange     '0.1.3',
+423 silly addNameRange     '0.1.4',
+423 silly addNameRange     '0.1.5',
+423 silly addNameRange     '0.1.6',
+423 silly addNameRange     '0.1.7',
+423 silly addNameRange     '0.1.8',
+423 silly addNameRange     '0.1.9',
+423 silly addNameRange     '0.1.10',
+423 silly addNameRange     '0.1.11',
+423 silly addNameRange     '0.1.12',
+423 silly addNameRange     '0.1.13',
+423 silly addNameRange     '0.1.14',
+423 silly addNameRange     '0.1.15',
+423 silly addNameRange     '0.1.16',
+423 silly addNameRange     '0.1.17',
+423 silly addNameRange     '0.1.18',
+423 silly addNameRange     '0.1.19',
+423 silly addNameRange     '0.1.20',
+423 silly addNameRange     '0.1.21',
+423 silly addNameRange     '0.1.22' ] ]
+424 verbose addNamed [ 'async', '0.1.22' ]
+425 verbose addNamed [ '0.1.22', '0.1.22' ]
+426 silly lockFile 09d21715-async-0-1-22 async@0.1.22
+427 verbose lock async@0.1.22 /Users/landon.noss/.npm/09d21715-async-0-1-22.lock
+428 verbose read json /Users/landon.noss/.npm/combined-stream/0.0.3/package/package.json
+429 verbose read json /Users/landon.noss/.npm/async/0.1.22/package/package.json
+430 silly lockFile ebf89023-combined-stream-0-0-3 combined-stream@0.0.3
+431 verbose from cache /Users/landon.noss/Projects/f00bar/node_modules/request/node_modules/form-data/node_modules/combined-stream/package.json
+432 verbose read json /Users/landon.noss/Projects/f00bar/node_modules/request/node_modules/form-data/node_modules/combined-stream/node_modules/delayed-stream/package.json
+433 verbose cache add [ 'delayed-stream', '0.0.5' ]
+434 silly cache add name="delayed-stream" spec="0.0.5" args=["delayed-stream","0.0.5"]
+435 verbose parsed url { pathname: '0.0.5', path: '0.0.5', href: '0.0.5' }
+436 verbose addNamed [ 'delayed-stream', '0.0.5' ]
+437 verbose addNamed [ '0.0.5', '0.0.5' ]
+438 silly lockFile 1ace22b7-delayed-stream-0-0-5 delayed-stream@0.0.5
+439 verbose lock delayed-stream@0.0.5 /Users/landon.noss/.npm/1ace22b7-delayed-stream-0-0-5.lock
+440 silly lockFile 09d21715-async-0-1-22 async@0.1.22
+441 silly lockFile e08457bb-async-0-1-9 async@~0.1.9
+442 verbose from cache /Users/landon.noss/Projects/f00bar/node_modules/request/node_modules/form-data/node_modules/async/package.json
+443 verbose url raw delayed-stream/0.0.5
+444 verbose url resolving [ 'https://registry.npmjs.org/', './delayed-stream/0.0.5' ]
+445 verbose url resolved https://registry.npmjs.org/delayed-stream/0.0.5
+446 info retry registry request attempt 1 at 17:37:01
+447 verbose etag "2M9MYZL0N1ZNYDK47OE29WS79"
+448 http GET https://registry.npmjs.org/delayed-stream/0.0.5
+449 http 304 https://registry.npmjs.org/mime
+450 silly registry.get cb [ 304,
+450 silly registry.get   { server: 'CouchDB/1.2.1 (Erlang OTP/R15B)',
+450 silly registry.get     etag: '"7L2TT0VBAMKKFDULLOR5KTHU"',
+450 silly registry.get     date: 'Thu, 17 Jan 2013 01:35:33 GMT',
+450 silly registry.get     'content-length': '0' } ]
+451 verbose etag mime from cache
+452 silly addNameRange number 2 { name: 'mime', range: '>=1.2.2- <1.3.0-', hasData: true }
+453 silly addNameRange versions [ 'mime',
+453 silly addNameRange   [ '1.0.0',
+453 silly addNameRange     '1.1.0',
+453 silly addNameRange     '1.2.1',
+453 silly addNameRange     '1.2.2',
+453 silly addNameRange     '1.2.3',
+453 silly addNameRange     '1.2.4',
+453 silly addNameRange     '1.2.5',
+453 silly addNameRange     '1.2.6',
+453 silly addNameRange     '1.2.7',
+453 silly addNameRange     '1.2.8' ] ]
+454 verbose addNamed [ 'mime', '1.2.8' ]
+455 verbose addNamed [ '1.2.8', '1.2.8' ]
+456 silly lockFile 25954247-mime-1-2-8 mime@1.2.8
+457 verbose lock mime@1.2.8 /Users/landon.noss/.npm/25954247-mime-1-2-8.lock
+458 verbose from cache /Users/landon.noss/.npm/mime/1.2.8/package/package.json
+459 silly lockFile 25954247-mime-1-2-8 mime@1.2.8
+460 silly lockFile e9223251-mime-1-2-2 mime@~1.2.2
+461 verbose read json /Users/landon.noss/Projects/f00bar/node_modules/request/node_modules/form-data/node_modules/mime/package.json
+462 http 304 https://registry.npmjs.org/bindings
+463 silly registry.get cb [ 304,
+463 silly registry.get   { server: 'CouchDB/1.2.1 (Erlang OTP/R15B)',
+463 silly registry.get     etag: '"3HXPYMT3WWBWOM5Y7K1RUU55F"',
+463 silly registry.get     date: 'Thu, 17 Jan 2013 01:35:33 GMT',
+463 silly registry.get     'content-length': '0' } ]
+464 verbose etag bindings from cache
+465 silly addNameRange number 2 { name: 'bindings', range: '', hasData: true }
+466 silly addNameRange versions [ 'bindings',
+466 silly addNameRange   [ '0.0.1',
+466 silly addNameRange     '0.1.0',
+466 silly addNameRange     '0.1.1',
+466 silly addNameRange     '0.2.0',
+466 silly addNameRange     '0.2.1',
+466 silly addNameRange     '0.2.2',
+466 silly addNameRange     '0.2.3',
+466 silly addNameRange     '0.2.4',
+466 silly addNameRange     '0.3.0',
+466 silly addNameRange     '0.4.0',
+466 silly addNameRange     '1.0.0' ] ]
+467 verbose addNamed [ 'bindings', '1.0.0' ]
+468 verbose addNamed [ '1.0.0', '1.0.0' ]
+469 silly lockFile f01e5454-bindings-1-0-0 bindings@1.0.0
+470 verbose lock bindings@1.0.0 /Users/landon.noss/.npm/f01e5454-bindings-1-0-0.lock
+471 verbose read json /Users/landon.noss/.npm/bindings/1.0.0/package/package.json
+472 silly lockFile f01e5454-bindings-1-0-0 bindings@1.0.0
+473 silly lockFile a3858fc2-bindings bindings@*
+474 verbose from cache /Users/landon.noss/Projects/f00bar/node_modules/jsdom/node_modules/contextify/node_modules/bindings/package.json
+475 http 304 https://registry.npmjs.org/cssom
+476 silly registry.get cb [ 304,
+476 silly registry.get   { server: 'CouchDB/1.2.1 (Erlang OTP/R15B)',
+476 silly registry.get     etag: '"3YQVJQWKFIOHVJBPSG74DUHAN"',
+476 silly registry.get     date: 'Thu, 17 Jan 2013 01:35:33 GMT',
+476 silly registry.get     'content-length': '0' } ]
+477 verbose etag cssom from cache
+478 silly addNameRange number 2 { name: 'cssom', range: '>=0.2.0- <0.3.0-', hasData: true }
+479 silly addNameRange versions [ 'cssom',
+479 silly addNameRange   [ '0.2.0', '0.2.1', '0.2.2', '0.2.3', '0.2.4', '0.2.5' ] ]
+480 verbose addNamed [ 'cssom', '0.2.5' ]
+481 verbose addNamed [ '0.2.5', '0.2.5' ]
+482 silly lockFile 452affd3-cssom-0-2-5 cssom@0.2.5
+483 verbose lock cssom@0.2.5 /Users/landon.noss/.npm/452affd3-cssom-0-2-5.lock
+484 verbose from cache /Users/landon.noss/.npm/cssom/0.2.5/package/package.json
+485 silly lockFile 452affd3-cssom-0-2-5 cssom@0.2.5
+486 silly lockFile c83aab2e-cssom-0-2-x cssom@0.2.x
+487 verbose read json /Users/landon.noss/Projects/f00bar/node_modules/jsdom/node_modules/cssstyle/node_modules/cssom/package.json
+488 http 304 https://registry.npmjs.org/delayed-stream/0.0.5
+489 silly registry.get cb [ 304,
+489 silly registry.get   { server: 'CouchDB/1.2.1 (Erlang OTP/R15B)',
+489 silly registry.get     etag: '"2M9MYZL0N1ZNYDK47OE29WS79"',
+489 silly registry.get     date: 'Thu, 17 Jan 2013 01:35:33 GMT',
+489 silly registry.get     'content-length': '0' } ]
+490 verbose etag delayed-stream/0.0.5 from cache
+491 verbose read json /Users/landon.noss/.npm/delayed-stream/0.0.5/package/package.json
+492 silly lockFile 1ace22b7-delayed-stream-0-0-5 delayed-stream@0.0.5
+493 verbose from cache /Users/landon.noss/Projects/f00bar/node_modules/request/node_modules/form-data/node_modules/combined-stream/node_modules/delayed-stream/package.json
+494 info outdated updating [ [ '/Users/landon.noss/Projects/f00bar',
+494 info outdated     'express',
+494 info outdated     '3.0.3',
+494 info outdated     '3.0.6' ] ]
+495 verbose install where,what [ '/Users/landon.noss/Projects/f00bar', [ 'express@3.0.6' ] ]
+496 verbose from cache /Users/landon.noss/Projects/f00bar/package.json
+497 verbose from cache /Users/landon.noss/Projects/f00bar/node_modules/cleverbot-node/package.json
+498 verbose from cache /Users/landon.noss/Projects/f00bar/node_modules/ent/package.json
+499 verbose from cache /Users/landon.noss/Projects/f00bar/node_modules/express/package.json
+500 verbose from cache /Users/landon.noss/Projects/f00bar/node_modules/forever/package.json
+501 verbose from cache /Users/landon.noss/Projects/f00bar/node_modules/jsdom/package.json
+502 verbose from cache /Users/landon.noss/Projects/f00bar/node_modules/request/package.json
+503 verbose from cache /Users/landon.noss/Projects/f00bar/node_modules/twit/package.json
+504 verbose from cache /Users/landon.noss/Projects/f00bar/node_modules/twitter/package.json
+505 verbose from cache /Users/landon.noss/Projects/f00bar/node_modules/underscore/package.json
+506 verbose from cache /Users/landon.noss/Projects/f00bar/package.json
+507 verbose readDependencies using package.json deps
+508 verbose cache add [ 'express@3.0.6', null ]
+509 silly cache add name=undefined spec="express@3.0.6" args=["express@3.0.6",null]
+510 verbose parsed url { pathname: 'express@3.0.6',
+510 verbose parsed url   path: 'express@3.0.6',
+510 verbose parsed url   href: 'express@3.0.6' }
+511 silly cache add name="express" spec="3.0.6" args=["express","3.0.6"]
+512 verbose parsed url { pathname: '3.0.6', path: '3.0.6', href: '3.0.6' }
+513 verbose addNamed [ 'express', '3.0.6' ]
+514 verbose addNamed [ '3.0.6', '3.0.6' ]
+515 silly lockFile e902e1c0-express-3-0-6 express@3.0.6
+516 verbose lock express@3.0.6 /Users/landon.noss/.npm/e902e1c0-express-3-0-6.lock
+517 verbose url raw express/3.0.6
+518 verbose url resolving [ 'https://registry.npmjs.org/', './express/3.0.6' ]
+519 verbose url resolved https://registry.npmjs.org/express/3.0.6
+520 info retry registry request attempt 1 at 17:37:02
+521 verbose etag "549565DFMON3H0UBCREG7LUG8"
+522 http GET https://registry.npmjs.org/express/3.0.6
+523 http 304 https://registry.npmjs.org/express/3.0.6
+524 silly registry.get cb [ 304,
+524 silly registry.get   { server: 'CouchDB/1.2.1 (Erlang OTP/R15B)',
+524 silly registry.get     etag: '"549565DFMON3H0UBCREG7LUG8"',
+524 silly registry.get     date: 'Thu, 17 Jan 2013 01:35:33 GMT',
+524 silly registry.get     'content-length': '0' } ]
+525 verbose etag express/3.0.6 from cache
+526 verbose from cache /Users/landon.noss/.npm/express/3.0.6/package/package.json
+527 silly lockFile e902e1c0-express-3-0-6 express@3.0.6
+528 silly resolved [ { name: 'express',
+528 silly resolved     description: 'Sinatra inspired web development framework',
+528 silly resolved     version: '3.0.6',
+528 silly resolved     author: { name: 'TJ Holowaychuk', email: 'tj@vision-media.ca' },
+528 silly resolved     contributors: [ [Object], [Object], [Object], [Object] ],
+528 silly resolved     dependencies:
+528 silly resolved      { connect: '2.7.2',
+528 silly resolved        commander: '0.6.1',
+528 silly resolved        'range-parser': '0.0.4',
+528 silly resolved        mkdirp: '0.3.3',
+528 silly resolved        cookie: '0.0.5',
+528 silly resolved        'buffer-crc32': '0.1.1',
+528 silly resolved        fresh: '0.1.0',
+528 silly resolved        methods: '0.0.1',
+528 silly resolved        send: '0.1.0',
+528 silly resolved        'cookie-signature': '0.0.1',
+528 silly resolved        debug: '*' },
+528 silly resolved     devDependencies:
+528 silly resolved      { ejs: '*',
+528 silly resolved        mocha: '*',
+528 silly resolved        jade: '*',
+528 silly resolved        hjs: '*',
+528 silly resolved        stylus: '*',
+528 silly resolved        should: '*',
+528 silly resolved        'connect-redis': '*',
+528 silly resolved        'github-flavored-markdown': '*',
+528 silly resolved        supertest: '0.0.1' },
+528 silly resolved     keywords:
+528 silly resolved      [ 'express',
+528 silly resolved        'framework',
+528 silly resolved        'sinatra',
+528 silly resolved        'web',
+528 silly resolved        'rest',
+528 silly resolved        'restful',
+528 silly resolved        'router',
+528 silly resolved        'app',
+528 silly resolved        'api' ],
+528 silly resolved     repository: { type: 'git', url: 'git://github.com/visionmedia/express' },
+528 silly resolved     main: 'index',
+528 silly resolved     bin: { express: './bin/express' },
+528 silly resolved     scripts: { prepublish: 'npm prune', test: 'make test' },
+528 silly resolved     engines: { node: '*' },
+528 silly resolved     readme: '![express logo](http://f.cl.ly/items/0V2S1n0K1i3y1c122g04/Screen%20Shot%202012-04-11%20at%209.59.42%20AM.png)\n\n  Fast, unopinionated, minimalist web framework for [node](http://nodejs.org). [![Build Status](https://secure.travis-ci.org/visionmedia/express.png)](http://travis-ci.org/visionmedia/express)\n\n```js\nvar express = require(\'express\');\nvar app = express();\n\napp.get(\'/\', function(req, res){\n  res.send(\'Hello World\');\n});\n\napp.listen(3000);\n```\n\n## Installation\n\n    $ npm install -g express\n\n## Quick Start\n\n The quickest way to get started with express is to utilize the executable `express(1)` to generate an application as shown below:\n\n Create the app:\n\n    $ npm install -g express\n    $ express /tmp/foo && cd /tmp/foo\n\n Install dependencies:\n\n    $ npm install\n\n Start the server:\n\n    $ node app\n\n## Features\n\n  * Built on [Connect](http://github.com/senchalabs/connect)\n  * Robust routing\n  * HTTP helpers (redirection, caching, etc)\n  * View system supporting 14+ template engines\n  * Content negotiation\n  * Focus on high performance\n  * Environment based configuration\n  * Executable for generating applications quickly\n  * High test coverage\n\n## Philosophy\n\n  The Express philosophy is to provide small, robust tooling for HTTP servers. Making\n  it a great solution for single page applications, web sites, hybrids, or public\n  HTTP APIs.\n  \n  Built on Connect you can use _only_ what you need, and nothing more, applications\n  can be as big or as small as you like, even a single file. Express does\n  not force you to use any specific ORM or template engine. With support for over\n  14 template engines via [Consolidate.js](http://github.com/visionmedia/consolidate.js)\n  you can quickly craft your perfect framework.\n\n## More Information\n\n  * Join #express on freenode\n  * [Google Group](http://groups.google.com/group/express-js) for discussion\n  * Follow [tjholowaychuk](http://twitter.com/tjholowaychuk) on twitter for updates\n  * Visit the [Wiki](http://github.com/visionmedia/express/wiki)\n  * [日本語ドキュメンテーション](http://hideyukisaito.com/doc/expressjs/) by [hideyukisaito](https://github.com/hideyukisaito)\n  * [Русскоязычная документация](http://express-js.ru/)\n\n## Viewing Examples\n\nClone the Express repo, then install the dev dependencies to install all the example / test suite deps:\n\n    $ git clone git://github.com/visionmedia/express.git --depth 1\n    $ cd express\n    $ npm install\n\nthen run whichever tests you want:\n\n    $ node examples/content-negotiation\n\n## Running Tests\n\nTo run the test suite first invoke the following command within the repo, installing the development dependencies:\n\n    $ npm install\n\nthen run the tests:\n\n    $ make test\n\n## Contributors\n\n```\nproject: express\ncommits: 3559\nactive : 468 days\nfiles  : 237\nauthors: \n 1891\tTj Holowaychuk          53.1%\n 1285\tvisionmedia             36.1%\n  182\tTJ Holowaychuk          5.1%\n   54\tAaron Heckmann          1.5%\n   34\tcsausdev                1.0%\n   26\tciaranj                 0.7%\n   21\tRobert Sköld            0.6%\n    6\tGuillermo Rauch         0.2%\n    3\tDav Glass               0.1%\n    3\tNick Poulden            0.1%\n    2\tRandy Merrill           0.1%\n    2\tBenny Wong              0.1%\n    2\tHunter Loftis           0.1%\n    2\tJake Gordon             0.1%\n    2\tBrian McKinney          0.1%\n    2\tRoman Shtylman          0.1%\n    2\tBen Weaver              0.1%\n    2\tDave Hoover             0.1%\n    2\tEivind Fjeldstad        0.1%\n    2\tDaniel Shaw             0.1%\n    1\tMatt Colyer             0.0%\n    1\tPau Ramon               0.0%\n    1\tPero Pejovic            0.0%\n    1\tPeter Rekdal Sunde      0.0%\n    1\tRaynos                  0.0%\n    1\tTeng Siong Ong          0.0%\n    1\tViktor Kelemen          0.0%\n    1\tctide                   0.0%\n    1\t8bitDesigner            0.0%\n    1\tisaacs                  0.0%\n    1\tmgutz                   0.0%\n    1\tpikeas                  0.0%\n    1\tshuwatto                0.0%\n    1\ttstrimple               0.0%\n    1\tewoudj                  0.0%\n    1\tAdam Sanderson          0.0%\n    1\tAndrii Kostenko         0.0%\n    1\tAndy Hiew               0.0%\n    1\tArpad Borsos            0.0%\n    1\tAshwin Purohit          0.0%\n    1\tBenjen                  0.0%\n    1\tDarren Torpey           0.0%\n    1\tGreg Ritter             0.0%\n    1\tGregory Ritter          0.0%\n    1\tJames Herdman           0.0%\n    1\tJim Snodgrass           0.0%\n    1\tJoe McCann              0.0%\n    1\tJonathan Dumaine        0.0%\n    1\tJonathan Palardy        0.0%\n    1\tJonathan Zacsh          0.0%\n    1\tJustin Lilly            0.0%\n    1\tKen Sato                0.0%\n    1\tMaciej Małecki          0.0%\n    1\tMasahiro Hayashi        0.0%\n```\n\n## License \n\n(The MIT License)\n\nCopyright (c) 2009-2012 TJ Holowaychuk &lt;tj@vision-media.ca&gt;\n\nPermission is hereby granted, free of charge, to any person obtaining\na copy of this software and associated documentation files (the\n\'Software\'), to deal in the Software without restriction, including\nwithout limitation the rights to use, copy, modify, merge, publish,\ndistribute, sublicense, and/or sell copies of the Software, and to\npermit persons to whom the Software is furnished to do so, subject to\nthe following conditions:\n\nThe above copyright notice and this permission notice shall be\nincluded in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \'AS IS\', WITHOUT WARRANTY OF ANY KIND,\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.\nIN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY\nCLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,\nTORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE\nSOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n',
+528 silly resolved     _id: 'express@3.0.6',
+528 silly resolved     _from: 'express@3.0.6' } ]
+529 info install express@3.0.6 into /Users/landon.noss/Projects/f00bar
+530 info installOne express@3.0.6
+531 verbose from cache /Users/landon.noss/.npm/express/3.0.6/package/package.json
+532 info /Users/landon.noss/Projects/f00bar/node_modules/express unbuild
+533 verbose from cache /Users/landon.noss/Projects/f00bar/node_modules/express/package.json
+534 info preuninstall express@3.0.3
+535 info uninstall express@3.0.3
+536 verbose true,/Users/landon.noss/Projects/f00bar/node_modules,/Users/landon.noss/Projects/f00bar/node_modules unbuild express@3.0.3
+537 verbose /Users/landon.noss/Projects/f00bar/node_modules/.bin,[object Object] binRoot
+538 info /Users/landon.noss/Projects/f00bar/node_modules/express unbuild
+539 verbose read json /Users/landon.noss/Projects/f00bar/node_modules/express/package.json
+540 info preuninstall express@3.0.3
+541 info uninstall express@3.0.3
+542 verbose true,/Users/landon.noss/Projects/f00bar/node_modules,/Users/landon.noss/Projects/f00bar/node_modules unbuild express@3.0.3
+543 verbose /Users/landon.noss/Projects/f00bar/node_modules/.bin,[object Object] binRoot
+544 error error rolling back Error: EPERM, chmod '/Users/landon.noss/Projects/f00bar/node_modules/.bin/express'
+544 error error rolling back  express@3.0.6 { [Error: EPERM, chmod '/Users/landon.noss/Projects/f00bar/node_modules/.bin/express']
+544 error error rolling back   errno: 50,
+544 error error rolling back   code: 'EPERM',
+544 error error rolling back   path: '/Users/landon.noss/Projects/f00bar/node_modules/.bin/express' }
+545 error Error: EPERM, chmod '/Users/landon.noss/Projects/f00bar/node_modules/.bin/express'
+545 error  { [Error: EPERM, chmod '/Users/landon.noss/Projects/f00bar/node_modules/.bin/express']
+545 error   errno: 50,
+545 error   code: 'EPERM',
+545 error   path: '/Users/landon.noss/Projects/f00bar/node_modules/.bin/express' }
+546 error Please try running this command again as root/Administrator.
+547 error System Darwin 11.4.2
+548 error command "/usr/local/Cellar/node/0.8.8/bin/node" "/usr/local/bin/npm" "update"
+549 error cwd /Users/landon.noss/Projects/f00bar
+550 error node -v v0.8.8
+551 error npm -v 1.1.59
+552 error path /Users/landon.noss/Projects/f00bar/node_modules/.bin/express
+553 error code EPERM
+554 error errno 50
+555 error stack Error: EPERM, chmod '/Users/landon.noss/Projects/f00bar/node_modules/.bin/express'
+556 verbose exit [ 50, true ]
