@@ -109,9 +109,7 @@ f00bert.prototype.init = function () {
 	this.register_command("tldr", this.tldr, {help: "Lists out all of the links posted in IRC over the last 2 hours."});
 	this.register_command("srsly", this.srsly, {help: "Lists out the links that are not images over the last 2 hours"});
 	this.register_command("lulz", this.lulz, {help: "Lists out images only over the last 2 hours"});
-	this.register_command("msg", this.msg, {help: "save a message for later for a user.  syntax: !msg [nick] [msg]"});
 	this.register_command("poll", this.addPoll, {help: "create a new poll. !poll [question]"});
-	this.register_command("msgs", this.messages, {help: "see any messages people have left for you"});
 	this.register_command("xkcd", this.xkcd, {help: "random xkcd link"});
 	this.register_command("gis", this.gis, {help: "Find random Google Images."});
 	this.register_command("gif", this.gif, {help: "Find random Google Image GIF files."});
@@ -472,31 +470,6 @@ f00bert.prototype.gif = function (context, text) {
 	return this.gis.call(this, context, text, null, "+filetype:gif");
 };
 
-f00bert.prototype.messages = function (context, text) {
-	if (HELLBANNED.indexOf(context.sender.name) > -1) {
-		return;
-	}
-
-	if (this.db.collection.messages[context.sender.name] && this.db.collection.messages[context.sender.name].count > 0) {
-
-		var reply = "";
-		var mailbox = this.db.collection.messages[context.sender.name];
-
-		for (var sender in mailbox) {
-			var messages = mailbox[sender];
-			for (var i = 0; i < messages.length; i++) {
-				reply += sender + ": " + messages[i] + "\n";
-			}
-		}
-
-		context.client.get_user(context.sender.name).send(reply);
-		this.clearmessages(context, text);
-	} else {
-		context.client.get_user(context.sender.name).send("Nobody likes you because you have no messages.");
-	}
-
-};
-
 f00bert.prototype.upvote = function (context, text) {
 	if (HELLBANNED.indexOf(context.sender.name) > -1) {
 		return;
@@ -571,54 +544,6 @@ f00bert.prototype.clearPoll = function (context, question) {
 	this.db.activity();
 
 };
-
-f00bert.prototype.clearmessages = function (context, text) {
-	if (HELLBANNED.indexOf(context.sender.name) > -1) {
-		return;
-	}
-
-	if (this.db.collection.messages[context.sender.name]) {
-		this.db.collection.messages[context.sender.name] = {count: 0};
-	}
-
-	this.db.activity();
-};
-
-
-f00bert.prototype.msg = function (context, text) {
-	if (HELLBANNED.indexOf(context.sender.name) > -1) {
-		return;
-	}
-
-	if (!this.db.collection.messages) {
-		this.db.collection.messages = {};
-	}
-
-
-	var split = text.split(" ");
-
-
-
-	if (!this.db.collection.messages[split[0]]) {
-		this.db.collection.messages[split[0]] = {count: 0};
-	}
-
-	if (!this.db.collection.messages[split[0]][context.sender.name]) {
-		this.db.collection.messages[split[0]][context.sender.name] = [];
-	}
-
-	var msg = "";
-	for (var i = 0; i < split.length; i++) {
-		if (i > 0) {
-			msg += split[i] += " ";
-		}
-	}
-
-	this.db.collection.messages[split[0]][context.sender.name].push(msg);
-	this.db.collection.messages[split[0]].count += 1;
-	this.db.activity();
-};
-
 
 f00bert.prototype.gifmanager = function (context, text) {
 
