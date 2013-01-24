@@ -11,7 +11,6 @@ var profile = require("./profile");
 var JSONdb = require("./lib/db");
 var Bot = require("./lib/irc");
 
-var QUIET = true;
 var HELLBANNED = ["emi", "vance"];
 
 var T = new twit({
@@ -80,10 +79,6 @@ var f00bert = function (profile) {
 
 		}
 	});
-
-	if (!QUIET) {
-		this.on("message", this.onMessage);
-	}
 
 	this.imageRegExp = "(" + this.imageDomains.join("|") + ")";
 	this.imageRegExp = this.imageRegExp.replace(/\./g, "\\.");
@@ -397,42 +392,6 @@ f00bert.prototype.onJoin = function (context, text) {
 	}
 
 	console.log("JOIN EVENT \n\n ", context, text, "\n\n");
-};
-
-f00bert.prototype.onMessage = function (context, text) {
-	if (HELLBANNED.indexOf(context.sender.name) > -1) {
-		return;
-	}
-
-	// Five minutes
-	var interval = 10 * (60 * 1000);
-
-	var randomKeywords = [
-		"kitten",
-		"fail",
-		"puppy",
-		"happy",
-		"otter",
-		"awkward",
-		"hamster",
-		"nope",
-		"hedgehog",
-		"random",
-		"rainbow",
-		"unicorn"
-	];
-
-	if (this.awkwardTimer) {
-		console.log("Awkward timer restarted.");
-		clearTimeout(this.awkwardTimer);
-	}
-
-	this.awkwardTimer = setTimeout(function () {
-		var r = Math.floor(Math.random() * randomKeywords.length);
-
-		this.gif.call(this, context, randomKeywords[r]);
-		this.onMessage.call(this, context);
-	}.bind(this), interval);
 };
 
 f00bert.prototype.activePoll = null;
