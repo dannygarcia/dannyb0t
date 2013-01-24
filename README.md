@@ -1,1 +1,1 @@
-FF000's internal IRC bot
+FF0000's internal IRC bot

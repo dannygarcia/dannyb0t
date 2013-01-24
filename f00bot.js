@@ -2,7 +2,7 @@ var file = require("fs");
 var path = require("path");
 var util = require("util");
 var http = require("http");
-
+var request = require('request');
 var Cleverbot = require("cleverbot-node");
 var twit = require("twit");
 
@@ -19,6 +19,12 @@ var T = new twit({
 	access_token:         "1078181256-wKgOPg5h77kFS1PjIatAdzIWUONoPcBpsBh1URR",
 	access_token_secret:  "M3d699fl0lz7gWPU0rql3WykMhQaTiR49YT8J5XdfmQ"
 });
+
+var imgurInfo = {
+	id: "05b03d6f9a9ce95",
+	secret: "535727a60ce7db5c6b1fa21ecd56f24a5501f4d8"
+};
+
 
 var f00bert = function (profile) {
 	this.db = new JSONdb();
@@ -75,6 +81,7 @@ f00bert.prototype.init = function () {
 
 	this.register_listener(/f00bot/, this.askCleverbot);
 
+	this.register_command("imgur", this.imgur_search, {help: "Search Imgur"});
 	this.register_command("help", this.help, {help: "List of available commands."});
 	this.register_command("tldr", this.tldr, {help: "Lists out all of the links posted in IRC over the last 2 hours."});
 	this.register_command("srsly", this.srsly, {help: "Lists out the links that are not images over the last 2 hours"});
@@ -116,6 +123,32 @@ f00bert.prototype.killjoy = function (context) {
 
 	this.nofun[channel] = nofun;
 	return nofun;
+};
+
+f00bert.prototype.imgur_search = function (context, text) {
+	if (this.killjoy(context) || HELLBANNED.indexOf(context.sender.name) > -1) {
+		return;
+	}
+
+	var search, query, data, img, url = "https://api.imgur.com/3/gallery/search?q=";
+
+	query = text.replace(/\s/g, "+").split("&")[0];
+	console.log(query);
+	var headers = {headers: {"Authorization": "Client-ID 05b03d6f9a9ce95"}, uri: url + query};
+	request(headers, function (error, response, body) {
+		console.log(error, response, body);
+		if (!error && response.statusCode === 200) {
+			data = JSON.parse(body).data;
+			for (var i = 0; i < data.length; i++) {
+				console.log(data[i]);
+				if (data[i].type === 'image/gif') {
+					context.channel.echo(data[i].link);
+					return;
+				}
+			}
+		}
+	});
+
 };
 
 f00bert.prototype.sendCues = function (context, text) {
