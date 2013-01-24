@@ -401,32 +401,30 @@ f00bert.prototype.gis = function (context, text, trigger, args) {
 	var channel = (typeof context.echo !== "undefined") ? context : context.channel;
 	console.log(text, gis);
 
-	jsdom.env(
-		gis,
-		["http://code.jquery.com/jquery.js"],
-		function (errors, window) {
-			if (errors || !window) {
-				return console.error(errors);
-			}
-
-			var $ = window.$;
-			var images = $("img");
-			var gifs = images.filter(function (img) {
-				return (/\.gif/.test(img.src));
-			});
-
-			images = gifs.length ? gifs : images;
-
-			var idx = Math.floor(Math.random() * images.length);
-			var parent = images.eq(idx).closest("a");
-			var raw = parent.attr("href").split("imgurl=")[1].split("&")[0];
-			var src = window.decodeURIComponent(raw);
-			channel.echo(src);
-			// T.post("statuses/update", { status: (text + ": " + src) }, function(err, reply) {
-			//	console.log(err, reply);
-			// });
+	jsdom.env(gis, [
+		"http://code.jquery.com/jquery.js"
+	], function (errors, window) {
+		if (errors || !window) {
+			return console.error(errors);
 		}
-	);
+
+		var $ = window.$;
+		var images = $("img");
+		var gifs = images.filter(function (img) {
+			return (/\.gif/.test(img.src));
+		});
+
+		images = gifs.length ? gifs : images;
+
+		var idx = Math.floor(Math.random() * images.length);
+		var parent = images.eq(idx).closest("a");
+		var raw = parent.attr("href").split("imgurl=")[1].split("&")[0];
+		var src = window.decodeURIComponent(raw);
+		channel.echo(src);
+		// T.post("statuses/update", { status: (text + ": " + src) }, function(err, reply) {
+		//	console.log(err, reply);
+		// });
+	});
 };
 
 f00bert.prototype.gif = function (context, text) {
@@ -509,11 +507,6 @@ f00bert.prototype.clearPoll = function (context, question) {
 
 	this.activePoll = null;
 	this.db.activity();
-
-};
-
-f00bert.prototype.gifmanager = function (context, text) {
-
 };
 
 f00bert.prototype.grab_url = function (context, text) {
@@ -521,8 +514,11 @@ f00bert.prototype.grab_url = function (context, text) {
 		return;
 	}
 
-	this.checkForTweet.call(this, context, text);
-	this.checkForYouTube.call(this, context, text);
+	this.checkMetadata.call(this, context, text);
+
+	// this.checkForTweet.call(this, context, text);
+	// this.checkForYouTube.call(this, context, text);
+	// this.checkForTitle.call(this, context, text);
 
 	//#####################
 	// save this link to the json db
@@ -541,19 +537,27 @@ f00bert.prototype.grab_url = function (context, text) {
 	}
 };
 
-f00bert.prototype.checkForTweet = function (context, text) {
+f00bert.prototype.checkMetadata = function (context, text) {
 	if (HELLBANNED.indexOf(context.sender.name) > -1) {
 		return;
 	}
 
-	var regExp = /twitter.com\/(\w+)\/status(?:es)?\/[\d]+/;
-	var match = text.match(regExp);
+	var twitterRegExp = /twitter.com\/(\w+)\/status(?:es)?\/[\d]+/;
+	var youtubeRegExp = /(?:youtube.com\/(?:.*)v=|youtu.be\/)([a-zA-Z0-9_\-]+)/;
+	var imgRegExp = new RegExp(this.imageRegExp + "|(\\.(gif|jp(e)?g|png|webp))");
 
-	if (match && match.length) {
-		var jsdom = require("jsdom");
-		var ent = require("ent");
+	var twitterMatch = text.match(twitterRegExp);
+	var youtubeMatch = text.match(youtubeRegExp);
+	var imageMatch = text.match(imgRegExp);
 
-		var user = match[1];
+	var user;
+
+	var request = require("request");
+	var jsdom = require("jsdom");
+	var ent = require("ent");
+
+	if (twitterMatch && twitterMatch.length) {
+		user = twitterMatch[1];
 
 		jsdom.env(
 			text,
@@ -564,26 +568,12 @@ f00bert.prototype.checkForTweet = function (context, text) {
 				}
 
 				var text = window.$(".js-tweet-text.tweet-text").text();
-				context.channel.echo("@" + user + ": " + ent.decode(text.trim()));
+				context.channel.echo("[Twitter] - @" + user + ": " + ent.decode(text.trim()));
 			}
 		);
-	}
-};
-
-f00bert.prototype.checkForYouTube = function (context, text) {
-	if (HELLBANNED.indexOf(context.sender.name) > -1) {
-		return;
-	}
-
-	var regExp = /(?:youtube.com\/(?:.*)v=|youtu.be\/)([a-zA-Z0-9_\-]+)/;
-	var match = text.match(regExp);
-
-	if (match && match.length) {
-		var request = require("request");
-		var ent = require("ent");
-
-		var user = match[1];
-		var yt = "https://gdata.youtube.com/feeds/api/videos/" + match[1] + "?alt=json";
+	} else if (youtubeMatch && youtubeMatch.length) {
+		user = youtubeMatch[1];
+		var yt = "https://gdata.youtube.com/feeds/api/videos/" + youtubeMatch[1] + "?alt=json";
 
 		request({
 			url : yt,
@@ -627,9 +617,25 @@ f00bert.prototype.checkForYouTube = function (context, text) {
 				var time = " [" + (hours ? hours + ":" : "") + [minutes, seconds].join(":") + "]";
 
 				console.log(title.$t, minutes, seconds);
-				context.channel.echo("Video: " + title.$t + time);
+				context.channel.echo("[Video] - " + title.$t + time);
 			}
 		});
+	} else if (!imageMatch) {
+		jsdom.env(
+			text,
+			[],
+			function (errors, window) {
+				if (errors || !window) {
+					return console.error(errors);
+				}
+
+				var text = window.document.title;
+
+				if (text) {
+					context.channel.echo("[Link] - " + ent.decode(text.trim()));
+				}
+			}
+		);
 	}
 };
 
