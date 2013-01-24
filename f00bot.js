@@ -32,37 +32,7 @@ var f00bert = function (profile) {
 		"imgur.com"
 	];
 
-	this.on("join", function (context, user) {
-
-		if (this.db.collection.messages[user.name] && this.db.collection.messages[user.name].count > 0) {
-
-			var reply = "";
-			var mailbox = this.db.collection.messages[user.name];
-
-			for (var sender in mailbox) {
-				var messages = mailbox[sender];
-				for (var i = 0; i < messages.length; i++) {
-					reply += sender + ": " + messages[i] + "\n";
-				}
-			}
-
-			context.client.get_user(user.name).send(reply);
-			if (this.db.collection.messages[user.name]) {
-				this.db.collection.messages[user.name] = {count: 0};
-				this.db.activity();
-			}
-		}
-
-		if (this.db && this.db.collection.cues) {
-			var sap = "will";
-			var cue = this.db.collection.cues["#" + sap];
-			var text = "Hi #" + sap + "!\n" + cue;
-
-			if (user.host.indexOf(sap) !== -1 && cue) {
-				context.client.get_channel(context.name).echo(text);
-			}
-		}
-	});
+	this.on("join", function (context, user) {});
 
 	this.on("pm", function (context, text) {
 		console.log(context, text);
