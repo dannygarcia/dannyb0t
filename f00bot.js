@@ -32,7 +32,9 @@ var f00bert = function (profile) {
 		"imgur.com"
 	];
 
-	this.on("join", function (context, user) {});
+	this.on("join", function (context, user) {
+		this.killjoy(context);
+	});
 
 	this.on("pm", function (context, text) {
 		console.log(context, text);
@@ -58,7 +60,6 @@ var f00bert = function (profile) {
 util.inherits(f00bert, Bot);
 
 f00bert.prototype.init = function () {
-
 	Bot.prototype.init.call(this);
 
 	var urls = /\b((?:[a-z][\w\-]+:(?:\/{1,3}|[a-z0-9%])|www\d{0,3}[.]|[a-z0-9.\-]+[.][a-z]{2,4}\/)(?:[^\s()<>]+|\(([^\s()<>]+|(\([^\s()<>]+\)))*\))+(?:\(([^\s()<>]+|(\([^\s()<>]+\)))*\)|[^\s`!()\[\]{};:"".,<>?«»“”‘’]))/gi;
@@ -88,6 +89,33 @@ f00bert.prototype.init = function () {
 
 	this.register_command("cues", this.sendCues, {help: "displays all known cues"});
 	this.register_command("score", this.score, {help: "high scores. [name]++ or [name]-- to add or remove points."});
+};
+
+f00bert.prototype.killjoy = function (context) {
+	var nofun = false;
+	var channel = context.channel ? context.channel.name : context.name;
+	var i, j, k, l;
+
+	this.nofun = this.nofun || {};
+
+	if (typeof this.nofun[channel] !== "undefined") {
+		return this.nofun[channel];
+	}
+
+	for (i = 0, j = profile.length; i < j; i++) {
+		var nofuns = profile[i].nofun;
+
+		for (k = 0, l = nofuns.length; k < l; k++) {
+			if (channel === nofuns[k]) {
+				console.log("NO FUN IN " + nofuns[k]);
+				nofun = true;
+				break;
+			}
+		}
+	}
+
+	this.nofun[channel] = nofun;
+	return nofun;
 };
 
 f00bert.prototype.sendCues = function (context, text) {
@@ -174,7 +202,7 @@ f00bert.prototype.unset = function (context, text) {
 };
 
 f00bert.prototype.trycmd = function (context, text) {
-	if (HELLBANNED.indexOf(context.sender.name) > -1) {
+	if (this.killjoy(context) || HELLBANNED.indexOf(context.sender.name) > -1) {
 		return;
 	}
 
@@ -204,7 +232,7 @@ f00bert.prototype.trycmd = function (context, text) {
 };
 
 f00bert.prototype.askCleverbot = function (context, text) {
-	if (HELLBANNED.indexOf(context.sender.name) > -1) {
+	if (this.killjoy(context) || HELLBANNED.indexOf(context.sender.name) > -1) {
 		return;
 	}
 
@@ -223,7 +251,7 @@ f00bert.prototype.askCleverbot = function (context, text) {
 };
 
 f00bert.prototype.handlePoints = function (context, text, positive) {
-	if (HELLBANNED.indexOf(context.sender.name) > -1) {
+	if (this.killjoy(context) || HELLBANNED.indexOf(context.sender.name) > -1) {
 		return;
 	}
 
@@ -320,7 +348,7 @@ f00bert.prototype.removePoints = function (context, text) {
 };
 
 f00bert.prototype.score = function (context, text) {
-	if (HELLBANNED.indexOf(context.sender.name) > -1) {
+	if (this.killjoy(context) || HELLBANNED.indexOf(context.sender.name) > -1) {
 		return;
 	}
 
@@ -350,7 +378,7 @@ f00bert.prototype.score = function (context, text) {
 };
 
 f00bert.prototype.onJoin = function (context, text) {
-	if (HELLBANNED.indexOf(context.sender.name) > -1) {
+	if (this.killjoy(context) || HELLBANNED.indexOf(context.sender.name) > -1) {
 		return;
 	}
 
@@ -360,7 +388,7 @@ f00bert.prototype.onJoin = function (context, text) {
 f00bert.prototype.activePoll = null;
 
 f00bert.prototype.gis = function (context, text, trigger, args) {
-	if (HELLBANNED.indexOf(context.sender.name) > -1) {
+	if (this.killjoy(context) || HELLBANNED.indexOf(context.sender.name) > -1) {
 		return;
 	}
 
@@ -402,7 +430,7 @@ f00bert.prototype.gis = function (context, text, trigger, args) {
 };
 
 f00bert.prototype.gif = function (context, text) {
-	if (HELLBANNED.indexOf(context.sender.name) > -1) {
+	if (this.killjoy(context) || HELLBANNED.indexOf(context.sender.name) > -1) {
 		return;
 	}
 
@@ -410,7 +438,7 @@ f00bert.prototype.gif = function (context, text) {
 };
 
 f00bert.prototype.upvote = function (context, text) {
-	if (HELLBANNED.indexOf(context.sender.name) > -1) {
+	if (this.killjoy(context) || HELLBANNED.indexOf(context.sender.name) > -1) {
 		return;
 	}
 
@@ -421,7 +449,7 @@ f00bert.prototype.upvote = function (context, text) {
 };
 
 f00bert.prototype.downvote = function (context, text) {
-	if (HELLBANNED.indexOf(context.sender.name) > -1) {
+	if (this.killjoy(context) || HELLBANNED.indexOf(context.sender.name) > -1) {
 		return;
 	}
 
@@ -432,7 +460,7 @@ f00bert.prototype.downvote = function (context, text) {
 };
 
 f00bert.prototype.addPoll = function (context, text) {
-	if (HELLBANNED.indexOf(context.sender.name) > -1) {
+	if (this.killjoy(context) || HELLBANNED.indexOf(context.sender.name) > -1) {
 		return;
 	}
 
@@ -465,7 +493,7 @@ f00bert.prototype.addPoll = function (context, text) {
 };
 
 f00bert.prototype.clearPoll = function (context, question) {
-	if (HELLBANNED.indexOf(context.sender.name) > -1) {
+	if (this.killjoy(context) || HELLBANNED.indexOf(context.sender.name) > -1) {
 		return;
 	}
 
