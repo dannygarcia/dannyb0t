@@ -6,6 +6,8 @@ var http = require("http");
 var Cleverbot = require("cleverbot-node");
 var twit = require("twit");
 
+var profile = require("./profile");
+
 var JSONdb = require("./lib/db");
 var Bot = require("./lib/irc");
 
@@ -854,17 +856,6 @@ f00bert.prototype.srsly = function (context, text) {
 f00bert.prototype.lulz = function (context, text) {
 	return this.tldr(context, text, "lulz");
 };
-
-
-
-var profile = [{
-	host: "chat.ff0000.com",
-	port: 6667,
-	nick: "f00bot",
-	user: "f00bot",
-	real: "f00bot",
-	channels: ["#FF0000"]
-}];
 
 
 (new f00bert(profile)).init();
