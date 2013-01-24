@@ -85,7 +85,6 @@ var f00bert = function (profile) {
 	this.imageRegExp = this.imageRegExp.replace(/\\/g, "\\");
 };
 
-
 util.inherits(f00bert, Bot);
 
 f00bert.prototype.init = function () {
@@ -110,7 +109,6 @@ f00bert.prototype.init = function () {
 	this.register_command("srsly", this.srsly, {help: "Lists out the links that are not images over the last 2 hours"});
 	this.register_command("lulz", this.lulz, {help: "Lists out images only over the last 2 hours"});
 	this.register_command("poll", this.addPoll, {help: "create a new poll. !poll [question]"});
-	this.register_command("xkcd", this.xkcd, {help: "random xkcd link"});
 	this.register_command("gis", this.gis, {help: "Find random Google Images."});
 	this.register_command("gif", this.gif, {help: "Find random Google Image GIF files."});
 	this.register_command("join", this.onJoin);
@@ -204,7 +202,6 @@ f00bert.prototype.unset = function (context, text) {
 	console.log("Unset", trigger, this.db.collection.cues[trigger]);
 	delete this.db.collection.cues[trigger];
 };
-
 
 f00bert.prototype.trycmd = function (context, text) {
 	if (HELLBANNED.indexOf(context.sender.name) > -1) {
@@ -382,8 +379,6 @@ f00bert.prototype.score = function (context, text) {
 	context.channel.echo(statsmsg);
 };
 
-
-
 f00bert.prototype.onJoin = function (context, text) {
 	if (HELLBANNED.indexOf(context.sender.name) > -1) {
 		return;
@@ -393,32 +388,6 @@ f00bert.prototype.onJoin = function (context, text) {
 };
 
 f00bert.prototype.activePoll = null;
-
-f00bert.prototype.xkcd = function (context, text) {
-	if (HELLBANNED.indexOf(context.sender.name) > -1) {
-		return;
-	}
-
-	var ent = require("ent");
-	var jsdom = require("jsdom");
-	var xkcd = "http://dynamic.xkcd.com/comic/random/";
-
-	jsdom.env(
-		xkcd,
-		["http://code.jquery.com/jquery.js"],
-		function (errors, window) {
-			if (errors || !window) {
-				return console.error(errors);
-			}
-
-			var img = window.$("#comic img"),
-				src = img.attr("src"),
-				alt = img.attr("title");
-
-			context.channel.echo([src, ent.decode(alt)].join("\n"));
-		}
-	);
-};
 
 f00bert.prototype.gis = function (context, text, trigger, args) {
 	if (HELLBANNED.indexOf(context.sender.name) > -1) {
@@ -682,7 +651,6 @@ f00bert.prototype.help = function (context, text) {
 
 	context.client.get_user(context.sender.name).send(reply);
 };
-
 
 f00bert.prototype.tldr = function (context, text, mode) {
 	if (HELLBANNED.indexOf(context.sender.name) > -1) {
