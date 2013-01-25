@@ -688,6 +688,8 @@ f00bert.prototype.checkMetadata = function (context, text) {
 };
 
 f00bert.prototype.postTechTweet = function (text, url, id) {
+	this.db.collection.tweets = this.db.collection.tweets || {};
+
 	var maxChars = 120;
 
 	if (!text && !url && id) {
@@ -697,15 +699,23 @@ f00bert.prototype.postTechTweet = function (text, url, id) {
 		return;
 	}
 
+	if (this.db.collection.tweets[url]) {
+		return;
+	}
+
 	if (text.length > maxChars) {
 		text = text.slice(0, maxChars - 1) + "\u2026";
 	}
 
+	var status = text + " " + url;
+
 	T.post("statuses/update", {
-		status : text + " " + url
+		status : status
 	}, function (err, reply) {
 		console.log(err, reply);
-	});
+		this.db.collection.tweets[url] = status;
+		this.db.activity();
+	}.bind(this));
 };
 
 f00bert.prototype.help = function (context, text) {
