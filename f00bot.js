@@ -590,6 +590,10 @@ f00bert.prototype.checkMetadata = function (context, text) {
 	if (twitterMatch && twitterMatch.length) {
 		user = twitterMatch[1];
 
+		if (user === profile[0].user) {
+			return;
+		}
+
 		jsdom.env(
 			text,
 			["http://code.jquery.com/jquery.js"],
