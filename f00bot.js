@@ -276,10 +276,6 @@ f00bert.prototype.askCleverbot = function (context, text) {
 	this.cleverbot.write(text, function (response) {
 		var f000ize = response.message.replace(/cleverbot/igm, "f00bot");
 		context.channel.echo(f000ize);
-
-		T.post("statuses/update", {
-			status : f000ize
-		}, function (err, reply) {});
 	});
 };
 
@@ -575,7 +571,7 @@ f00bert.prototype.checkMetadata = function (context, text) {
 		return;
 	}
 
-	var twitterRegExp = /twitter.com\/(\w+)\/status(?:es)?\/[\d]+/;
+	var twitterRegExp = /twitter.com\/(\w+)\/status(?:es)?\/([\d]+)/;
 	var youtubeRegExp = /(?:youtube.com\/(?:.*)v=|youtu.be\/)([a-zA-Z0-9_\-]+)/;
 	var imgRegExp = new RegExp(this.imageRegExp + "|(\\.(gif|jp(e)?g|png|webp))");
 
@@ -589,6 +585,8 @@ f00bert.prototype.checkMetadata = function (context, text) {
 	var jsdom = require("jsdom");
 	var ent = require("ent");
 
+	var isSeriousBusiness = this.killjoy(context);
+
 	if (twitterMatch && twitterMatch.length) {
 		user = twitterMatch[1];
 
@@ -600,9 +598,13 @@ f00bert.prototype.checkMetadata = function (context, text) {
 					return console.error(errors);
 				}
 
-				var text = window.$(".js-tweet-text.tweet-text").text();
-				context.channel.echo("[Twitter] - @" + user + ": " + ent.decode(text.trim()));
-			}
+				var tweet = window.$(".js-tweet-text.tweet-text").text();
+				context.channel.echo("[Twitter] - @" + user + ": " + ent.decode(tweet.trim()));
+
+				if (isSeriousBusiness) {
+					this.postTechTweet(null, null, twitterMatch[2]);
+				}
+			}.bind(this)
 		);
 	} else if (youtubeMatch && youtubeMatch.length) {
 		user = youtubeMatch[1];
@@ -651,8 +653,12 @@ f00bert.prototype.checkMetadata = function (context, text) {
 
 				console.log(title.$t, minutes, seconds);
 				context.channel.echo("[Video] - " + title.$t + time);
+
+				if (isSeriousBusiness) {
+					this.postTechTweet(title.$t + time, text);
+				}
 			}
-		});
+		}.bind(this));
 	} else if (!imageMatch) {
 		jsdom.env(
 			text,
@@ -662,14 +668,40 @@ f00bert.prototype.checkMetadata = function (context, text) {
 					return console.error(errors);
 				}
 
-				var text = window.document.title;
+				var title = window.document.title;
 
-				if (text) {
-					context.channel.echo("[Link] - " + ent.decode(text.trim()));
+				if (title) {
+					title = ent.decode(title.trim());
+					context.channel.echo("[Link] - " + title);
+
+					if (isSeriousBusiness) {
+						this.postTechTweet(title, text);
+					}
 				}
-			}
+			}.bind(this)
 		);
 	}
+};
+
+f00bert.prototype.postTechTweet = function (text, url, id) {
+	var maxChars = 120;
+
+	if (!text && !url && id) {
+		T.post("statuses/retweet/" + id, {}, function (err, reply) {
+			console.log(err, reply);
+		});
+		return;
+	}
+
+	if (text.length > maxChars) {
+		text = text.slice(0, maxChars - 1) + "\u2026";
+	}
+
+	T.post("statuses/update", {
+		status : text + " " + url
+	}, function (err, reply) {
+		console.log(err, reply);
+	});
 };
 
 f00bert.prototype.help = function (context, text) {
