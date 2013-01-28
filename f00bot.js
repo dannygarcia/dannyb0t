@@ -139,15 +139,18 @@ f00bert.prototype.imgur_search = function (context, text) {
 		console.log(error, response, body);
 		if (!error && response.statusCode === 200) {
 			data = JSON.parse(body).data;
-			for (var i = 0; i < data.length; i++) {
-				console.log(data[i]);
-				if (data[i].type === 'image/gif') {
-					context.channel.echo(data[i].link);
-					return;
-				}
+
+			if (data && data[0] && data[0].type === 'image/gif') {
+				console.log(data[0]);
+				context.channel.echo(data[0].link);
+
+				return;
+			} else {
+				context.channel.echo("No results on Imgur. Here's a fresh one from Google:");
+				return this.gif.call(this, context, text);
 			}
 		}
-	});
+	}.bind(this));
 
 };
 
