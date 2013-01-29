@@ -11,7 +11,7 @@ var profile = require("./profile");
 var JSONdb = require("./lib/db");
 var Bot = require("./lib/irc");
 
-var HELLBANNED = ["emi", "vance"];
+var HELLBANNED = ["emi"];
 
 var T = new twit({
     consumer_key:         "R5xk3yzpOtcEg7cZIoxzw",
