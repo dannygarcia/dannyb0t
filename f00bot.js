@@ -676,10 +676,16 @@ f00bert.prototype.checkMetadata = function (context, text) {
 				}
 
 				var title = window.document.title;
+				var ident = "Link";
 
 				if (title) {
 					title = ent.decode(title.trim());
-					context.channel.echo("[Link] - " + title);
+
+					if (this.db.collection.tweets && this.db.collection.tweets[text]) {
+						ident = "Repost";
+					}
+
+					context.channel.echo("[" + ident + "] - " + title);
 
 					if (isSeriousBusiness) {
 						this.postTechTweet(title, text);
