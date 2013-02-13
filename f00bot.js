@@ -546,11 +546,13 @@ f00bert.prototype.grab_url = function (context, text) {
 		return;
 	}
 
-	this.checkMetadata.call(this, context, text);
+	var url = text.split(/\s/)[0];
 
-	// this.checkForTweet.call(this, context, text);
-	// this.checkForYouTube.call(this, context, text);
-	// this.checkForTitle.call(this, context, text);
+	this.checkMetadata.call(this, context, url);
+
+	// this.checkForTweet.call(this, context, url);
+	// this.checkForYouTube.call(this, context, url);
+	// this.checkForTitle.call(this, context, url);
 
 	//#####################
 	// save this link to the json db
@@ -559,12 +561,12 @@ f00bert.prototype.grab_url = function (context, text) {
 		this.db.collection.urls = [];
 	}
 
-	if (this.db.collection.dupes.indexOf(text) !== -1) {
+	if (this.db.collection.dupes.indexOf(url) !== -1) {
 		return;
 	} else {
 		var death = Math.floor(new Date().getTime() / 1000);
-		this.db.collection.urls.push({user: context.sender.name, url: text, death: (death + (3600 * 2))});
-		this.db.collection.dupes.push(text);
+		this.db.collection.urls.push({user: context.sender.name, url: url, death: (death + (3600 * 2))});
+		this.db.collection.dupes.push(url);
 		this.db.activity();
 	}
 };
