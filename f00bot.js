@@ -79,7 +79,7 @@ f00bert.prototype.init = function () {
 	this.register_listener(/([a-zA-Z0-9])\+\+/, this.addPoints);
 	this.register_listener(/([a-zA-Z0-9])\-\-/, this.removePoints);
 
-	this.register_listener(/f00bot/, this.askCleverbot);
+	this.register_listener(new RegExp(profile[0].user), this.askCleverbot);
 
 	this.register_command("imgur", this.imgur_search, {help: "Search Imgur"});
 	this.register_command("help", this.help, {help: "List of available commands."});
@@ -273,11 +273,11 @@ f00bert.prototype.askCleverbot = function (context, text) {
 	}
 
 	this.cleverbot = this.cleverbot || new Cleverbot();
-	var cleverize = text.replace(/f00bot/igm, "Cleverbot");
+	var cleverize = text.replace(new RegExp(profile[0].user, "igm"), "Cleverbot");
 
 	console.log("Asking:", cleverize);
 	this.cleverbot.write(text, function (response) {
-		var f000ize = response.message.replace(/cleverbot/igm, "f00bot");
+		var f000ize = response.message.replace(/cleverbot/igm, profile[0].user);
 		context.channel.echo(f000ize);
 	});
 };
