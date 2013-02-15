@@ -10,6 +10,7 @@ var profile = require("./profile");
 
 var JSONdb = require("./lib/db");
 var Bot = require("./lib/irc");
+var zalgo = require("./lib/zalgo");
 
 var HELLBANNED = ["emi"];
 
@@ -365,8 +366,36 @@ f00bert.prototype.handlePoints = function (context, text, positive) {
 	var group = (positive ? sarcasm["++"] : sarcasm["--"]);
 	var rand = Math.floor(Math.random() * group.length);
 
-	collection.stats[u].points += 1 * (positive ? 1 : -1);
-	context.channel.echo(user[1] + " now has " + collection.stats[u].points + " points. " + group[rand]);
+	var sarc = group[rand];
+
+	if (!positive && user[1] === profile[0].user) {
+		var luck = Math.floor(Math.random() * 11);
+
+		if (luck > 5) {
+			collection.stats[u].points += 5;
+			sarc = "I'm sorry, " + context.sender.name + ". I'm " + zalgo("afraid") + " I can't " + zalgo("do") + " that.";
+
+			setTimeout(function () {
+				var song = [
+					"Daisy, Daisy, give me your answer do...",
+					"I'm half crazy all for the love of you...",
+					"...upon the seat of a bicycle built for two."
+				];
+
+				var hal = song[Math.floor(Math.random() * song.length)];
+				context.channel.echo(zalgo(hal));
+
+			}, Math.floor(Math.random() * (8000 - 4000 + 1) + 8000));
+		} else {
+			sarc = user[1] + " now has " + collection.stats[u].points + " points. " + sarc;
+			collection.stats[u].points += 1 * (positive ? 1 : -1);
+		}
+	} else {
+		sarc = user[1] + " now has " + collection.stats[u].points + " points. " + sarc;
+		collection.stats[u].points += 1 * (positive ? 1 : -1);
+	}
+
+	context.channel.echo(sarc);
 
 	this.db.activity();
 };
