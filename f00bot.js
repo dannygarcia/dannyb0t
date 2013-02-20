@@ -646,7 +646,7 @@ f00bert.prototype.checkMetadata = function (context, text) {
 		);
 	} else if (youtubeMatch && youtubeMatch.length) {
 		user = youtubeMatch[1];
-		var yt = "https://gdata.youtube.com/feeds/api/videos/" + youtubeMatch[1] + "?alt=json";
+		var yt = "http://gdata.youtube.com/feeds/api/videos/" + youtubeMatch[1] + "?alt=json";
 
 		request({
 			url : yt,
