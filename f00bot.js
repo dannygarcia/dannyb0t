@@ -273,6 +273,21 @@ f00bert.prototype.askCleverbot = function (context, text) {
 		return;
 	}
 
+	if ((/assemble|reboot|cycle/).test(text) && (context.sender.name === "doctyper" || context.sender.name === "landon")) {
+		context.channel.echo("Got it.");
+		require("child_process").exec("curl -I http://localhost:9876/update", function (err, stdout, stderr) {
+			if (stdout) {
+				console.log(stdout);
+			}
+
+			if (stderr) {
+				console.log("ERROR\n", stderr);
+			}
+		});
+
+		return;
+	}
+
 	this.cleverbot = this.cleverbot || new Cleverbot();
 	var cleverize = text.replace(new RegExp(profile[0].user, "igm"), "Cleverbot");
 
