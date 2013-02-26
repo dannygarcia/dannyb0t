@@ -7,12 +7,11 @@ var Cleverbot = require("cleverbot-node");
 var twit = require("twit");
 
 var profile = require("./profile");
+var HELLBANNED = profile[0].hellbanned;
 
 var JSONdb = require("./lib/db");
 var Bot = require("./lib/irc");
 var zalgo = require("./lib/zalgo");
-
-var HELLBANNED = ["emi"];
 
 var T = new twit({
     consumer_key:         "R5xk3yzpOtcEg7cZIoxzw",
