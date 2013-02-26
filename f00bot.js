@@ -806,6 +806,9 @@ f00bert.prototype.tldr = function (context, text) {
 		} else {
 			console.log("item still fresh", stamp, link);
 		}
+
+		this.db.activity();
+
 		try	{
 			if (link.url && link.url !== last) {
 				links.push(link.user + " linked to: " + link.url + " \n");
