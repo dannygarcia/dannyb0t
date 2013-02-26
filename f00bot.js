@@ -803,8 +803,8 @@ f00bert.prototype.tldr = function (context, text, mode) {
 		link = this.db.collection.urls[i];
 
 		if (stamp > link.death) {
-			this.db.collection.urls.remove(i);
-			this.db.collection.dupes.remove(i);
+			this.db.collection.urls.splice(i, 1);
+			this.db.collection.dupes.splice(i, 1);
 		} else {
 			console.log("item still fresh", stamp, link);
 		}
