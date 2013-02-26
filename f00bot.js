@@ -84,8 +84,6 @@ f00bert.prototype.init = function () {
 	this.register_command("imgur", this.imgur_search, {help: "Search Imgur"});
 	this.register_command("help", this.help, {help: "List of available commands."});
 	this.register_command("tldr", this.tldr, {help: "Lists out all of the links posted in IRC over the last 2 hours."});
-	this.register_command("srsly", this.srsly, {help: "Lists out the links that are not images over the last 2 hours"});
-	this.register_command("lulz", this.lulz, {help: "Lists out images only over the last 2 hours"});
 	this.register_command("poll", this.addPoll, {help: "create a new poll. !poll [question]"});
 	this.register_command("gis", this.gis, {help: "Find random Google Images."});
 	this.register_command("gif", this.gif, {help: "Find random Google Image GIF files."});
@@ -789,7 +787,7 @@ f00bert.prototype.help = function (context, text) {
 	context.client.get_user(context.sender.name).send(reply);
 };
 
-f00bert.prototype.tldr = function (context, text, mode) {
+f00bert.prototype.tldr = function (context, text) {
 	if (HELLBANNED.indexOf(context.sender.name) > -1) {
 		return;
 	}
@@ -810,14 +808,6 @@ f00bert.prototype.tldr = function (context, text, mode) {
 		}
 		try	{
 			if (link.url && link.url !== last) {
-				if (mode === "srsly" && (imgRegExp).test(link.url)) {
-					continue;
-				}
-
-				if (mode === "lulz" && !(imgRegExp).test(link.url)) {
-					continue;
-				}
-
 				links.push(link.user + " linked to: " + link.url + " \n");
 				last = link.url;
 			} else {
@@ -836,14 +826,6 @@ f00bert.prototype.tldr = function (context, text, mode) {
 
 	context.client.get_user(context.sender.name).send(reply);
 	//context.channel.echo(reply);
-};
-
-f00bert.prototype.srsly = function (context, text) {
-	return this.tldr(context, text, "srsly");
-};
-
-f00bert.prototype.lulz = function (context, text) {
-	return this.tldr(context, text, "lulz");
 };
 
 
