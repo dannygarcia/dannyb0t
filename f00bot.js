@@ -399,12 +399,12 @@ f00bert.prototype.handlePoints = function (context, text, positive) {
 
 			}, Math.floor(Math.random() * (8000 - 4000 + 1) + 8000));
 		} else {
-			sarc = user[1] + " now has " + collection.stats[u].points + " points. " + sarc;
 			collection.stats[u].points += 1 * (positive ? 1 : -1);
+			sarc = user[1] + " now has " + collection.stats[u].points + " points. " + sarc;
 		}
 	} else {
-		sarc = user[1] + " now has " + collection.stats[u].points + " points. " + sarc;
 		collection.stats[u].points += 1 * (positive ? 1 : -1);
+		sarc = user[1] + " now has " + collection.stats[u].points + " points. " + sarc;
 	}
 
 	context.channel.echo(sarc);
