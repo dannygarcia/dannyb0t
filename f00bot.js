@@ -619,10 +619,12 @@ f00bert.prototype.checkMetadata = function (context, text) {
 
 	var twitterRegExp = /twitter.com\/(\w+)\/status(?:es)?\/([\d]+)/;
 	var youtubeRegExp = /(?:youtube.com\/(?:.*)v=|youtu.be\/)([a-zA-Z0-9_\-]+)/;
+	var imgurRegExp = /imgur.com\/(?:gallery\/)?(\w+)(?:\.(gif|jp(e)?g|png|webp))?/;
 	var imgRegExp = new RegExp(this.imageRegExp + "|(\\.(gif|jp(e)?g|png|webp))");
 
 	var twitterMatch = text.match(twitterRegExp);
 	var youtubeMatch = text.match(youtubeRegExp);
+	var imgurMatch = text.match(imgurRegExp);
 	var imageMatch = text.match(imgRegExp);
 
 	var user;
@@ -709,6 +711,32 @@ f00bert.prototype.checkMetadata = function (context, text) {
 				}
 			}
 		}.bind(this));
+	} else if (imgurMatch && imgurMatch.length) {
+		text = text.replace(/\.(gif|jp(e)?g|png|webp)/g, "");
+
+		jsdom.env(
+			text,
+			["http://code.jquery.com/jquery.js"],
+			function (errors, window) {
+				if (errors || !window) {
+					return console.error(errors);
+				}
+
+				var $ = window.$;
+				var title = $("#image-title").text();
+				var ident = "Imgur";
+
+				if (title) {
+					title = ent.decode(title.trim());
+
+					if (this.db && this.db.collection.tweets && this.db.collection.tweets[text]) {
+						ident = "Repost";
+					}
+
+					context.channel.echo("[" + ident + "] - " + title);
+				}
+			}
+		);
 	} else if (!imageMatch) {
 		jsdom.env(
 			text,
@@ -724,7 +752,7 @@ f00bert.prototype.checkMetadata = function (context, text) {
 				if (title) {
 					title = ent.decode(title.trim());
 
-					if (this.db.collection.tweets && this.db.collection.tweets[text]) {
+					if (this.db && this.db.collection.tweets && this.db.collection.tweets[text]) {
 						ident = "Repost";
 					}
 
