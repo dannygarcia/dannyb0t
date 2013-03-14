@@ -751,9 +751,16 @@ f00bert.prototype.checkMetadata = function (context, text) {
 				var ident = "Link";
 
 				var desc;
+				var location = window.location.href;
 
 				// GitHub
-				desc = $("#repository_description p").text();
+				if (/github\.com/.test(location)) {
+					var target = $("#repository_description p");
+					var txt = target.clone().children().remove().end().text();
+
+					ident = "GitHub";
+					desc = $.trim(txt);
+				}
 
 				// Prioritize description
 				title = desc || title;
