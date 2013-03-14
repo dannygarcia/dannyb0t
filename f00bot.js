@@ -740,14 +740,23 @@ f00bert.prototype.checkMetadata = function (context, text) {
 	} else if (!imageMatch) {
 		jsdom.env(
 			text,
-			[],
+			["http://code.jquery.com/jquery.js"],
 			function (errors, window) {
 				if (errors || !window) {
 					return console.error(errors);
 				}
 
+				var $ = window.$;
 				var title = window.document.title;
 				var ident = "Link";
+
+				var desc;
+
+				// GitHub
+				desc = $("#repository_description p").text();
+
+				// Prioritize description
+				title = desc || title;
 
 				if (title) {
 					title = ent.decode(title.trim());
