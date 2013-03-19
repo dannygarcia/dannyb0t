@@ -505,7 +505,7 @@ f00bert.prototype.gif = function (context, text) {
 		return;
 	}
 
-	return this.gis.call(this, context, text, null, "+filetype:gif");
+	return this.gis.call(this, context, text, null, "&tbs=itp:animated");
 };
 
 f00bert.prototype.upvote = function (context, text) {
