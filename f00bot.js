@@ -257,7 +257,7 @@ f00bert.prototype.trycmd = function (context, text) {
 				context.channel.echo(this.db.collection.cues[cmd[i]]);
 			} else {
 				context.channel.echo("Nothing under " + cmd[i] + ". How about this:");
-				this.gis.call(this, context, cmd[i].replace("#", ""));
+				this.gif.call(this, context, cmd[i].replace("#", ""));
 			}
 		}
 
