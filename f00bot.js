@@ -78,6 +78,7 @@ f00bert.prototype.init = function () {
 
 	this.register_listener(/([a-zA-Z0-9])\+\+/, this.addPoints);
 	this.register_listener(/([a-zA-Z0-9])\-\-/, this.removePoints);
+	this.register_listener(/([a-zA-Z0-9])\—/, this.showClippy);
 
 	this.register_listener(new RegExp(profile[0].user), this.askCleverbot);
 
@@ -418,6 +419,15 @@ f00bert.prototype.addPoints = function (context, text) {
 
 f00bert.prototype.removePoints = function (context, text) {
 	return this.handlePoints.call(this, context, text, false);
+};
+
+f00bert.prototype.showClippy = function (context, text) {
+	var user = text.match(/([\w]+)(?:\—)/);
+	var clippy = "http://24.media.tumblr.com/tumblr_ma5suvywWS1rg2nvlo1_100.gif";
+	var wikipedia = "http://en.wikipedia.org/wiki/Dash#Em_dash";
+
+	context.channel.echo(clippy);
+	context.channel.echo("It looks like you're trying to downvote " + user[1] + ". Would you like help? " + wikipedia);
 };
 
 f00bert.prototype.score = function (context, text) {
