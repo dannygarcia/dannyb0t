@@ -492,21 +492,17 @@ f00bert.prototype.gis = function (context, text, trigger, args) {
 		}
 
 		var $ = window.$;
-		var images = $("img");
-		var gifs = images.filter(function (img) {
-			return (/\.gif/.test(img.src));
+		var images = $("img").closest("a").map(function (i, link) {
+			return link.href.split("imgurl=")[1].split("&")[0];
+		}).filter(function (i, img) {
+			return ((/\.(gif|jp(e)?g|png)/img).test(img));
 		});
 
-		images = gifs.length ? gifs : images;
-
 		var idx = Math.floor(Math.random() * images.length);
-		var parent = images.eq(idx).closest("a");
-		var raw = parent.attr("href").split("imgurl=")[1].split("&")[0];
-		var src = window.decodeURIComponent(raw);
+		var src = window.decodeURIComponent(images[idx]);
+
+		console.log(src);
 		channel.echo(src);
-		// T.post("statuses/update", { status: (text + ": " + src) }, function(err, reply) {
-		//	console.log(err, reply);
-		// });
 	});
 };
 
