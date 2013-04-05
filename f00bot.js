@@ -20,9 +20,20 @@ var T = new twit({
 	access_token_secret:  "M3d699fl0lz7gWPU0rql3WykMhQaTiR49YT8J5XdfmQ"
 });
 
+var Horse_patrick = new twit({
+	consumer_key:         "X8mQ3iJFtvMTyGBu3SE2wA",
+	consumer_secret:      "CVCaydnr6UvbOWdp6A7GAhF5tRFBS9VRPfUBGMd8QI",
+	access_token:         "1328120306-ml3cWvA3TBbrLGPVV1bZHsZ9CWTfpG22FvlDCrI",
+	access_token_secret:  "SjNQAkx7brmCWIPKZqv2YYeghkEQG9V5id3tcGAsE"
+});
+
 var imgurInfo = {
 	id: "05b03d6f9a9ce95",
 	secret: "535727a60ce7db5c6b1fa21ecd56f24a5501f4d8"
+};
+
+var isPatrick = function (context) {
+	return context.sender.host === "patrick-macpro.ff0000.com";
 };
 
 
@@ -95,6 +106,9 @@ f00bert.prototype.init = function () {
 
 	this.register_command("cues", this.sendCues, {help: "displays all known cues"});
 	this.register_command("score", this.score, {help: "high scores. [name]++ or [name]-- to add or remove points."});
+
+	// Horse_patrick
+	this.register_listener(/.*/, this.horsePatrickCheck);
 };
 
 f00bert.prototype.killjoy = function (context) {
@@ -503,6 +517,17 @@ f00bert.prototype.gis = function (context, text, trigger, args) {
 
 		console.log(src);
 		channel.echo(src);
+
+		if (!isPatrick(context)) {
+			return;
+		}
+
+		Horse_patrick.post("statuses/update", {
+			status : [text, src].join("\n")
+		}, function (err, reply) {
+			console.log(err, reply);
+		}.bind(this));
+
 	});
 };
 
@@ -881,5 +906,16 @@ f00bert.prototype.tldr = function (context, text) {
 	//context.channel.echo(reply);
 };
 
+f00bert.prototype.horsePatrickCheck = function (context, text) {
+	if (!isPatrick(context)) {
+		return;
+	}
+
+	Horse_patrick.post("statuses/update", {
+		status : text
+	}, function (err, reply) {
+		console.log(err, reply);
+	}.bind(this));
+};
 
 (new f00bert(profile)).init();
