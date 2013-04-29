@@ -7,7 +7,7 @@ var Cleverbot = require("cleverbot-node");
 var twit = require("twit");
 
 var profile = require("./profile");
-var HELLBANNED = profile[0].hellbanned;
+var HELLBANNED = profile[0].hellbanned || [];
 
 var JSONdb = require("./lib/db");
 var Bot = require("./lib/irc");
