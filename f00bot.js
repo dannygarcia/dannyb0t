@@ -111,6 +111,10 @@ f00bert.prototype.killjoy = function (context) {
 	for (i = 0, j = profile.length; i < j; i++) {
 		var nofuns = profile[i].nofun;
 
+		if (!nofuns) {
+			continue;
+		}
+
 		for (k = 0, l = nofuns.length; k < l; k++) {
 			if (channel === nofuns[k]) {
 				console.log("NO FUN IN " + nofuns[k]);
