@@ -36,7 +36,12 @@ var f00bert = function (profile) {
 	];
 
 	this.on("join", function (context, user) {
+		this.trackTime(context, user, "join");
 		this.killjoy(context);
+	});
+
+	this.on("part", function (context, user) {
+		this.trackTime(context, user, "part");
 	});
 
 	this.on("pm", function (context, text) {
@@ -95,6 +100,20 @@ f00bert.prototype.init = function () {
 
 	// Horse_patrick
 	this.register_listener(/.*/, this.horsePatrickCheck);
+};
+
+f00bert.prototype.trackTime = function (context, user, type) {
+	this.db.users = this.db.users || {};
+
+	this.db.users[user.name] = this.db.users[user.name] || {
+		name: user.name,
+		channels: [],
+		join: new Date().getTime(),
+		part: new Date(new Date().setDate(new Date().getDate() - 5)).getTime()
+	};
+
+	this.db.users[user.name][type] = new Date().getTime();
+	this.db.activity();
 };
 
 f00bert.prototype.killjoy = function (context) {
@@ -599,8 +618,11 @@ f00bert.prototype.grab_url = function (context, text) {
 	if (this.db.collection.dupes.indexOf(url) !== -1) {
 		return;
 	} else {
-		var death = Math.floor(new Date().getTime() / 1000);
-		this.db.collection.urls.push({user: context.sender.name, url: url, death: (death + (3600 * 2))});
+		this.db.collection.urls.push({
+			user: context.sender.name,
+			url: url,
+			time: new Date().getTime()
+		});
 		this.db.collection.dupes.push(url);
 		this.db.activity();
 	}
@@ -831,33 +853,21 @@ f00bert.prototype.tldr = function (context, text) {
 	}
 
 	var links = [], limit = 10, last, link;
-	var stamp = Math.floor(new Date().getTime() / 1000);
-
-	var imgRegExp = new RegExp(this.imageRegExp + "|(\\.(gif|jp(e)?g|png|webp))");
+	var stamp = (this.db.users[context.sender.name] || {}).part;
 
 	for (var i = 0; i < this.db.collection.urls.length; i++) {
 		link = this.db.collection.urls[i];
 
-		if (stamp > link.death) {
-			this.db.collection.urls.splice(i, 1);
-			this.db.collection.dupes.splice(i, 1);
-		} else {
-			console.log("item still fresh", stamp, link);
-		}
-
-		this.db.activity();
-
-		try	{
+		if (link.time && stamp < link.time) {
 			if (link.url && link.url !== last) {
 				links.push(link.user + " linked to: " + link.url + " \n");
 				last = link.url;
 			} else {
 				break;
 			}
-		} catch (err) {
-			console.log("EOL");
+		} else {
+			console.log("item still fresh", stamp, link);
 		}
-
 	}
 
 	var reply = "";
