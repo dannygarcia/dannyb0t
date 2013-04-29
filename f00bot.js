@@ -13,29 +13,15 @@ var JSONdb = require("./lib/db");
 var Bot = require("./lib/irc");
 var zalgo = require("./lib/zalgo");
 
-var T = new twit({
-    consumer_key:         "R5xk3yzpOtcEg7cZIoxzw",
-	consumer_secret:      "tpBuHvwkEadk0lrTxkWhljpc1bhpDKTvmDAhBCM",
-	access_token:         "1078181256-wKgOPg5h77kFS1PjIatAdzIWUONoPcBpsBh1URR",
-	access_token_secret:  "M3d699fl0lz7gWPU0rql3WykMhQaTiR49YT8J5XdfmQ"
-});
+var twitter = profile[0].apis.twitter;
+var T = new twit(twitter.T);
+var Horse_patrick = new twit(twitter.Horse_patrick);
 
-var Horse_patrick = new twit({
-	consumer_key:         "X8mQ3iJFtvMTyGBu3SE2wA",
-	consumer_secret:      "CVCaydnr6UvbOWdp6A7GAhF5tRFBS9VRPfUBGMd8QI",
-	access_token:         "1328120306-ml3cWvA3TBbrLGPVV1bZHsZ9CWTfpG22FvlDCrI",
-	access_token_secret:  "SjNQAkx7brmCWIPKZqv2YYeghkEQG9V5id3tcGAsE"
-});
-
-var imgurInfo = {
-	id: "05b03d6f9a9ce95",
-	secret: "535727a60ce7db5c6b1fa21ecd56f24a5501f4d8"
-};
+var imgurInfo = profile[0].apis.imgur;
 
 var isPatrick = function (context) {
 	return context.sender.host === "patrick-macpro.ff0000.com";
 };
-
 
 var f00bert = function (profile) {
 	this.db = new JSONdb();
@@ -361,34 +347,7 @@ f00bert.prototype.handlePoints = function (context, text, positive) {
 	collection.stats[u] = collection.stats[u] || {};
 	collection.stats[u].points = collection.stats[u].points || 0;
 
-	var sarcasm = {
-		"++" : [
-			"Hooray.",
-			"Not that they mean anything.",
-			"Seriously, they don't mean anything.",
-			"You must feel loved. Nobody loves me.",
-			"Sweet, more imaginary points.",
-			"Somewhere Drew Carey is smiling.",
-			"Achievement unlocked.",
-			"Quite the accomplishment.",
-			"Ding!",
-			"Remember that one time Danny showed us porn?",
-			"Remember that one time Landon showed us porn?"
-		],
-
-		"--" : [
-			"What an asshole.",
-			"Might as well end it now.",
-			"Is it time for lunch yet?",
-			"Now you know how I feel.",
-			"You humans and your points...",
-			"Let's start a slow clap.",
-			"Come on, people now. Smile on your brother.",
-			"Somewhere Ryan Stiles is sobbing quietly.",
-			"That's no way to make friends.",
-			"Dick move."
-		]
-	};
+	var sarcasm = profile[0].sarcasm;
 
 	var group = (positive ? sarcasm["++"] : sarcasm["--"]);
 	var rand = Math.floor(Math.random() * group.length);
