@@ -820,7 +820,7 @@ f00bert.prototype.dev = function (context, text) {
 		});
 	} else {
 		f00dev.post("statuses/update", {
-			status : text.trim()
+			status : text.replace(/^("|')/, "").replace(/("|')$/, "").trim()
 		}, function (err, reply) {
 			console.log(err, reply);
 		});
