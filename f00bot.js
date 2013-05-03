@@ -16,6 +16,7 @@ var zalgo = require("./lib/zalgo");
 var twitter = profile[0].apis.twitter;
 var T = new twit(twitter.T);
 var Horse_patrick = new twit(twitter.Horse_patrick);
+var f00dev = new twit(twitter.f00dev);
 
 var imgurInfo = profile[0].apis.imgur;
 
@@ -91,6 +92,7 @@ f00bert.prototype.init = function () {
 	this.register_command("gis", this.gis, {help: "Find random Google Images."});
 	this.register_command("gif", this.gif, {help: "Find random Google Image GIF files."});
 	this.register_command("join", this.onJoin);
+	this.register_command("dev", this.dev, {help: "Send URL to our @f00dev account. syntax: !dev [url]"});
 
 	this.register_command("set", this.set, {help: "add a canned response. syntax: !set #[name] [String]"});
 	this.register_command("unset", this.unset, {help: "remove a canned response. syntax: !unset #[name]"});
@@ -800,6 +802,25 @@ f00bert.prototype.postTechTweet = function (text, url, id) {
 		this.db.collection.tweets[url] = status;
 		this.db.activity();
 	}.bind(this));
+};
+
+f00bert.prototype.dev = function (context, text) {
+	if (this.killjoy(context) || HELLBANNED.indexOf(context.sender.name) > -1) {
+		return;
+	}
+
+	var twitterRegExp = /twitter.com\/(\w+)\/status(?:es)?\/([\d]+)/;
+	var twitterMatch = text.match(twitterRegExp);
+
+	if (!twitterMatch.length || !twitterMatch[2]) {
+		return;
+	}
+
+	var id = twitterMatch[2];
+
+	f00dev.post("statuses/retweet/" + id, {}, function (err, reply) {
+		console.log(err, reply);
+	});
 };
 
 f00bert.prototype.help = function (context, text) {
