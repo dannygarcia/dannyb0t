@@ -812,15 +812,19 @@ f00bert.prototype.dev = function (context, text) {
 	var twitterRegExp = /twitter.com\/(\w+)\/status(?:es)?\/([\d]+)/;
 	var twitterMatch = text.match(twitterRegExp);
 
-	if (!twitterMatch.length || !twitterMatch[2]) {
-		return;
+	if (twitterMatch.length && twitterMatch[2]) {
+		var id = twitterMatch[2];
+
+		f00dev.post("statuses/retweet/" + id, {}, function (err, reply) {
+			console.log(err, reply);
+		});
+	} else {
+		f00dev.post("statuses/update", {
+			status : text.trim()
+		}, function (err, reply) {
+			console.log(err, reply);
+		});
 	}
-
-	var id = twitterMatch[2];
-
-	f00dev.post("statuses/retweet/" + id, {}, function (err, reply) {
-		console.log(err, reply);
-	});
 };
 
 f00bert.prototype.help = function (context, text) {
