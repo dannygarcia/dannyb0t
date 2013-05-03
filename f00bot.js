@@ -812,7 +812,7 @@ f00bert.prototype.dev = function (context, text) {
 	var twitterRegExp = /twitter.com\/(\w+)\/status(?:es)?\/([\d]+)/;
 	var twitterMatch = text.match(twitterRegExp);
 
-	if (twitterMatch.length && twitterMatch[2]) {
+	if (twitterMatch && twitterMatch[2]) {
 		var id = twitterMatch[2];
 
 		f00dev.post("statuses/retweet/" + id, {}, function (err, reply) {
