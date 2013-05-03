@@ -805,7 +805,7 @@ f00bert.prototype.postTechTweet = function (text, url, id) {
 };
 
 f00bert.prototype.dev = function (context, text) {
-	if (this.killjoy(context) || HELLBANNED.indexOf(context.sender.name) > -1) {
+	if (HELLBANNED.indexOf(context.sender.name) > -1) {
 		return;
 	}
 
