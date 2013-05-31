@@ -85,13 +85,14 @@ f00bert.prototype.init = function () {
 
 	this.register_listener(new RegExp(profile[0].user), this.askCleverbot);
 
-	this.register_command("imgur", this.imgur_search, {help: "Search Imgur"});
+	// this.register_command("imgur", this.imgur_search, {help: "Search Imgur"});
 	this.register_command("help", this.help, {help: "List of available commands."});
-	this.register_command("tldr", this.tldr, {help: "Lists out all of the links posted in IRC over the last 2 hours."});
-	this.register_command("poll", this.addPoll, {help: "create a new poll. !poll [question]"});
+	// this.register_command("tldr", this.tldr, {help: "Lists out all of the links posted in IRC over the last 2 hours."});
+	// this.register_command("poll", this.addPoll, {help: "create a new poll. !poll [question]"});
 	this.register_command("gis", this.gis, {help: "Find random Google Images."});
 	this.register_command("gif", this.gif, {help: "Find random Google Image GIF files."});
-	this.register_command("join", this.onJoin);
+	// this.register_command("join", this.onJoin);
+
 	this.register_command("dev", this.dev, {help: "Send URL to our @f00dev account. syntax: !dev [url]"});
 
 	this.register_command("set", this.set, {help: "add a canned response. syntax: !set #[name] [String]"});
