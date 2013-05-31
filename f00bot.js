@@ -666,7 +666,7 @@ f00bert.prototype.checkMetadata = function (context, text) {
 					return console.error(errors);
 				}
 
-				var tweet = window.$(".js-tweet-text.tweet-text").first().text();
+				var tweet = window.$(".permalink > .permalink-tweet-container .js-tweet-text.tweet-text").first().text();
 				context.channel.echo("[Twitter] - @" + user + ": " + ent.decode(tweet.trim()));
 
 				if (isSeriousBusiness) {
