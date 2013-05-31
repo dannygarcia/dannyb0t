@@ -6,7 +6,11 @@ var request = require('request');
 var Cleverbot = require("cleverbot-node");
 var twit = require("twit");
 
-var profile = require("./profile");
+var args = process.argv.slice(2);
+var profilePath = args[0] ? args[0] : "./profile";
+var dbPath = args[1] ? args[1] : path.join(__dirname, "f00bot-db.json");
+
+var profile = require(profilePath);
 var HELLBANNED = profile[0].hellbanned || [];
 
 var JSONdb = require("./lib/db");
@@ -26,7 +30,7 @@ var isPatrick = function (context) {
 
 var f00bert = function (profile) {
 	this.db = new JSONdb();
-	this.db.init(path.join(__dirname, "f00bot-db.json"));
+	this.db.init(dbPath);
 	Bot.call(this, profile);
 	this.set_log_level(this.LOG_ALL);
 	this.set_trigger("!");
