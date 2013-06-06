@@ -155,7 +155,7 @@ f00bert.prototype.killjoy = function (context) {
 };
 
 f00bert.prototype.imgur_search = function (context, text) {
-	if (this.killjoy(context) || HELLBANNED.indexOf(context.sender.name) > -1) {
+	if (this.killjoy(context) || HELLBANNED.indexOf(context.sender.host) > -1) {
 		return;
 	}
 
@@ -184,7 +184,7 @@ f00bert.prototype.imgur_search = function (context, text) {
 };
 
 f00bert.prototype.sendCues = function (context, text) {
-	if (HELLBANNED.indexOf(context.sender.name) > -1) {
+	if (HELLBANNED.indexOf(context.sender.host) > -1) {
 		return;
 	}
 
@@ -209,7 +209,7 @@ f00bert.prototype.sendCues = function (context, text) {
 };
 
 f00bert.prototype.set = function (context, text) {
-	if (HELLBANNED.indexOf(context.sender.name) > -1) {
+	if (HELLBANNED.indexOf(context.sender.host) > -1) {
 		return;
 	}
 
@@ -246,7 +246,7 @@ f00bert.prototype.set = function (context, text) {
 };
 
 f00bert.prototype.unset = function (context, text) {
-	if (HELLBANNED.indexOf(context.sender.name) > -1) {
+	if (HELLBANNED.indexOf(context.sender.host) > -1) {
 		return;
 	}
 
@@ -267,7 +267,7 @@ f00bert.prototype.unset = function (context, text) {
 };
 
 f00bert.prototype.trycmd = function (context, text) {
-	if (this.killjoy(context) || HELLBANNED.indexOf(context.sender.name) > -1) {
+	if (this.killjoy(context) || HELLBANNED.indexOf(context.sender.host) > -1) {
 		return;
 	}
 
@@ -297,7 +297,7 @@ f00bert.prototype.trycmd = function (context, text) {
 };
 
 f00bert.prototype.askCleverbot = function (context, text) {
-	if (this.killjoy(context) || HELLBANNED.indexOf(context.sender.name) > -1) {
+	if (this.killjoy(context) || HELLBANNED.indexOf(context.sender.host) > -1) {
 		return;
 	}
 
@@ -327,7 +327,7 @@ f00bert.prototype.askCleverbot = function (context, text) {
 };
 
 f00bert.prototype.handlePoints = function (context, text, positive) {
-	if (this.killjoy(context) || HELLBANNED.indexOf(context.sender.name) > -1) {
+	if (this.killjoy(context) || HELLBANNED.indexOf(context.sender.host) > -1) {
 		return;
 	}
 
@@ -434,7 +434,7 @@ f00bert.prototype.showClippy = function (context, text) {
 };
 
 f00bert.prototype.score = function (context, text) {
-	if (this.killjoy(context) || HELLBANNED.indexOf(context.sender.name) > -1) {
+	if (this.killjoy(context) || HELLBANNED.indexOf(context.sender.host) > -1) {
 		return;
 	}
 
@@ -464,7 +464,7 @@ f00bert.prototype.score = function (context, text) {
 };
 
 f00bert.prototype.onJoin = function (context, text) {
-	if (this.killjoy(context) || HELLBANNED.indexOf(context.sender.name) > -1) {
+	if (this.killjoy(context) || HELLBANNED.indexOf(context.sender.host) > -1) {
 		return;
 	}
 
@@ -474,7 +474,7 @@ f00bert.prototype.onJoin = function (context, text) {
 f00bert.prototype.activePoll = null;
 
 f00bert.prototype.gis = function (context, text, trigger, args) {
-	if (this.killjoy(context) || HELLBANNED.indexOf(context.sender.name) > -1) {
+	if (this.killjoy(context) || HELLBANNED.indexOf(context.sender.host) > -1) {
 		return;
 	}
 
@@ -521,7 +521,7 @@ f00bert.prototype.gis = function (context, text, trigger, args) {
 };
 
 f00bert.prototype.gif = function (context, text) {
-	if (this.killjoy(context) || HELLBANNED.indexOf(context.sender.name) > -1) {
+	if (this.killjoy(context) || HELLBANNED.indexOf(context.sender.host) > -1) {
 		return;
 	}
 
@@ -529,7 +529,7 @@ f00bert.prototype.gif = function (context, text) {
 };
 
 f00bert.prototype.upvote = function (context, text) {
-	if (this.killjoy(context) || HELLBANNED.indexOf(context.sender.name) > -1) {
+	if (this.killjoy(context) || HELLBANNED.indexOf(context.sender.host) > -1) {
 		return;
 	}
 
@@ -540,7 +540,7 @@ f00bert.prototype.upvote = function (context, text) {
 };
 
 f00bert.prototype.downvote = function (context, text) {
-	if (this.killjoy(context) || HELLBANNED.indexOf(context.sender.name) > -1) {
+	if (this.killjoy(context) || HELLBANNED.indexOf(context.sender.host) > -1) {
 		return;
 	}
 
@@ -551,7 +551,7 @@ f00bert.prototype.downvote = function (context, text) {
 };
 
 f00bert.prototype.addPoll = function (context, text) {
-	if (this.killjoy(context) || HELLBANNED.indexOf(context.sender.name) > -1) {
+	if (this.killjoy(context) || HELLBANNED.indexOf(context.sender.host) > -1) {
 		return;
 	}
 
@@ -584,7 +584,7 @@ f00bert.prototype.addPoll = function (context, text) {
 };
 
 f00bert.prototype.clearPoll = function (context, question) {
-	if (this.killjoy(context) || HELLBANNED.indexOf(context.sender.name) > -1) {
+	if (this.killjoy(context) || HELLBANNED.indexOf(context.sender.host) > -1) {
 		return;
 	}
 
@@ -603,7 +603,7 @@ f00bert.prototype.clearPoll = function (context, question) {
 };
 
 f00bert.prototype.grab_url = function (context, text) {
-	if (HELLBANNED.indexOf(context.sender.name) > -1) {
+	if (HELLBANNED.indexOf(context.sender.host) > -1) {
 		return;
 	}
 
@@ -636,7 +636,7 @@ f00bert.prototype.grab_url = function (context, text) {
 };
 
 f00bert.prototype.checkMetadata = function (context, text) {
-	if (HELLBANNED.indexOf(context.sender.name) > -1) {
+	if (HELLBANNED.indexOf(context.sender.host) > -1) {
 		return;
 	}
 
@@ -810,7 +810,7 @@ f00bert.prototype.postTechTweet = function (text, url, id) {
 };
 
 f00bert.prototype.dev = function (context, text) {
-	if (HELLBANNED.indexOf(context.sender.name) > -1) {
+	if (HELLBANNED.indexOf(context.sender.host) > -1) {
 		return;
 	}
 
@@ -833,7 +833,7 @@ f00bert.prototype.dev = function (context, text) {
 };
 
 f00bert.prototype.help = function (context, text) {
-	if (HELLBANNED.indexOf(context.sender.name) > -1) {
+	if (HELLBANNED.indexOf(context.sender.host) > -1) {
 		return;
 	}
 
@@ -850,7 +850,7 @@ f00bert.prototype.help = function (context, text) {
 };
 
 f00bert.prototype.tldr = function (context, text) {
-	if (HELLBANNED.indexOf(context.sender.name) > -1) {
+	if (HELLBANNED.indexOf(context.sender.host) > -1) {
 		return;
 	}
 
