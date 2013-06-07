@@ -4,7 +4,7 @@ module.exports = function (f00bot, profile) {
 	var cp = require("child_process");
 	var Cleverbot = require("cleverbot-node");
 
-	this.registerListener(new RegExp(profile[0].user), {
+	this.registerListener(new RegExp(profile.user), {
 		hellban: true,
 		killjoy: true
 	}, function (context, text) {
@@ -25,11 +25,11 @@ module.exports = function (f00bot, profile) {
 
 		this.cleverbot = this.cleverbot || new Cleverbot();
 
-		var cleverize = text.replace(new RegExp(profile[0].user, "igm"), "Cleverbot");
+		var cleverize = text.replace(new RegExp(profile.user, "igm"), "Cleverbot");
 
 		console.log("Asking:", cleverize);
 		this.cleverbot.write(text, function (response) {
-			var f000ize = response.message.replace(/cleverbot/igm, profile[0].user);
+			var f000ize = response.message.replace(/cleverbot/igm, profile.user);
 			context.channel.echo(f000ize);
 		});
 	});

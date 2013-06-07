@@ -2,7 +2,7 @@ module.exports = function (profile, text, url, id) {
 	this.db.collection.tweets = this.db.collection.tweets || {};
 
 	var Twit = require("twit");
-	var T = new Twit(profile[0].apis.twitter);
+	var T = new Twit(profile.apis.twitter);
 	var maxChars = 120;
 
 	if (!text && !url && id) {

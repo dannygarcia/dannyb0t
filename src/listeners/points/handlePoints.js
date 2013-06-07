@@ -45,14 +45,14 @@ module.exports = function (profile, context, text, positive) {
 	collection.stats[u] = collection.stats[u] || {};
 	collection.stats[u].points = collection.stats[u].points || 0;
 
-	var sarcasm = profile[0].sarcasm;
+	var sarcasm = profile.sarcasm;
 
 	var group = (positive ? sarcasm["++"] : sarcasm["--"]);
 	var rand = Math.floor(Math.random() * group.length);
 
 	var sarc = group[rand];
 
-	if (!positive && user[1] === profile[0].user) {
+	if (!positive && user[1] === profile.user) {
 		var luck = Math.floor(Math.random() * 11);
 
 		if (luck > 5) {

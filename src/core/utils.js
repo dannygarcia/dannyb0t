@@ -5,7 +5,7 @@ module.exports = function (f00bot, profile) {
 	var cwd = process.cwd();
 
 	var Bot = require(path.join(cwd, "lib", "irc"));
-	var HELLBANNED = profile[0].hellbanned || [];
+	var HELLBANNED = profile.hellbanned || [];
 
 	f00bot.prototype.trackTime = function (context, user, type) {
 		this.db.users = this.db.users || {};
@@ -24,7 +24,7 @@ module.exports = function (f00bot, profile) {
 	f00bot.prototype.killjoy = function (context) {
 		var nofun = false;
 		var channel = context.channel ? context.channel.name : context.name;
-		var i, j, k, l;
+		var i, j;
 
 		this.nofun = this.nofun || {};
 
@@ -32,19 +32,13 @@ module.exports = function (f00bot, profile) {
 			return this.nofun[channel];
 		}
 
-		for (i = 0, j = profile.length; i < j; i++) {
-			var nofuns = profile[i].nofun;
+		var nofuns = profile.nofun || [];
 
-			if (!nofuns) {
-				continue;
-			}
-
-			for (k = 0, l = nofuns.length; k < l; k++) {
-				if (channel === nofuns[k]) {
-					console.log("NO FUN IN " + nofuns[k]);
-					nofun = true;
-					break;
-				}
+		for (i = 0, j = nofuns.length; i < j; i++) {
+			if (channel === nofuns[i]) {
+				console.log("NO FUN IN " + nofuns[i]);
+				nofun = true;
+				break;
 			}
 		}
 

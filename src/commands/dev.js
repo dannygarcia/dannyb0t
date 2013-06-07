@@ -6,7 +6,7 @@ module.exports = function (f00bot, profile) {
 		hellban: true
 	}, function (context, text) {
 		var Twit = require("twit");
-		var f00dev = new Twit(profile[0].apis.twitter.f00dev);
+		var f00dev = new Twit(profile.apis.twitter.f00dev);
 
 		var twitterRegExp = /twitter.com\/(\w+)\/status(?:es)?\/([\d]+)/;
 		var twitterMatch = text.match(twitterRegExp);

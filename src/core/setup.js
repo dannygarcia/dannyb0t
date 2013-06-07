@@ -4,7 +4,7 @@ module.exports = function (f00bot, profile) {
 	var path = require("path");
 	var cwd = process.cwd();
 
-	var HELLBANNED = profile[0].hellbanned || [];
+	var HELLBANNED = profile.hellbanned || [];
 
 	f00bot.prototype.setupCommands = function () {
 		var modulesPath = path.join(cwd, "src", "commands");

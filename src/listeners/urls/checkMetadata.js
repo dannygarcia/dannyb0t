@@ -19,7 +19,7 @@ module.exports = function (context, text, profile) {
 	if (twitterMatch && twitterMatch.length) {
 		user = twitterMatch[1];
 
-		if (user === profile[0].user) {
+		if (user === profile.user) {
 			return;
 		}
 

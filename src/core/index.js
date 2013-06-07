@@ -6,7 +6,7 @@ module.exports = function (profile, dbPath) {
 	var JSONdb = require(path.join(cwd, "lib", "db"));
 	var Bot = require(path.join(cwd, "lib", "irc"));
 
-	var HELLBANNED = profile[0].hellbanned || [];
+	var HELLBANNED = profile.hellbanned || [];
 
 	var f00bot = function (profile) {
 		this.db = new JSONdb();
@@ -33,7 +33,7 @@ module.exports = function (profile, dbPath) {
 		this.on("pm", function (context, text) {
 			console.log(context, text);
 
-			var channel = profile[0].channels[0];
+			var channel = profile.channels[0];
 
 			if (text.indexOf("$") !== -1) {
 				text = text.replace(/(\s)?\$(\s?)/img, "");
