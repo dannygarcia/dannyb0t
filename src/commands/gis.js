@@ -42,6 +42,11 @@ module.exports = function (f00bot, profile) {
 			var Twit = require("twit");
 			var Horse_target = new Twit(profile.apis.twitter.Horse_target);
 
+			if (typeof Horse_target === "undefined") {
+				process.stderr.write("No credentials for Horse_target Twitter account.");
+				return;
+			}
+
 			Horse_target.post("statuses/update", {
 				status : [text, src].join("\n")
 			}, function (err, reply) {

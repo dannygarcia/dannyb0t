@@ -8,6 +8,11 @@ module.exports = function (f00bot, profile) {
 		var Twit = require("twit");
 		var f00dev = new Twit(profile.apis.twitter.f00dev);
 
+		if (typeof f00dev === "undefined") {
+			process.stderr.write("No credentials for f00dev Twitter account.");
+			return;
+		}
+
 		var twitterRegExp = /twitter.com\/(\w+)\/status(?:es)?\/([\d]+)/;
 		var twitterMatch = text.match(twitterRegExp);
 
